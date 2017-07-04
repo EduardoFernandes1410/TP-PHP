@@ -33,7 +33,7 @@
             </div>
             
             <div class="col l9" id="barra-logo">
-                <p id="logo">teach.me</p>
+                <p id="logo" class="logo">teach.me</p>
 
                 <ul id="slide-out" class="side-nav">
                     <li>
@@ -49,16 +49,22 @@
                     <li><a href="#!"><i class="material-icons">cloud</i>Perfil</a></li>
                     <li><div class="divider"></div></li>
                     <li><a class="subheader">Aulas</a></li>
-                    <li><a class="collapsible collapsible-header" href="#!" data-activates="dropdown1" data-collapsible="accordion">Ensinando<i class="material-icons right">arrow_drop_down</i></a></li>
-                    <li><a class="collapsible collapsible-header" href="#!" data-activates="dropdown2" data-collapsible="accordion">Aprendendo<i class="material-icons right">arrow_drop_down</i></a></li>
-
-                    <ul id="dropdown1">
-                        <li><div class="collapsible-body"><span class="badge">4</span>Música</div></li>
-                        <li><div class="collapsible-body"><span class="badge">69</span>Escolar</div></li>
-                    </ul>
-                    <ul id="dropdown2">
-                        <li><div class="collapsible-body"><span class="badge">99+</span>Youtube</div></li>
-                        <li><div class="collapsible-body"><span class="badge">1</span>Política</div></li>
+                    
+                    <ul class="collapsible" data-collapsible="accordion">
+                        <li>
+                            <div class="collapsible-header">Ensinando<i class="material-icons right">arrow_drop_down</i></div>
+                            <div class="collapsible-body"><span class="badge">4</span>Música</div>
+                            <div class="collapsible-body"><span class="badge">+99</span> 
+                            Escolar</div>
+                        </li>
+                        
+                        <li>
+                            <div class="collapsible-header">Aprendendo<i class="material-icons right">arrow_drop_down</i></div>
+                            <div class="collapsible-body"><span class="badge">4</span>    
+                            Youtube</div>
+                            <div class="collapsible-body"><span class="badge">1</span>  
+                            Política</div>
+                        </li>
                     </ul>
                 </ul>
 
@@ -70,7 +76,10 @@
                 <div class="col l3">
                     <div class="card">
                         <div class="card-image">
-                            <img src="fotos/po.jpg">
+                            <div class="thumbnail">
+                                <img src="fotos/po.jpg" class="portrait"/>
+                            </div>
+                            <!--<img src="fotos/po.jpg" >-->
                             <span class="card-title">Show de Bolice</span>
                             <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
                         </div>

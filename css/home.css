@@ -23,19 +23,36 @@ img{
 	background-color: red;
 }
 
+/* AULAS */
+
 #aulas{
 	background-color: blue
 }
-
-#botao-abrir-perfil{
-	background-color: orange;
-	margin-right: 97.5%;
-	float: right; 
+#foto-card{
+	object-fit: cover;
+}
+.thumbnail {
+	position: relative !important;
+	/*width: 200px !important;
+	height: 200px !important; */
+	overflow: hidden !important;
+}
+.thumbnail img {
+	position: absolute !important;
+ 	left: 50% !important;
+ 	top: 50% !important;
+ 	height: 100% !important;
+ 	width: auto !important;
+ 	-webkit-transform: translate(-50%,-50%) !important;
+ 	    -ms-transform: translate(-50%,-50%) !important;
+ 	        transform: translate(-50%,-50%) !important;
+}
+.thumbnail img.portrait {
+  width: 100% !important;
+  height: auto !important;
 }
 
-#abrir-perfil{
-	border: 0%;
-}
+/* PERFIL */
 
 #aba-perfil{
 	background-color: yellow;

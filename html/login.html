@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Bem Vindo - Coltrekking</title>
+		<title>Bem Vindo - teach me</title>
 		<meta charset="utf-8">
 
 		<!--Importa firebase + login google-->
@@ -26,32 +26,30 @@
 
 	<body>
 		<!--Conteudo-->
-		<div class="content">
-			<div class="container">
-				<div class="row">
-					<div class="col s10 offset-s1 m6 offset-m3 l6 offset-l3 xl6 offset-xl3">
-						<div class="valign-wrapper">
-							<!--Card central-->
-							<div class="card light-green lighten-1 z-depth-5">
-								<div class="card-content">
-									<!--Logo-->
-									<span class="card-title">
-										<img id="logo" src="../rsc/logo/coltrekking-logo-3.png">
-									</span>
+		<div class="container">
+			<div class="row">
+				<div class="col s10 offset-s1 m6 offset-m3 l6 offset-l3 xl6 offset-xl3">
+					<div class="valign-wrapper">
+						<!--Card central-->
+						<div class="card blue z-depth-5">
+							<div class="card-content">
+								<!--Logo-->
+								<span class="card-title">
+									<p id="logo">teach.me</p>
+								</span>
 
-									<blockquote>
-										Bem-vindo à experiência definitiva. <br>
-										Está preparado?
-									</blockquote>
+								<blockquote>
+									Conhecimento é poder. <br>
+									Está preparado?
+								</blockquote>
 
-									<!--Botoes de Login para !mobile-->
-									<a id="loginGoogle" href="#" class="hide-on-small-only waves-effect waves-light btn-large red lighten-1" onclick="googleSignIn();"><i class="material-icons left"><img src="../rsc/login/icones/google.png"></i>Entrar com o Google</a>
-									<a id="loginFacebook" href="#" class="hide-on-small-only waves-effect waves-light btn-large blue lighten-1" onclick="facebookSignIn();"><i class="material-icons left"><img src="../rsc/login/icones/facebook-box.png"></i>Entrar com o Facebook</a>
+								<!--Botoes de Login para !mobile-->
+								<a id="loginGoogle" href="#" class="hide-on-small-only waves-effect waves-light btn-large" onclick="googleSignIn();"><i class="material-icons left"><img src="../rsc/login/icones/google.png"></i>Entrar com o Google</a>
+								<a id="loginFacebook" href="#" class="hide-on-small-only waves-effect waves-light btn-large  blue darken-4" onclick="facebookSignIn();"><i class="material-icons left"><img src="../rsc/login/icones/facebook-box.png"></i>Entrar com o Facebook</a>
 
-									<!--Botoes de Login para !mobile-->
-									<a id="loginGoogle" href="#" class="hide-on-med-and-up waves-effect waves-light btn-large red lighten-1" onclick="googleSignIn();">Entrar c/ Google</a>
-									<a id="loginFacebook" href="#" class="hide-on-med-and-up waves-effect waves-light btn-large blue lighten-1" onclick="facebookSignIn();">Entrar c/ Facebook</a>
-								</div>
+								<!--Botoes de Login para mobile-->
+								<a id="loginGoogle" href="#" class="hide-on-med-and-up waves-effect waves-light btn-large" onclick="googleSignIn();">Entrar c/ Google</a>
+								<a id="loginFacebook" href="#" class="hide-on-med-and-up waves-effect waves-light btn-large  blue darken-4" onclick="facebookSignIn();">Entrar c/ Facebook</a>
 							</div>
 						</div>
 					</div>
@@ -62,6 +60,6 @@
 
 		<!--Importa jQuery + materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+        <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
 	</body>
 </html>

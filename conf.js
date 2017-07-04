@@ -2,7 +2,7 @@ $(document).ready(function(){
 	$('.collapsible').collapsible();
 
 	$(".button-collapse").sideNav({
-		edge: 'right'
+		edge: 'left'
 	});
 	
 	$(".dropdown-button").dropdown();

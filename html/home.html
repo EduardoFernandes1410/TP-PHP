@@ -12,64 +12,41 @@
     </head>
 
     <body>
-        <div class="row">
-        
-            <div class="col l3" id="aba-pesquisa">
-                <div class="input-field">
-                    <i class="material-icons prefix">search</i>
-                    <input id="pesquisa" type="text" class="validate">
-                
-                    <!-- Não quer funfar
-                    <div class="input-field">
-                        <select multiple>
-                            <option value="" disabled selected>Tags</option>
-                            <option value="1">Música</option>
-                            <option value="2">Ciências</option>
-                            <option value="3">Exatas</option>
-                        </select>
-                    <label>Materialize Multiple Select</label>
-                    </div>-->
+        <div class="navbar-fixed">
+            <nav class="nav-extended light-blue z-depth-2">
+                <div class="nav-wrapper light-blue">
+                    <div class="row">
+                        <div class="container nav-container">
+                            <!--Logo-->
+                            <div id="logo-wrapper" class="col l3 hide-on-med-and-down">
+                                <a href="#" class="brand-logo" id="logo">teach.me</a>
+                            </div>
+
+                            <!--Botao Hamburger-->
+                            <a id="hamburguer" href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+
+                            <!--Search Bar-->
+                            <div class="col s10 m11 l6">
+                                <form>
+                                    <div id="inputWrapper" class="input-field light-blue lighten-1">
+                                        <input id="search" type="search" placeholder="Pesquisar" required>
+                                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                        <i class="material-icons">close</i>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!--User Menu-->
+                            <div class="col l3 hide-on-med-and-down">
+                                <ul id="nav-user" class="right">
+                                    <li><a id="virar-sensei" href="#" class="light-blue darken-3 waves-effect waves-light btn-large">Virar Sensei</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="col l9" id="barra-logo">
-                <p id="logo" class="logo">teach.me</p>
-
-                <ul id="slide-out" class="side-nav">
-                    <li>
-                        <div class="user-view">
-                        <div class="background">
-                            <img src="../rsc/testes/crashps1.jpg">
-                        </div>
-                        <a><img class="circle" src="../rsc/testes/foto_perfil.png"></a>
-                        <a><span class="white-text name">Foca</span></a>
-                        <a><span class="white-text email">maaaaan12@gmail.com</span></a>
-                        </div>
-                    </li>
-                    <li><a href="#!"><i class="material-icons">cloud</i>Perfil</a></li>
-                    <li><div class="divider"></div></li>
-                    <li><a class="subheader">Aulas</a></li>
-                    
-                    <ul class="collapsible" data-collapsible="accordion">
-                        <li>
-                            <div class="collapsible-header">Ensinando<i class="material-icons right">arrow_drop_down</i></div>
-                            <div class="collapsible-body"><span class="badge">4</span>Música</div>
-                            <div class="collapsible-body"><span class="badge">+99</span> 
-                            Escolar</div>                                
-                        </li>
-                    
-                        <li>
-                            <div class="collapsible-header">Aprendendo<i class="material-icons right">arrow_drop_down</i></div>
-                            <div class="collapsible-body"><span class="badge">4</span>    
-                            Youtube</div>
-                            <div class="collapsible-body"><span class="badge">1</span>  
-                            Política</div> 
-                        </li>
-                    </ul>
-                </ul>
-
-                <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-            </div>
+            </nav>
+        </div>
             
             <div class="col l9" id="aulas">
                 

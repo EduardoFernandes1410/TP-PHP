@@ -36,7 +36,7 @@ html, body, .content, .container, .row, .col, .valign-wrapper {
 		font-weight: 300;
 		color: white;
 		margin-bottom: 13%;
-		border-left: 5px solid #12CCDE;
+		border-left: 5px solid rgba(255, 255, 255, 0.5);
 	}
 
 	//Botoes de login
@@ -52,7 +52,7 @@ html, body, .content, .container, .row, .col, .valign-wrapper {
 	
 	//Botao de login do Google
 	#loginGoogle {
-		background-color: #13B8DC !important;
+		background-color: #d32f2f !important;
 	}
 
 	//Botao de login do Facebook

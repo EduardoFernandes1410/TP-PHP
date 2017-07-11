@@ -67,10 +67,23 @@
         <!-- Modal Structure VIRAR SENSEI ~EM TESTES~ -->
         <div id="modal1" class="modal">
             <div class="modal-content">
-                <p>maaaaan</p>
+                <h5 style="text-align: center;">Processo para virar Sensei</h5>
+
+                <div class="divider"></div>
+
+                <p style="text-align: justify;">Por que precisamos do seu CPF para que possa dar aulas no nosso site?</p>
+                <!-- DEPOIS mudar a line-height dos p's normais -->
+                <p style="text-align: justify;">O CPF é um número único para cada pessoa. Esse tipo de informação nos permite bloquear contas falsas, usuários anteriormente banidos do <a style="font-size: 120%">teach.me</a> e assim continuar mantendo nossa rede de serviços segura.</p>
+
+                <div class="row" style="margin-bottom: 0%;">
+                    <div class="input-field" style="margin-left: 39%; margin-top: 6%;">
+                        <input id="cepeefe" type="text" class="validate cpf" style="width: 8em; text-align: center; margin-bottom: 0%; ">
+                        <label for="cepeefe">CPF</label>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Send</a>
+                <a href="#!" class="modal-action modal-close waves-effect waves-red btn orange lighten-1">ENVIAR</a>
             </div>
         </div>
 
@@ -78,5 +91,7 @@
         <script src="../node_modules/materialize-css/dist/js/materialize.min.js"></script>
         <!-- Adiciona JS -->
         <script type="text/javascript" src="../js/home.js"></script>
+        <!-- Adiciona JS que faz o mask do input do VIRAR SENSEI-->
+        <script type="text/javascript" src="../node_modules/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
     </body>
   </html>

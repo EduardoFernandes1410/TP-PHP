@@ -1,0 +1,24 @@
+{
+  "name": "teachme",
+  "version": "1.0.0",
+  "description": "## Criadores - Eduardo Augusto Militão Fernandes - Lucas Macedo Bruzzi - Matheus Lopes Coelho",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EduardoFernandes1410/TP-PHP.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EduardoFernandes1410/TP-PHP/issues"
+  },
+  "homepage": "https://github.com/EduardoFernandes1410/TP-PHP#readme",
+  "dependencies": {
+    "angular": "^1.6.5",
+    "jquery": "^3.2.1",
+    "materialize-css": "^0.99.0"
+  }
+}

@@ -38,6 +38,8 @@ function initApp() {
 			usuarioInfo.Foto = user.photoURL;
 			usuarioInfo.ID = user.uid;
 
+			usuarioInfo = JSON.stringify(usuarioInfo);
+
 			/*Manda usuarioInfo para server*/
 			url = "../backend/user/cadastra.php";
 			$.ajax({

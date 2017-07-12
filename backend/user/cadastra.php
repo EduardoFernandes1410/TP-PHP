@@ -3,18 +3,18 @@
 
     $obj = $_POST['usuarioInfo'];
 
-    var_dump($_POST);
+    $json = json_decode($obj, true);
 
-    $json = $obj.json_decode($obj);
+    var_dump($json);
 
-    $email = $json['email'];
-    $cpf = $json['cpf'] || "";
-    $admin = $json['admin'];
-    $contato = $json['contato'] || "";
-    $endereco = $json['endereco'] || "";
-    $nome = $json['nome'];
-    $foto = $json['foto'];
-    $id = $json['id'];
+    $email = $json['Email'];
+    $cpf = $json['CPF'] || "";
+    $admin = $json['Admin'];
+    $contato = $json['Contato'] || "";
+    $endereco = $json['Endereco'] || "";
+    $nome = $json['Nome'];
+    $foto = $json['Foto'];
+    $id = $json['ID'];
 
     $conexao = conecta();
     if(!conexao){
@@ -26,7 +26,7 @@
         die("Database não pode ser usada");
     }
 
-    $query = "INSERT INTO usuarios (id, email, cpf, contato, endereco, nome, foto, admin) VALUES ('$id', '$email', '$cpf', '$telefone', '$endereco', '$nome', '$foto', '$admin')";
+    $query = "INSERT INTO user (id, email, cpf, contato, endereco, nome, foto, admin) VALUES ('$id', '$email', '$cpf', '$telefone', '$endereco', '$nome', '$foto', '$admin')";
 
     $insert = mysql_query($query, $conexao);
 

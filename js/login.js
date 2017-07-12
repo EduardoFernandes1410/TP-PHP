@@ -39,16 +39,15 @@ function initApp() {
 			usuarioInfo.ID = user.uid;
 
 			/*Manda usuarioInfo para server*/
-			url = "/post-user";
-			xmlhttp.onreadystatechange = function() {
-				if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-					/*Redireciona para logged.html*/
-					window.location = xmlhttp.responseText;
+			url = "../backend/user/cadastra.php";
+			$.ajax({
+				data: 'usuarioInfo=' + usuarioInfo,
+				url: "../backend/user/cadastra.php",
+				method: 'POST', // or GET
+				success: function(msg) {
+					alert(msg);
 				}
-			};
-			xmlhttp.open("POST", url, true);
-			xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-			xmlhttp.send(JSON.stringify(usuarioInfo));				
+			});
 		}
 		else {					
 			console.log("Nao tem user");

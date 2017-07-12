@@ -27,9 +27,9 @@
     $insert = mysql_query($query, $conexao);
 
     if($insert){
-        echo"<script language='javascript' type='text/javascript'>alert('Usuário cadastrado com sucesso!');window.location.href='login.html'</script>";
+        echo"Deu bom";
     } else {
-        echo"<script language='javascript' type='text/javascript'>alert('Não foi possível cadastrar esse usuário');window.location.href='cadastro.html'</script>";
+        echo"Deu ruim";
     }
     desconecta($conexao);
 ?>

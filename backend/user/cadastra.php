@@ -1,13 +1,20 @@
 <?php
     require '../utils/basics.php';
 
-    $email = $_POST['email'];
-    $cpf = $_POST['cpf'];
-    $telefone = $_POST['telefone'];
-    $endereco = $_POST['endereco'];
-    $nome = $_POST['nome'];
-    $foto = $_POST['foto'];
-    $id = uniqid();
+    $obj = $_POST['usuarioInfo'];
+
+    var_dump($_POST);
+
+    $json = $obj.json_decode($obj);
+
+    $email = $json['email'];
+    $cpf = $json['cpf'] || "";
+    $admin = $json['admin'];
+    $contato = $json['contato'] || "";
+    $endereco = $json['endereco'] || "";
+    $nome = $json['nome'];
+    $foto = $json['foto'];
+    $id = $json['id'];
 
     $conexao = conecta();
     if(!conexao){
@@ -19,14 +26,14 @@
         die("Database não pode ser usada");
     }
 
-    $query = "INSERT INTO usuarios (id, email, cpf, telefone, endereco, nome, foto) VALUES ('$id', '$email', '$cpf', '$telefone', '$endereco', '$nome', '$foto')";
+    $query = "INSERT INTO usuarios (id, email, cpf, contato, endereco, nome, foto, admin) VALUES ('$id', '$email', '$cpf', '$telefone', '$endereco', '$nome', '$foto', '$admin')";
 
     $insert = mysql_query($query, $conexao);
 
     if($insert){
-        echo"<script language='javascript' type='text/javascript'>alert('Usuário cadastrado com sucesso!');window.location.href='login.html'</script>";
+        echo "Deu bom";
     } else {
-        echo"<script language='javascript' type='text/javascript'>alert('Não foi possível cadastrar esse usuário');window.location.href='cadastro.html'</script>";
+        echo "/html/home.html";
     }
     desconecta($conexao);
 ?>

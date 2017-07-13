@@ -1,20 +1,19 @@
 <?php
     require '../utils/basics.php';
 
-    $obj = $_POST['usuarioInfo'];
+    session_start();
+    $json = $_POST['usuarioInfo'];
 
-    $json = json_decode($obj, true);
+    $obj = json_decode($json, true);
 
-    var_dump($json);
-
-    $email = $json['Email'];
-    $cpf = $json['CPF'] || "";
-    $admin = $json['Admin'];
-    $contato = $json['Contato'] || "";
-    $endereco = $json['Endereco'] || "";
-    $nome = $json['Nome'];
-    $foto = $json['Foto'];
-    $id = $json['ID'];
+    $email = $obj['Email'];
+    $cpf = $obj['CPF'] || "";
+    $admin = $obj['Admin'];
+    $contato = $obj['Contato'] || "";
+    $endereco = $obj['Endereco'] || "";
+    $nome = $obj['Nome'];
+    $foto = $obj['Foto'];
+    $id = $obj['ID'];
 
     $conexao = conecta();
     if(!conexao){
@@ -33,7 +32,34 @@
     if($insert){
         echo "Deu bom";
     } else {
-        echo "/html/home.html";
+
+        //SE não cadastrar, ele já está cadastrado
+
+        $query2 = "SELECT * FROM user WHERE id = '$id'";
+
+        $select = mysql_query($query2, $conexao);
+
+        if(mysql_num_rows($select) > 0){
+            //Dados do usuário p/ sessão
+            $sessao = [];
+            while($row = mysql_fetch_assoc($select)){
+                $sessao['Email'] = $row['email'];
+                $sessao['CPF'] = $row['cpf'];
+                $sessao['Admin'] = $row['admin'];
+                $sessao['Contato'] = $row['contato'];
+                $sessao['Endereco'] = $row['endereco'];
+                $sessao['Nome'] = $row['nome'];
+                $sessao['Foto'] = $row['foto'];
+                $sessao['ID'] = $row['id'];
+            }
+            $sessao = json_encode($sessao);
+
+            $_SESSION['usuarioInfo'] = $sessao;
+
+            echo $sessao;
+        } else {
+            echo "Deu ruim";
+        }            
     }
     desconecta($conexao);
 ?>

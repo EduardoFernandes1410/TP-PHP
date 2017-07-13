@@ -1,13 +1,17 @@
 <?php
     require '../utils/basics.php';
 
-    $materias = $_POST['materias'];
-    $capacidade = $_POST['capacidade'];
-    $data = $_POST['data'];
-    $local = $_POST['local'];
-    $preco = $_POST['preco'];
-    $sensei = $_POST['sensei'];
-    $nome = $_POST['nome'];
+    $json = $_POST['dadosAula'];
+
+    $obj = json_decode($json, TRUE);
+
+    $nome = $obj['nome'];
+    $admin = $obj['sensei'];
+    $preco = $obj['preco'];
+    $tags = $obj['tags'];
+    $local = $obj['local'];
+    $data = $obj['data'];
+    $capacidade = $obj['capacidade'];
     $id = uniqid();
 
     $conexao = conecta();
@@ -22,12 +26,15 @@
 
     //termina dps
 
-    $query = "INSERT INTO usuarios (id, email, cpf, telefone, endereco, nome, foto) VALUES ('$id', '$email', '$cpf', '$telefone', '$endereco', '$nome', '$foto')";
+    $query = "INSERT INTO aula (id, nome, admin, preco, local, data, capacidade) VALUES ('$id', '$nome', '$admin', '$preco', '$endereco', '$data', '$capacidade')";
 
     $insert = mysql_query($query, $conexao);
 
     if($insert){
-        echo"Deu bom";
+        foreach($tags as $tag){
+            $query2 = "INSERT INTO aula_tags (id_tag, id_aula) VALUES ('$tag', '$id')";
+            $insert2 = mysql_query($query2, $conexao);
+        }
     } else {
         echo"Deu ruim";
     }

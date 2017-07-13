@@ -101,4 +101,25 @@ nav #virar-sensei {
 #corpo {
   margin-top: 73px !important; }
 
+/*****CARDS*****/
+.card-content {
+  overflow: visible;
+  font-size: 16px; }
+  .card-content span {
+    font-weight: 500; }
+
+#card-confirmados {
+  position: fixed;
+  margin-right: 6%; }
+  #card-confirmados ul {
+    margin-bottom: 0px; }
+    #card-confirmados ul li {
+      margin: 8px 0px 0px 0px; }
+
+#class-form {
+  margin-top: -48px !important; }
+
+.card-action a {
+  color: #ff6e40 !important; }
+
 /*# sourceMappingURL=home.css.map */

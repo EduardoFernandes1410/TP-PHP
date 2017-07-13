@@ -68,9 +68,18 @@
 
         <!-- Corpo da Pagina -->
         <div class="container">
-            <a href="#!/create-class" class="btn">Criar Aula</a>
+            <!-- FAB -->
+            <div class="fixed-action-btn">
+                <a class="btn-floating btn-large deep-orange accent-2" href="#!/create-class">
+                    <i class="large material-icons">add</i>
+                </a>                
+            </div>
+                
+            </div>
             
-            <div ng-view></div>
+            <div class="container" id="corpo">
+                <div ng-view></div>                
+            </div>
         </div>
 
 

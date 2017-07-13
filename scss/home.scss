@@ -189,3 +189,34 @@ nav {
 #corpo {
 	margin-top: 48+25px !important;
 }
+
+/*****CARDS*****/
+.card-content {
+	overflow: visible;
+	font-size: 16px;
+	
+	span {
+		font-weight: 500;
+	}
+}
+
+#card-confirmados {
+	position: fixed;
+	margin-right: 6%;
+	
+	ul {
+		margin-bottom: 0px;
+		
+		li {
+			margin: 8px 0px 0px 0px;
+		}
+	}
+}
+
+#class-form {
+	margin-top: -48px !important;
+}
+
+.card-action a {
+	color: #ff6e40 !important;
+}

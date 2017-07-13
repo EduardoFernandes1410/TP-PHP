@@ -20,7 +20,8 @@
 		$routeProvider
 		.when("/create-class",
 			{
-				templateUrl: "../html/create-class.html"
+				templateUrl: "../html/create-class.html",
+				controller: "CriarAulaController"
 			}
 		)
 		.otherwise(
@@ -35,4 +36,13 @@
 	app.controller('RouteController', function($scope, $location) {
 		$scope.$location = $location;
 	});
+
+	//Criar Eventos Controller
+	app.controller("CriarAulaController", ['$timeout', function($timeout) {
+		$timeout(function() {
+			$(document).ready(function() {
+				$('select').material_select();
+			});
+		});
+	}]);
 })();

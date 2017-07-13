@@ -71,19 +71,44 @@
 
                 <div class="divider"></div>
 
-                <p style="text-align: justify;">Por que precisamos do seu CPF para que possa dar aulas no nosso site?</p>
+                <p class="topico-titulo">- Por que precisamos do seu CPF para que possa dar aulas no nosso site?</p>
                 <!-- DEPOIS mudar a line-height dos p's normais -->
-                <p style="text-align: justify;">O CPF é um número único para cada pessoa. Esse tipo de informação nos permite bloquear contas falsas, usuários anteriormente banidos do <a style="font-size: 120%">teach.me</a> e assim continuar mantendo nossa rede de serviços segura.</p>
+                <p class="topico-corpo">O CPF é um número único para cada pessoa. Esse tipo de informação nos permite bloquear contas falsas, usuários anteriormente banidos do <a class="topico-logo">teach.me</a> e assim continuar mantendo nossa rede de serviços segura.</p>
+
+                <p class="topico-titulo">- Por que precisamos do seu telefone para que possa dar aulas no nosso site?</p>
+                <p class="topico-corpo">Quando as vagas de uma aula fecharem, o número dos telefones dos Gafanhotos são enviados ao Sensei, podendo criar um grupo no ZaptZap para conversar por eles.</p>  
+                
+                <p class="topico-titulo">- Por que precisamos do seu CEP para que possa dar aulas no nosso site?</p>
+                <p class="topico-corpo">Quando as vagas de uma aula fecharem, os Gafanhotos inscritos recebem o CEP do Sensei, para ter mais facilidade para marcar o lugar da aula.</p>
 
                 <div class="row" style="margin-bottom: 0%;">
-                    <div class="input-field" style="margin-left: 39%; margin-top: 6%;">
-                        <input id="cepeefe" type="text" class="validate cpf" style="width: 8em; text-align: center; margin-bottom: 0%; ">
-                        <label for="cepeefe">CPF</label>
+
+                    <div class="col l4">
+                        <div class="input-field" style="margin-top: 6%; width: 80%;">
+                            <input id="cpf" type="text" class="validate cpf" style="width: 15em; text-align: center; margin-bottom: 0%; ">
+                            <label for="cpf">CPF</label>
+                        </div>
+                    </div>
+
+                    <div class="col l4">
+                        <div class="input-field" style="margin-top: 6%;">
+                            <input id="contato" type="text" class="validate phone_with_ddd" style="width: 15em; text-align: center; margin-bottom: 0%; ">
+                            <label for="contato">Telefone de contato</label>
+                        </div>
+                    </div>
+
+                    <div class="col l4">
+                        <div class="input-field" style="margin-top: 6%;">
+                            <input id="cep" type="text" class="validate cep" style="width: 15em; text-align: center; margin-bottom: 0%; ">
+                            <label for="cep">CEP</label>
+                        </div>
                     </div>
                 </div>
+
             </div>
+
             <div class="modal-footer">
-                <a href="#!" class="modal-action modal-close waves-effect waves-red btn orange lighten-1">ENVIAR</a>
+                <a href="#!" class="modal-action modal-close waves-effect waves-red btn orange darken-1">ENVIAR</a>
             </div>
         </div>
 

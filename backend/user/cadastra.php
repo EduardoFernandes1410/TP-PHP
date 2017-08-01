@@ -10,7 +10,10 @@
     $cpf = $obj['CPF'] || "";
     $admin = $obj['Admin'];
     $contato = $obj['Contato'] || "";
-    $endereco = $obj['Endereco'] || "";
+    $rua = $obj['Rua'] || "";
+    $numero = $obj['Numero'] || "";
+    $cidade = $obj['Cidade'] || "";
+    $complemento = $obj['Complemento'] || "";
     $nome = $obj['Nome'];
     $foto = $obj['Foto'];
     $id = $obj['ID'];
@@ -25,7 +28,7 @@
         die("Database não pode ser usada");
     }
 
-    $query = "INSERT INTO user (id, email, cpf, contato, endereco, nome, foto, admin) VALUES ('$id', '$email', '$cpf', '$telefone', '$endereco', '$nome', '$foto', '$admin')";
+    $query = "INSERT INTO user (id, email, cpf, contato, rua, numero, complemento, cidade, nome, foto, admin) VALUES ('$id', '$email', '$cpf', '$telefone', '$rua', '$numero', '$complemento', '$cidade', '$nome', '$foto', '$admin')";
 
     $insert = mysql_query($query, $conexao);
 
@@ -47,7 +50,10 @@
                 $sessao['CPF'] = $row['cpf'];
                 $sessao['Admin'] = $row['admin'];
                 $sessao['Contato'] = $row['contato'];
-                $sessao['Endereco'] = $row['endereco'];
+                $sessao['Rua'] = $row['rua'];
+                $sessao['Numero'] = $row['numero'];
+                $sessao['Complemento'] = $row['complemento'];
+                $sessao['Cidade'] = $row['cidade'];
                 $sessao['Nome'] = $row['nome'];
                 $sessao['Foto'] = $row['foto'];
                 $sessao['ID'] = $row['id'];

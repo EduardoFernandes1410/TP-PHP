@@ -103,7 +103,7 @@ nav #virar-sensei {
 
 /*****CARDS*****/
 .card-content {
-  overflow: visible;
+  overflow: hidden;
   font-size: 16px; }
   .card-content span {
     font-weight: 500; }
@@ -121,5 +121,15 @@ nav #virar-sensei {
 
 .card-action a {
   color: #ff6e40 !important; }
+
+/*****CRIAR AULA*****/
+.titulo {
+  padding-left: 10.5px; }
+
+#tituloData {
+  padding-top: 20px; }
+
+#tags p {
+  display: inline-block; }
 
 /*# sourceMappingURL=home.css.map */

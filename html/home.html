@@ -23,7 +23,7 @@
         <!--Importa materialize.css-->
         <link type="text/css" rel="stylesheet" href="../node_modules/materialize-css/dist/css/materialize.min.css"  media="screen,projection"/>
         <!--Mobile Viewport-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
     </head>
 
     <body>
@@ -55,7 +55,6 @@
                             <!--User Menu-->
                             <div class="col l3 hide-on-med-and-down">
                                 <ul id="nav-user" class="right">
-                                    <!-- TESTANDO MODAL PARA MANDAR CPF E MELHORAR A CONTA PARA SENSEI -->
                                     <li>
                                         <a id="virar-sensei" href="#modal1" class="light-blue darken-3 waves-effect waves-light btn-large" onclick="return false;">
                                             <!-- Graduation Cap icon by Icons8 -->
@@ -69,6 +68,76 @@
                     </div>
                 </div>
             </nav>
+        </div>
+
+        <!-- Modal Structure VIRAR SENSEI-->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h5 style="text-align: center;">Processo para virar Sensei</h5>
+
+                <div class="divider"></div>
+
+                <p class="topico-titulo">- Por que precisamos do seu CPF para que possa dar aulas no nosso site?</p>
+                <!-- DEPOIS mudar a line-height dos p's normais -->
+                <p class="topico-corpo">O CPF é um número único para cada pessoa. Esse tipo de informação nos permite bloquear contas falsas, usuários anteriormente banidos do <a class="topico-logo">teach.me</a> e assim continuar mantendo nossa rede de serviços segura.</p>
+
+                <p class="topico-titulo">- Por que precisamos do seu telefone para que possa dar aulas no nosso site?</p>
+                <p class="topico-corpo">Quando as vagas de uma aula fecharem, o número dos telefones dos Gafanhotos são enviados ao Sensei, podendo criar um grupo no ZaptZap para conversar por eles.</p>  
+                
+                <p class="topico-titulo">- Por que precisamos do seu CEP para que possa dar aulas no nosso site?</p>
+                <p class="topico-corpo">Quando as vagas de uma aula fecharem, os Gafanhotos inscritos recebem o CEP do Sensei, para ter mais facilidade para marcar o lugar da aula.</p>
+
+                <div class="row" style="margin-bottom: 0%;">
+
+                    <div class="col l4">
+                        <div class="input-field" style="margin-top: 6%; width: 80%;">
+                            <input id="cpf" type="text" class="validate cpf" style="width: 15em; text-align: center; margin-bottom: 0%; ">
+                            <label for="cpf">CPF</label>
+                        </div>
+                    </div>
+
+                    <div class="col l4">
+                        <div class="input-field" style="margin-top: 6%;">
+                            <input id="contato" type="text" class="validate phone_with_ddd" style="width: 15em; text-align: center; margin-bottom: 0%; ">
+                            <label for="contato">Telefone de contato</label>
+                        </div>
+                    </div>
+
+                    <div class="col l4">
+                        <div class="input-field" style="margin-top: 6%;">
+                            <input id="cidade" type="text" class="validate" style="width: 15em; text-align: center; margin-bottom: 0%; ">
+                            <label for="cidade">Cidade</label>
+                        </div>
+                    </div>
+
+                    <div class="col l4">
+                        <div class="input-field" style="margin-top: 6%; width: 80%;">
+                            <input id="rua" type="text" class="validate" style="width: 15em; text-align: center; margin-bottom: 0%; ">
+                            <label for="Rua">Rua</label>
+                        </div>
+                    </div>
+
+                    <div class="col l4">
+                        <div class="input-field" style="margin-top: 6%;">
+                            <input id="numero" type="text" class="validate" style="width: 15em; text-align: center; margin-bottom: 0%; ">
+                            <label for="numero">Número</label>
+                        </div>
+                    </div>
+
+                    <div class="col l4">
+                        <div class="input-field" style="margin-top: 6%;">
+                            <input id="complemento" type="text" class="validate" style="width: 15em; text-align: center; margin-bottom: 0%; ">
+                            <label for="complemento">Complemento</label>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-red btn orange darken-1" onclick="enviaFormularioSensei();">ENVIAR</a>
+            </div>
         </div>
 
         <!-- Corpo da Pagina -->
@@ -92,5 +161,7 @@
         <script src="../node_modules/materialize-css/dist/js/materialize.min.js"></script>
         <!-- Adiciona JS -->
         <script type="text/javascript" src="../js/home.js"></script>
+        <!-- Adiciona JS que faz o mask do input do VIRAR SENSEI-->
+        <script type="text/javascript" src="../node_modules/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
     </body>
 </html>

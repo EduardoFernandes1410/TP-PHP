@@ -120,6 +120,9 @@ nav {
 	
 	//Botao VIRAR SENSEI
 	#virar-sensei {
+		.icon {
+			top: 5px;
+		}
 		height: 50px;
 	}
 	
@@ -224,6 +227,10 @@ nav {
 /*****CRIAR AULA*****/
 .titulo {
 	padding-left: 10.5px;
+}
+
+#preco {
+	width: 72%;
 }
 
 #tituloData {

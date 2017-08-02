@@ -58,6 +58,8 @@ nav form {
     color: white; }
 nav #virar-sensei {
   height: 50px; }
+  nav #virar-sensei .icon {
+    top: 5px; }
 @media screen and (max-width: 992px) {
   nav .nav-container {
     margin-left: 0px !important;
@@ -125,6 +127,9 @@ nav #virar-sensei {
 /*****CRIAR AULA*****/
 .titulo {
   padding-left: 10.5px; }
+
+#preco {
+  width: 72%; }
 
 #tituloData {
   padding-top: 20px; }

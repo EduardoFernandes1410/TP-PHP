@@ -15,5 +15,30 @@ $(document).ready(function(){
 
 	$('.phone_with_ddd').mask('+00 (00) 00000-0000');
 
-	$('.cep').mask('00000-000');
+	//alert(document.getElementById('cpf') + " " + document.getElementById('contato')+ " " + document.getElementById('cidade') + " " + document.getElementById('rua') + " " + document.getElementById('numero') + " " + document.getElementById('complemento'));
 });
+
+var enviaFormularioSensei = function(){
+	var cadastroUsuario = {
+		Cpf: document.getElementById('cpf'),
+		Fone: document.getElementById('contato'),
+		Cidade: document.getElementById('cidade'),
+		Rua: document.getElementById('rua'),
+		Numero: document.getElementById('numero'),
+		Complemento: document.getElementById('complemento')
+	};
+
+	cadastroUsuario = JSON.stringify(cadastroUsuario);
+
+	$.ajax({
+		data: 'cadastroUsuario=' + cadastroUsuario,
+		url: "../backend/user/virasensei.php",
+		method: 'POST',
+		success: function(){
+			console.log("Cadastro enviado para o Developer Team!");
+		},
+		error: function(){
+			console.log("Formulário inválido!");
+		}
+	});
+}

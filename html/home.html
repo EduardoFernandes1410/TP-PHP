@@ -20,7 +20,7 @@
         <!--Importa materialize.css-->
         <link type="text/css" rel="stylesheet" href="../node_modules/materialize-css/dist/css/materialize.min.css"  media="screen,projection"/>
         <!--Mobile Viewport-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8" />
     </head>
 
     <body>
@@ -99,16 +99,38 @@
 
                     <div class="col l4">
                         <div class="input-field" style="margin-top: 6%;">
-                            <input id="cep" type="text" class="validate cep" style="width: 15em; text-align: center; margin-bottom: 0%; ">
-                            <label for="cep">CEP</label>
+                            <input id="cidade" type="text" class="validate" style="width: 15em; text-align: center; margin-bottom: 0%; ">
+                            <label for="cidade">Cidade</label>
                         </div>
                     </div>
+
+                    <div class="col l4">
+                        <div class="input-field" style="margin-top: 6%; width: 80%;">
+                            <input id="rua" type="text" class="validate" style="width: 15em; text-align: center; margin-bottom: 0%; ">
+                            <label for="Rua">Rua</label>
+                        </div>
+                    </div>
+
+                    <div class="col l4">
+                        <div class="input-field" style="margin-top: 6%;">
+                            <input id="numero" type="text" class="validate" style="width: 15em; text-align: center; margin-bottom: 0%; ">
+                            <label for="numero">Número</label>
+                        </div>
+                    </div>
+
+                    <div class="col l4">
+                        <div class="input-field" style="margin-top: 6%;">
+                            <input id="complemento" type="text" class="validate" style="width: 15em; text-align: center; margin-bottom: 0%; ">
+                            <label for="complemento">Complemento</label>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
 
             <div class="modal-footer">
-                <a href="#!" class="modal-action modal-close waves-effect waves-red btn orange darken-1">ENVIAR</a>
+                <a href="#!" class="modal-action modal-close waves-effect waves-red btn orange darken-1" onclick="enviaFormularioSensei();">ENVIAR</a>
             </div>
         </div>
 

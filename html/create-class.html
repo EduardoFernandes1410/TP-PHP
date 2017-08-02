@@ -1,0 +1,124 @@
+<div class="card" id="class-form">
+	<div class="card-content">
+		<span class="card-title">Criar uma Aula</span>
+
+		<div class="row">
+			<!--Form em si-->
+			<form class="col s12">
+				<div class="row">
+					<!--Nome-->
+					<div class="input-field col s8">
+						<input id="nome" type="text" name="nome" ng-model="params.Nome">
+						<label for="nome">Nome da Aula</label>
+					</div>
+
+					<!--Preco-->
+					<div class="col s3 offset-s1">
+						R$
+						<div id="preco" class="input-field inline">
+							<input id="preco" type="number" name="preco" ng-model="params.Preco">
+							<label for="preco">Preço</label>
+						</div>						
+					</div>
+				</div>
+
+				<div class="row">
+					<p class="titulo">Tags</p>
+
+					<!--Tipo-->
+					<div id="tags" class="input-field col s12">
+						<p class="col s4 l3">
+							<input type="checkbox" class="filled-in" id="artes" name="tags[]" value="0">
+							<label for="artes">Artes Plásticas</label>
+						</p>
+						<p class="col s4 l3">
+							<input type="checkbox" class="filled-in" id="biologia" name="tags[]" value="1">
+							<label for="biologia">Biologia</label>
+						</p>
+						<p class="col s4 l3">
+							<input type="checkbox" class="filled-in" id="ciencias" name="tags[]" value="2">
+							<label for="ciencias">Ciências Sociais</label>
+						</p>
+						<p class="col s4 l3">
+							<input type="checkbox" class="filled-in" id="computacao" name="tags[]" value="3">
+							<label for="computacao">Computação</label>
+						</p>
+						<p class="col s4 l3">
+							<input type="checkbox" class="filled-in" id="danca" name="tags[]" value="4">
+							<label for="danca">Dança</label>
+						</p>
+						<p class="col s4 l3">
+							<input type="checkbox" class="filled-in" id="esportes" name="tags[]" value="5">
+							<label for="esportes">Esportes</label>
+						</p>
+						<p class="col s4 l3">
+							<input type="checkbox" class="filled-in" id="financas" name="tags[]" value="6">
+							<label for="financas">Finanças</label>
+						</p>
+						<p class="col s4 l3">
+							<input type="checkbox" class="filled-in" id="fisica" name="tags[]" value="7">
+							<label for="fisica">Física</label>
+						</p>
+						<p class="col s4 l3">
+							<input type="checkbox" class="filled-in" id="geografia" name="tags[]" value="8">
+							<label for="geografia">Geografia</label>
+						</p>
+						<p class="col s4 l3">
+							<input type="checkbox" class="filled-in" id="historia" name="tags[]" value="9">
+							<label for="historia">História</label>
+						</p>
+						<p class="col s4 l3">
+							<input type="checkbox" class="filled-in" id="matematica" name="tags[]" value="10">
+							<label for="matematica">Matemática</label>
+						</p>
+						<p class="col s4 l3">
+							<input type="checkbox" class="filled-in" id="musica" name="tags[]" value="11">
+							<label for="musica">Música</label>
+						</p>
+						<p class="col s4 l3">
+							<input type="checkbox" class="filled-in" id="portugues" name="tags[]" value="12">
+							<label for="portugues">Português</label>
+						</p>
+						<p class="col s4 l3">
+							<input type="checkbox" class="filled-in" id="quimica" name="tags[]" value="13">
+							<label for="quimica">Química</label>
+						</p>
+						<p class="col s4 l3">
+							<input type="checkbox" class="filled-in" id="redacao" name="tags[]" value="14">
+							<label for="redacao">Redação</label>
+						</p>
+					</div>
+				</div>
+
+				<div class="row">
+					<p class="titulo" id="tituloData">Data e Hora</p>
+
+					<!--Data da Aula-->
+					<div class="input-field col s12 l6">
+						<input id="data-inicio" type="text" class="datepicker" name="data-inicio" ng-model="params.Data">
+						<label for="data-inicio" class="active">Data da Aula</label>
+					</div>
+					
+					<!--Horario da Aula-->
+					<div class="input-field col s12 l6">
+						<input id="horario-inscricao" type="text" class="timepicker" name="horario-inscricao" ng-model="params.Horario">
+						<label for="horario-inscricao">Horário da Aula</label>
+					</div>
+				</div>
+
+				<div class="row">
+					<!--Local-->
+					<div class="input-field col s12">
+						<textarea id="local" class="materialize-textarea" name="local" ng-model="params.Local"></textarea>
+						<label for="local">Local do Evento</label>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+		<!--Botao Submit-->
+		<a class="waves-effect waves-light btn right deep-orange accent-2" ng-click="criarAula(params)"><i class="material-icons right">send</i>Criar Aula</a>
+		<!--Botao Cancelar-->
+		<a id="cancelar-btn" class="waves-effect waves-light btn-flat right" href="/main-page">Cancelar</a>
+	</div>
+</div>

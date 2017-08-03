@@ -2,19 +2,18 @@
     require '../utils/basics.php';
 
     session_start();
-    $json = $_POST['usuarioInfo'];
+    
+    $obj = json_decode(file_get_contents("php://input"));
 
-    $obj = json_decode($json, true);
-
-    $cpf = $obj['CPF'] || "";
-    $admin = $obj['Admin'];
-    $contato = $obj['Contato'] || "";
-    $rua = $obj['Rua'] || "";
-    $numero = $obj['Numero'] || "";
-    $cidade = $obj['Cidade'] || "";
-    $complemento = $obj['Complemento'] || "";
+    $cpf = $obj->Cpf;
+    $contato = $obj->Fone;
+    $rua = $obj->Rua;
+    $numero = $obj->Numero;
+    $cidade = $obj->Cidade;
+    $complemento = $obj->Complemento;
 
     $sessao = json_decode($_SESSION['usuarioInfo'], true);
+    echo $_SESSION;
     $id = $sessao['id'];
 
     $conexao = conecta();

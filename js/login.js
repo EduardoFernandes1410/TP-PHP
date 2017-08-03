@@ -47,7 +47,7 @@ function initApp() {
 				url: "../backend/user/cadastra.php",
 				method: 'POST', // or GET
 				success: function(msg) {
-					alert(msg);
+					window.location.replace("http://localhost:3000/html/home.html"); alert(msg);
 				}
 			});
 		}

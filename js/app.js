@@ -116,11 +116,14 @@
 				capacidade: 1
 			};
 			
+			dataPost = JSON.stringify(dataPost);
+
 			//Faz o POST
 			criarAulaService.postCriarAula(dataPost, function(answer) {
 				//Emite alerta sobre o status da operacao e redireciona
 				if(answer) {
-					Materialize.toast("Aula criada com sucesso!", 3000);
+					alert(answer);
+					//Materialize.toast("Aula criada com sucesso!", 3000);
 					$location.path('/');
 					$route.reload();
 				} else {

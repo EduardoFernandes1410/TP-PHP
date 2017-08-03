@@ -18,12 +18,12 @@ $(document).ready(function(){
 
 var enviaFormularioSensei = function(){
 	var cadastroUsuario = {
-		Cpf: document.getElementById('cpf'),
-		Fone: document.getElementById('contato'),
-		Cidade: document.getElementById('cidade'),
-		Rua: document.getElementById('rua'),
-		Numero: document.getElementById('numero'),
-		Complemento: document.getElementById('complemento')
+		Cpf: document.getElementById('cpf').value,
+		Fone: document.getElementById('contato').value,
+		Cidade: document.getElementById('cidade').value,
+		Rua: document.getElementById('rua').value,
+		Numero: document.getElementById('numero').value,
+		Complemento: document.getElementById('complemento').value
 	};
 
 	cadastroUsuario = JSON.stringify(cadastroUsuario);

@@ -20,6 +20,7 @@
     "angular": "^1.6.5",
     "angular-route": "^1.6.5",
     "jquery": "^3.2.1",
+    "jquery-mask-plugin": "^1.14.11",
     "materialize-css": "^0.99.0"
   }
 }

@@ -4,7 +4,7 @@ var facebookProvider = new firebase.auth.FacebookAuthProvider();
 var user;
 var url;
 var xmlhttp = new XMLHttpRequest();
-var usuarioInfo = new Object();
+var usuarioInfo = {};
 
 /***Quando a pagina carrega***/
 window.onload = function() {
@@ -33,10 +33,12 @@ function initApp() {
 		/*Se logou*/
 		if(user) {
 			//Seta info do usuario logado
-			usuarioInfo.Nome = user.displayName;
-			usuarioInfo.Email = user.email;
-			usuarioInfo.Foto = user.photoURL;
-			usuarioInfo.ID = user.uid;
+			usuarioInfo = {
+				Nome: user.displayName,
+				Email: user.email,
+				Foto: user.photoURL,
+				ID: user.uid
+			}
 
 			usuarioInfo = JSON.stringify(usuarioInfo);
 

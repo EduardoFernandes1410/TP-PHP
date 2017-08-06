@@ -7,18 +7,29 @@
 			<form class="col s12">
 				<div class="row">
 					<!--Nome-->
-					<div class="input-field col s8">
+					<div class="input-field col s12">
 						<input id="nome" type="text" name="nome" ng-model="params.Nome">
 						<label for="nome">Nome da Aula</label>
 					</div>
-
+				</div>
+				
+				<div class="row">
+					<p class="titulo">Propriedades</p>
+					
 					<!--Preco-->
-					<div class="col s3 offset-s1">
-						R$
-						<div id="preco" class="input-field inline">
+					<div class="col s12 m6">
+						<div class="input-field">
 							<input id="preco" type="number" name="preco" ng-model="params.Preco">
 							<label for="preco">Preço</label>
-						</div>						
+						</div>
+					</div>
+					
+					<!--Capacidade-->
+					<div class="col s12 m6">
+						<div class="input-field">
+							<input id="capacidade" type="number" name="preco" ng-model="params.Capacidade" class="validate">
+							<label for="capacidade">Capacidade</label>
+						</div>
 					</div>
 				</div>
 
@@ -27,63 +38,63 @@
 
 					<!--Tipo-->
 					<div id="tags" class="input-field col s12">
-						<p class="col s4 l3">
+						<p class="col s6 m4 l3">
 							<input type="checkbox" class="filled-in" id="artes" name="tags[]" value="0">
 							<label for="artes">Artes Plásticas</label>
 						</p>
-						<p class="col s4 l3">
+						<p class="col s6 m4 l3">
 							<input type="checkbox" class="filled-in" id="biologia" name="tags[]" value="1">
 							<label for="biologia">Biologia</label>
 						</p>
-						<p class="col s4 l3">
+						<p class="col s6 m4 l3">
 							<input type="checkbox" class="filled-in" id="ciencias" name="tags[]" value="2">
 							<label for="ciencias">Ciências Sociais</label>
 						</p>
-						<p class="col s4 l3">
+						<p class="col s6 m4 l3">
 							<input type="checkbox" class="filled-in" id="computacao" name="tags[]" value="3">
 							<label for="computacao">Computação</label>
 						</p>
-						<p class="col s4 l3">
+						<p class="col s6 m4 l3">
 							<input type="checkbox" class="filled-in" id="danca" name="tags[]" value="4">
 							<label for="danca">Dança</label>
 						</p>
-						<p class="col s4 l3">
+						<p class="col s6 m4 l3">
 							<input type="checkbox" class="filled-in" id="esportes" name="tags[]" value="5">
 							<label for="esportes">Esportes</label>
 						</p>
-						<p class="col s4 l3">
+						<p class="col s6 m4 l3">
 							<input type="checkbox" class="filled-in" id="financas" name="tags[]" value="6">
 							<label for="financas">Finanças</label>
 						</p>
-						<p class="col s4 l3">
+						<p class="col s6 m4 l3">
 							<input type="checkbox" class="filled-in" id="fisica" name="tags[]" value="7">
 							<label for="fisica">Física</label>
 						</p>
-						<p class="col s4 l3">
+						<p class="col s6 m4 l3">
 							<input type="checkbox" class="filled-in" id="geografia" name="tags[]" value="8">
 							<label for="geografia">Geografia</label>
 						</p>
-						<p class="col s4 l3">
+						<p class="col s6 m4 l3">
 							<input type="checkbox" class="filled-in" id="historia" name="tags[]" value="9">
 							<label for="historia">História</label>
 						</p>
-						<p class="col s4 l3">
+						<p class="col s6 m4 l3">
 							<input type="checkbox" class="filled-in" id="matematica" name="tags[]" value="10">
 							<label for="matematica">Matemática</label>
 						</p>
-						<p class="col s4 l3">
+						<p class="col s6 m4 l3">
 							<input type="checkbox" class="filled-in" id="musica" name="tags[]" value="11">
 							<label for="musica">Música</label>
 						</p>
-						<p class="col s4 l3">
+						<p class="col s6 m4 l3">
 							<input type="checkbox" class="filled-in" id="portugues" name="tags[]" value="12">
 							<label for="portugues">Português</label>
 						</p>
-						<p class="col s4 l3">
+						<p class="col s6 m4 l3">
 							<input type="checkbox" class="filled-in" id="quimica" name="tags[]" value="13">
 							<label for="quimica">Química</label>
 						</p>
-						<p class="col s4 l3">
+						<p class="col s6 m4 l3">
 							<input type="checkbox" class="filled-in" id="redacao" name="tags[]" value="14">
 							<label for="redacao">Redação</label>
 						</p>

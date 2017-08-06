@@ -93,6 +93,7 @@
 			});
 		});
 		
+		//Funcao de Criar Aula
 		$scope.criarAula = function(params) {
 			//Pega as tags marcadas
 			var tags = $("input[name='tags[]']:checked").toArray();
@@ -113,7 +114,7 @@
 				tags: tagsArray,
 				local: params.Local,
 				data: dataCompleta,
-				capacidade: 1
+				capacidade: params.Capacidade
 			};
 			
 			dataPost = JSON.stringify(dataPost);

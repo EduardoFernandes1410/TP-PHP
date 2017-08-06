@@ -22,7 +22,7 @@
         die("Database não pode ser usada");
     }
 
-    $query = "INSERT INTO aula (id, nome, sensei, preco, local, data, capacidade) VALUES ('$id', '$nome', '$admin', '$preco', '$endereco', '$data', '$capacidade')";
+    $query = "INSERT INTO aula (id, nome, sensei, preco, local, data, capacidade) VALUES ('$id', '$nome', '$admin', '$preco', '$local', '$data', '$capacidade')";
 
     $insert = mysql_query($query, $conexao);
 

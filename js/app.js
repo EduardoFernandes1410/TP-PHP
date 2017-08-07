@@ -31,20 +31,35 @@
 	});
 	
 //**********Services*********//
-	//Criar Aula Service
-	app.factory('CriarAulaService', function($http) {
-		var criarAulaService = {};
-
-		//POST /criar-evento
-		criarAulaService.postCriarAula = function(data, callback) {
-			$http.post('../backend/aulas/cadastra.php', data).then(function successCallback(response) {
+	app.factory('HTTPService', function($http) {
+		var httpService = {};
+		
+		//POST
+		httpService.post = function(urlPost, data, callback) {
+			$http.post(urlPost, data).then(function successCallback(response) {
 				//Sucesso
 				var answer = response.data;
 				callback(answer);
 			}, function errorCallback(response) {
-
+				//
 			});
 		}
+		
+		//GET
+		httpService.get = function(urlGet, callback) {
+			$http.post(urlGet).then(function successCallback(response) {
+				//Sucesso
+				var answer = response.data;
+				callback(answer);
+			}, function errorCallback(response) {
+				//
+			});
+		}
+	});
+
+	//Criar Aula Service
+	app.factory('CriarAulaService', function($http) {
+		var criarAulaService = {};
 
 		return criarAulaService;
 	});
@@ -55,8 +70,13 @@
 		$scope.$location = $location;
 	});
 
+	//VirarSensei Controller
+	app.controller('VirarSenseiController', ['HTTPService', function(httpService) {
+		
+	}]);
+
 	//Criar Eventos Controller
-	app.controller("CriarAulaController", ['CriarAulaService', '$timeout', '$scope', '$route', function(criarAulaService, $timeout, $scope, $route) {
+	app.controller("CriarAulaController", ['HTTPService', 'CriarAulaService', '$timeout', '$scope', '$route', function(httpService, criarAulaService, $timeout, $scope, $route) {
 		$timeout(function() {
 			//Inicia elementos do Materialize
 			$(document).ready(function() {				
@@ -109,7 +129,7 @@
 			//Monta objeto de POST
 			var dataPost = {
 				nome: params.Nome,
-				sensei: 'Eduardo',
+				sensei: $rootScope.usuarioLogado,
 				preco: params.Preco,
 				tags: tagsArray,
 				local: params.Local,
@@ -120,7 +140,7 @@
 			dataPost = JSON.stringify(dataPost);
 
 			//Faz o POST
-			criarAulaService.postCriarAula(dataPost, function(answer) {
+			httpService.post('../backend/aulas/cadastra.php', dataPost, function(answer) {
 				//Emite alerta sobre o status da operacao e redireciona
 				if(answer) {
 					alert(answer);

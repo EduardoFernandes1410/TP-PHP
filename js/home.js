@@ -32,8 +32,8 @@ var enviaFormularioSensei = function(){
 		data: 'cadastroUsuario=' + cadastroUsuario,
 		url: "../backend/user/virasensei.php",
 		method: 'POST',
-		success: function(){
-			console.log("Cadastro enviado para o Developer Team!");
+		success: function(msg){
+			console.log(msg);
 		},
 		error: function(){
 			console.log("Formulário inválido!");

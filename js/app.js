@@ -124,7 +124,7 @@
 				//Emite alerta sobre o status da operacao e redireciona
 				if(answer) {
 					alert(answer);
-					//Materialize.toast("Aula criada com sucesso!", 3000);
+					Materialize.toast("Aula criada com sucesso!", 3000);
 					$location.path('/');
 					$route.reload();
 				} else {

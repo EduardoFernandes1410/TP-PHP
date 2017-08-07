@@ -73,12 +73,19 @@
 	});
 
 	//VirarSensei Controller
-	app.controller('VirarSenseiController', ['HTTPService', function(httpService) {
+	app.controller('VirarSenseiController', ['HTTPService', '$scope', function(httpService, $scope) {
 		$scope.virarSensei = function(params) {
 			//Monta objeto de POST
-			var dataPost = params;			
-			dataPost = JSON.stringify(dataPost);
+			var dataPost = params;
 			
+			//Averigua se ha campo vazio
+			if(!dataPost || Object.keys(dataPost).length != 6 || Object.values(dataPost).some(dado => dado == "")) {
+				Materialize.toast("Favor preencher todos os campos", 3000);
+				return;
+			} else {
+				dataPost = JSON.stringify(dataPost);
+			}
+						
 			//Faz o POST
 			httpService.post('../backend/user/virasensei.php', dataPost, function(answer) {
 				//Emite alerta sobre o status da operacao e redireciona
@@ -86,9 +93,6 @@
 					Materialize.toast("Você já era um sensei!", 3000);
 				} else if(answer == "1") {
 					Materialize.toast("Parabéns, agora você é sensei!", 3000);
-					
-					$location.path('/');
-					$route.reload();
 				} else {
 					Materialize.toast("Erro ao virar sensei!", 3000);
 				}

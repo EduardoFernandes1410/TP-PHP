@@ -55,6 +55,8 @@
 				//
 			});
 		}
+		
+		return httpService;
 	});
 
 	//Criar Aula Service
@@ -72,11 +74,30 @@
 
 	//VirarSensei Controller
 	app.controller('VirarSenseiController', ['HTTPService', function(httpService) {
-		
+		$scope.virarSensei = function(params) {
+			//Monta objeto de POST
+			var dataPost = params;			
+			dataPost = JSON.stringify(dataPost);
+			
+			//Faz o POST
+			httpService.post('../backend/user/virasensei.php', dataPost, function(answer) {
+				//Emite alerta sobre o status da operacao e redireciona
+				if(answer == "2") {					
+					Materialize.toast("Você já era um sensei!", 3000);
+				} else if(answer == "1") {
+					Materialize.toast("Parabéns, agora você é sensei!", 3000);
+					
+					$location.path('/');
+					$route.reload();
+				} else {
+					Materialize.toast("Erro ao virar sensei!", 3000);
+				}
+			});
+		}
 	}]);
 
 	//Criar Eventos Controller
-	app.controller("CriarAulaController", ['HTTPService', 'CriarAulaService', '$timeout', '$scope', '$route', function(httpService, criarAulaService, $timeout, $scope, $route) {
+	app.controller("CriarAulaController", ['HTTPService', 'CriarAulaService', '$timeout', '$scope', '$route', '$location', function(httpService, criarAulaService, $timeout, $scope, $route, $location) {
 		$timeout(function() {
 			//Inicia elementos do Materialize
 			$(document).ready(function() {				
@@ -129,7 +150,7 @@
 			//Monta objeto de POST
 			var dataPost = {
 				nome: params.Nome,
-				sensei: $rootScope.usuarioLogado,
+				sensei: 'Eduardo',
 				preco: params.Preco,
 				tags: tagsArray,
 				local: params.Local,
@@ -143,8 +164,8 @@
 			httpService.post('../backend/aulas/cadastra.php', dataPost, function(answer) {
 				//Emite alerta sobre o status da operacao e redireciona
 				if(answer) {
-					alert(answer);
-					//Materialize.toast("Aula criada com sucesso!", 3000);
+					Materialize.toast("Aula criada com sucesso!", 3000);
+					
 					$location.path('/');
 					$route.reload();
 				} else {

@@ -8,7 +8,6 @@ $(document).ready(function(){
 	$('.modal').modal();
 
 	// Comandos do JQuery Mask Plugin: http://igorescobar.github.io/jQuery-Mask-Plugin/
-
 	$('.cpf').mask('000.000.000-00', {
 		reverse: false
 	});

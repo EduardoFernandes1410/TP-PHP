@@ -2,7 +2,9 @@
     require '../utils/basics.php';
 
     session_start();
-    $obj = json_decode($_POST['cadastroUsuario']);
+    
+    $obj = json_decode(file_get_contents("php://input"));
+    
     $cpf = $obj->Cpf;
     $contato = $obj->Fone;
     $rua = $obj->Rua;

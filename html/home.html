@@ -87,56 +87,55 @@
                 <p class="topico-titulo">- Por que precisamos do seu CEP para que possa dar aulas no nosso site?</p>
                 <p class="topico-corpo">Quando as vagas de uma aula fecharem, os Gafanhotos inscritos recebem o CEP do Sensei, para ter mais facilidade para marcar o lugar da aula.</p>
 
-                <div class="row" style="">
-
+                <!-- Form em Si -->
+                <div class="row">
                     <div class="col l4 m6 s12">
-                        <div class="input-field" style="">
-                            <input id="cpf" type="text" class="validate cpf">
+                        <div class="input-field">
+                            <input id="cpf" type="text" class="validate cpf" ng-model="params.Cpf">
                             <label for="cpf">CPF</label>
                         </div>
                     </div>
 
                     <div class="col l4 m6 s12">
-                        <div class="input-field" style="">
-                            <input id="contato" type="text" class="validate phone_with_ddd" style="">
+                        <div class="input-field">
+                            <input id="contato" type="text" class="validate phone_with_ddd" ng-model="params.Fone">
                             <label for="contato">Telefone de contato</label>
                         </div>
                     </div>
 
                     <div class="col l4 m6 s12">
-                        <div class="input-field" style="">
-                            <input id="cidade" type="text" class="validate">
+                        <div class="input-field">
+                            <input id="cidade" type="text" class="validate" ng-model="params.Cidade">
                             <label for="cidade">Cidade</label>
                         </div>
                     </div>
 
                     <div class="col l4 m6 s12">
-                        <div class="input-field" style="">
-                            <input id="rua" type="text" class="validate">
+                        <div class="input-field">
+                            <input id="rua" type="text" class="validate" ng-model="params.Rua">
                             <label for="Rua">Rua</label>
                         </div>
                     </div>
 
                     <div class="col l4 m6 s12">
-                        <div class="input-field" style="">
-                            <input id="numero" type="text" class="validate">
+                        <div class="input-field">
+                            <input id="numero" type="text" class="validate" ng-model="params.Numero">
                             <label for="numero">Número</label>
                         </div>
                     </div>
 
                     <div class="col l4 m6 s12">
-                        <div class="input-field" style="">
-                            <input id="complemento" type="text" class="validate">
+                        <div class="input-field">
+                            <input id="complemento" type="text" class="validate" ng-model="params.Complemento">
                             <label for="complemento">Complemento</label>
                         </div>
                     </div>
-
                 </div>
 
             </div>
 
             <div class="modal-footer">
-                <a href="#!" class="modal-action modal-close waves-effect waves-red btn orange darken-1" onclick="enviaFormularioSensei();">ENVIAR</a>
+                <a href="#!" class="modal-action modal-close waves-effect waves-red btn orange darken-1" ng-click="virarSensei(params)">ENVIAR</a>
             </div>
         </div>
 

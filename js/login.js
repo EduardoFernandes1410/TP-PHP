@@ -50,7 +50,6 @@ function initApp() {
 				method: 'POST', // or GET
 				success: function(msg) {
 					window.location.href = window.location.href.split("/")[0] + "/html/home.html";
-					alert(msg);
 				}
 			});
 		}

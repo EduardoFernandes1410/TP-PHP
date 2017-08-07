@@ -14,7 +14,7 @@
     $isadmin = $_SESSION['Admin'];
 
     if($isadmin == 1)
-        echo "Você já é admin.";
+        echo "2";
     else{
         $conexao = conecta();
         if(!$conexao){
@@ -40,9 +40,9 @@
             $_SESSION['Complemento'] = $complemento;
             $_SESSION['Cidade'] = $cidade;
             
-            echo "Deu bom";
+            echo "1";
         } else {
-            echo "Deu ruim";
+            echo "0;
         }
         desconecta($conexao);
     }

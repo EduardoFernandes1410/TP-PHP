@@ -12,8 +12,7 @@
     $cidade = $obj->Cidade;
     $complemento = $obj->Complemento;
 
-    $sessao = json_decode($_SESSION['usuarioInfo'], true);
-    echo $_SESSION;
+    $sessao = json_decode($_SESSION, true);
     $id = $sessao['id'];
 
     $conexao = conecta();

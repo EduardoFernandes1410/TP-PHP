@@ -2,9 +2,7 @@
     require '../utils/basics.php';
 
     session_start();
-    
-    $obj = json_decode(file_get_contents("php://input"));
-
+    $obj = json_decode($_POST['cadastroUsuario']);
     $cpf = $obj->Cpf;
     $contato = $obj->Fone;
     $rua = $obj->Rua;
@@ -12,11 +10,10 @@
     $cidade = $obj->Cidade;
     $complemento = $obj->Complemento;
 
-    $sessao = json_decode($_SESSION, true);
-    $id = $sessao['id'];
+    $id = $_SESSION['ID'];
 
     $conexao = conecta();
-    if(!conexao){
+    if(!$conexao){
         die("Conexao nao pode ser feita");
     }
 
@@ -25,9 +22,11 @@
         die("Database não pode ser usada");
     }
 
-    $query = "UPDATE user SET cpf=$cpf, admin=1, contato=$contato, rua=$rua, numero=$numero, cidade=$cidade, complemento=$complemento WHERE id=$id";
+    $query = "UPDATE user SET cpf=\"$cpf\", admin=1, contato=\"$contato\", rua=\"$rua\", numero=\"$numero\", cidade=\"$cidade\", complemento=\"$complemento\" WHERE id=\"$id\"";
 
-    $insert = mysql_query($query, $conexao);
+    var_dump($query);
+
+    $insert = mysql_query($query, $conexao);    
 
     if($insert){
         $sessao['CPF'] = $cpf;
@@ -38,9 +37,7 @@
         $sessao['Complemento'] = $complemento;
         $sessao['Cidade'] = $cidade;
         
-        $sessao = json_encode($sessao);
-
-        $_SESSION['usuarioInfo'] = $sessao;
+        $_SESSION = $sessao;
 
         echo "Deu bom";
     } else {

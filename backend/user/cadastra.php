@@ -19,7 +19,7 @@
     $id = $obj['ID'];
 
     $conexao = conecta();
-    if(!conexao){
+    if(!$conexao){
         die("Conexao nao pode ser feita");
     }
 
@@ -58,11 +58,9 @@
                 $sessao['Foto'] = $row['foto'];
                 $sessao['ID'] = $row['id'];
             }
-            $sessao = json_encode($sessao);
-
             $_SESSION = $sessao;
 
-            echo $sessao;
+            var_dump($_SESSION);
         } else {
             echo "Deu ruim";
         }            

@@ -104,10 +104,12 @@ nav #virar-sensei {
 
 /*****CARDS*****/
 .card-content {
-  overflow: hidden;
+  overflow: hidden !important;
   font-size: 16px; }
   .card-content span {
     font-weight: 500; }
+  .card-content .nome-sensei {
+    text-decoration: underline; }
 
 #card-confirmados {
   position: fixed;
@@ -117,11 +119,14 @@ nav #virar-sensei {
     #card-confirmados ul li {
       margin: 8px 0px 0px 0px; }
 
-#class-form {
+.route-tela {
   margin-top: -48px !important; }
 
-.card-action a {
-  color: #ff6e40 !important; }
+.card-action {
+  overflow: hidden; }
+  .card-action a {
+    color: #ff6e40 !important;
+    margin-right: 0px !important; }
 
 /*****CRIAR AULA*****/
 .titulo {

@@ -17,6 +17,13 @@
 	//Navegacao
 	app.config(function($routeProvider) {
 		$routeProvider
+		.when("/aulas", 
+			{
+				templateUrl: "../html/aulas.html",
+				controller: "ExibirAulaController",
+				controllerAs: "Aula"
+			}
+		)
 		.when("/create-class",
 			{
 				templateUrl: "../html/create-class.html",
@@ -196,13 +203,8 @@
 			httpService.post('../backend/aulas/cadastra.php', dataPost, function(answer) {
 				//Emite alerta sobre o status da operacao e redireciona
 				if(answer) {
-<<<<<<< HEAD
-					alert(answer);
-					Materialize.toast("Aula criada com sucesso!", 3000);
-=======
 					Materialize.toast("Aula criada com sucesso!", 3000);
 					
->>>>>>> a0bb68a45cfcb5a16c0c68bcd7c8f5495540c603
 					$location.path('/');
 					$route.reload();
 				} else {
@@ -210,5 +212,16 @@
 				}
 			});
 		}
+	}]);
+
+	//Exibir Aula Controller
+	app.controller('ExibirAulaController', ['HTTPService', function(httpService) {
+		var aulas;
+
+		httpService.get("../backend/aulas/read.php", function(answer) {
+			if(answer != false) {
+				this.aulas = answer;				
+			}
+		}.bind(this));
 	}]);
 })();

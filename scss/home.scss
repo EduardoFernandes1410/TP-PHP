@@ -192,11 +192,15 @@ nav {
 
 /*****CARDS*****/
 .card-content {
-	overflow: hidden;
+	overflow: hidden !important;
 	font-size: 16px;
 	
 	span {
 		font-weight: 500;
+	}
+
+	.nome-sensei {
+		text-decoration: underline;
 	}
 }
 
@@ -213,12 +217,17 @@ nav {
 	}
 }
 
-#class-form {
+.route-tela {
 	margin-top: -48px !important;
 }
 
-.card-action a {
-	color: #ff6e40 !important;
+.card-action {
+	overflow: hidden;
+
+	a {
+		color: #ff6e40 !important;
+		margin-right: 0px !important;
+	}
 }
 
 /*****CRIAR AULA*****/

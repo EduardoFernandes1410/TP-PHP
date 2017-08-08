@@ -65,9 +65,9 @@
 
             array_push($aula, $row);
         }
-        var_dump($aula);
+        echo json_encode($aula);
     } else {
-        echo "Não tem aulas";    
+        echo false;    
     }
     desconecta($conexao);
 ?>

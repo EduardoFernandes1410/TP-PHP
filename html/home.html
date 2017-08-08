@@ -26,7 +26,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
     </head>
 
-    <body>
+    <body ng-controller="LoginController">
         <!-- Nav Bar -->
         <div class="navbar-fixed">
             <nav class="nav-extended light-blue z-depth-2">
@@ -56,9 +56,9 @@
                             <div class="col l3 hide-on-med-and-down">
                                 <ul id="nav-user" class="right">
                                     <li>
-                                        <a id="virar-sensei" href="#modal1" class="light-blue darken-3 waves-effect waves-light btn-large" onclick="return false;">
+                                        <a ng-disabled="usuario.Admin" id="virar-sensei" href="#modal1" class="light-blue darken-3 waves-effect waves-light btn-large" onclick="return false;">
                                             <!-- Graduation Cap icon by Icons8 -->
-                                            <img class="icon icons8-Graduation-Cap" width="24" height="24" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABZ0lEQVRIS9WUUVEDQRBEuxWAA0ABOCA4wAFBAUFBEgUEBQkOkBAcEAfBAShoqq/mqLDZu92jSBXM5+3e9GzPmyEOHDxwfvwdAUkXAB7ixfckX2teX3yBpFMAUwDjJOEKwJzktk+oU0DSMYA7ALNCpT5/JPmeu5cVkOSfnNwiNeHkC5Lz9PI3AUm2wXbYlp+E7ZqRfGp/bgQkjaKBbuRvhAEwCOtdgQWA81J2kjVguOApyaucRfb/pCTUcf4WUCx97mL6mjwBcFQp9BFNboiTpF6BuGSCLOKm94XJMUFfmBYFJJmGsZsUg+bKbhIVk2JitgHJkuRZ1QvaCgA8Bw1OYsIMgmPiVRHiXh/XrSVDBXw/O0S5YWx7WmNR06QkbNttfDMle8M4RMCDUpyJpIANyb1B7cLUBK0HiGwAjHILr7RN3eTLAqYvbvKgbbqbMBD0EvTzW9tcsW1cGeW+Aop7pXKSO6/9f4FPmY+bGS4ZgZ0AAAAASUVORK5CYII=">
+                                            <!-- <img class="icon icons8-Graduation-Cap" width="24" height="24" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABZ0lEQVRIS9WUUVEDQRBEuxWAA0ABOCA4wAFBAUFBEgUEBQkOkBAcEAfBAShoqq/mqLDZu92jSBXM5+3e9GzPmyEOHDxwfvwdAUkXAB7ixfckX2teX3yBpFMAUwDjJOEKwJzktk+oU0DSMYA7ALNCpT5/JPmeu5cVkOSfnNwiNeHkC5Lz9PI3AUm2wXbYlp+E7ZqRfGp/bgQkjaKBbuRvhAEwCOtdgQWA81J2kjVguOApyaucRfb/pCTUcf4WUCx97mL6mjwBcFQp9BFNboiTpF6BuGSCLOKm94XJMUFfmBYFJJmGsZsUg+bKbhIVk2JitgHJkuRZ1QvaCgA8Bw1OYsIMgmPiVRHiXh/XrSVDBXw/O0S5YWx7WmNR06QkbNttfDMle8M4RMCDUpyJpIANyb1B7cLUBK0HiGwAjHILr7RN3eTLAqYvbvKgbbqbMBD0EvTzW9tcsW1cGeW+Aop7pXKSO6/9f4FPmY+bGS4ZgZ0AAAAASUVORK5CYII="> -->
                                             Virar Sensei
                                         </a>
                                     </li>
@@ -71,9 +71,9 @@
         </div>
 
         <!-- Modal Structure VIRAR SENSEI-->
-        <div id="modal1" class="modal">
+        <div id="modal1" class="modal" ng-controller="VirarSenseiController">
             <div class="modal-content">
-                <h5 style="text-align: center;">Processo para virar Sensei</h5>
+                <h5>Processo para virar Sensei</h5>
 
                 <div class="divider"></div>
 
@@ -87,56 +87,55 @@
                 <p class="topico-titulo">- Por que precisamos do seu CEP para que possa dar aulas no nosso site?</p>
                 <p class="topico-corpo">Quando as vagas de uma aula fecharem, os Gafanhotos inscritos recebem o CEP do Sensei, para ter mais facilidade para marcar o lugar da aula.</p>
 
-                <div class="row" style="margin-bottom: 0%;">
-
-                    <div class="col l4">
-                        <div class="input-field" style="margin-top: 6%; width: 80%;">
-                            <input id="cpf" type="text" class="validate cpf" style="width: 15em; text-align: center; margin-bottom: 0%; ">
+                <!-- Form em Si -->
+                <div class="row">
+                    <div class="col l4 m6 s12">
+                        <div class="input-field">
+                            <input id="cpf" type="text" class="validate cpf" ng-model="params.Cpf">
                             <label for="cpf">CPF</label>
                         </div>
                     </div>
 
-                    <div class="col l4">
-                        <div class="input-field" style="margin-top: 6%;">
-                            <input id="contato" type="text" class="validate phone_with_ddd" style="width: 15em; text-align: center; margin-bottom: 0%; ">
+                    <div class="col l4 m6 s12">
+                        <div class="input-field">
+                            <input id="contato" type="text" class="validate phone_with_ddd" ng-model="params.Fone">
                             <label for="contato">Telefone de contato</label>
                         </div>
                     </div>
 
-                    <div class="col l4">
-                        <div class="input-field" style="margin-top: 6%;">
-                            <input id="cidade" type="text" class="validate" style="width: 15em; text-align: center; margin-bottom: 0%; ">
+                    <div class="col l4 m6 s12">
+                        <div class="input-field">
+                            <input id="cidade" type="text" class="validate" ng-model="params.Cidade">
                             <label for="cidade">Cidade</label>
                         </div>
                     </div>
 
-                    <div class="col l4">
-                        <div class="input-field" style="margin-top: 6%; width: 80%;">
-                            <input id="rua" type="text" class="validate" style="width: 15em; text-align: center; margin-bottom: 0%; ">
-                            <label for="Rua">Rua</label>
+                    <div class="col l4 m6 s12">
+                        <div class="input-field">
+                            <input id="rua" type="text" class="validate" ng-model="params.Rua">
+                            <label for="Rua">Logradouro</label>
                         </div>
                     </div>
 
-                    <div class="col l4">
-                        <div class="input-field" style="margin-top: 6%;">
-                            <input id="numero" type="text" class="validate" style="width: 15em; text-align: center; margin-bottom: 0%; ">
+                    <div class="col l4 m6 s12">
+                        <div class="input-field">
+                            <input id="numero" type="text" class="validate" ng-model="params.Numero">
                             <label for="numero">Número</label>
                         </div>
                     </div>
 
-                    <div class="col l4">
-                        <div class="input-field" style="margin-top: 6%;">
-                            <input id="complemento" type="text" class="validate" style="width: 15em; text-align: center; margin-bottom: 0%; ">
+                    <div class="col l4 m6 s12">
+                        <div class="input-field">
+                            <input id="complemento" type="text" class="validate" ng-model="params.Complemento">
                             <label for="complemento">Complemento</label>
                         </div>
                     </div>
-
                 </div>
 
             </div>
 
             <div class="modal-footer">
-                <a href="#!" class="modal-action modal-close waves-effect waves-red btn orange darken-1" onclick="enviaFormularioSensei();">ENVIAR</a>
+                <a href="#!" class="modal-action modal-close waves-effect waves-red btn orange darken-1" ng-click="virarSensei(params)">ENVIAR</a>
             </div>
         </div>
 

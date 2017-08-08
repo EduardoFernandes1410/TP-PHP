@@ -23,14 +23,14 @@
         die("Conexao nao pode ser feita");
     }
 
-    $db_selected = mysql_select_db('heroku_98860801524147b', $conexao);
+    $db_selected = mysqli_select_db($conexao, 'heroku_98860801524147b');
     if(!$db_selected){
         die("Database não pode ser usada");
     }
 
     $query = "INSERT INTO user (id, email, cpf, contato, rua, numero, complemento, cidade, nome, foto, admin) VALUES ('$id', '$email', '$cpf', '$telefone', '$rua', '$numero', '$complemento', '$cidade', '$nome', '$foto', '$admin')";
 
-    $insert = mysql_query($query, $conexao);
+    $insert = mysqli_query($conexao, $query);
 
     if($insert){
         echo "Deu bom";
@@ -40,12 +40,12 @@
 
         $query2 = "SELECT * FROM user WHERE id = '$id'";
 
-        $select = mysql_query($query2, $conexao);
+        $select = mysqli_query($conexao, $query2);
 
-        if(mysql_num_rows($select) > 0){
+        if(mysqli_num_rows($select) > 0){
             //Dados do usuário p/ sessão
             $sessao = [];
-            while($row = mysql_fetch_assoc($select)){
+            while($row = mysqli_fetch_assoc($select)){
                 $sessao['Email'] = $row['email'];
                 $sessao['CPF'] = $row['cpf'];
                 $sessao['Admin'] = $row['admin'];
@@ -84,14 +84,14 @@
         die("Conexao nao pode ser feita");
     }
 
-    $db_selected = mysql_select_db('heroku_98860801524147b', $conexao);
+    $db_selected = mysqli_select_db('heroku_98860801524147b', $conexao);
     if(!$db_selected){
         die("Database não pode ser usada");
     }
 
     $query = "INSERT INTO user (id, email, cpf, contato, rua, numero, complemento, cidade, nome, foto, admin) VALUES ('$id', '$email', '$cpf', '$telefone', '$rua', '$numero', '$complemento', '$cidade', '$nome', '$foto', 0)";
 
-    $insert = mysql_query($query, $conexao);
+    $insert = mysqli_query($query, $conexao);
 
     if($insert){
         echo "Deu bom";
@@ -101,12 +101,12 @@
 
         $query2 = "SELECT * FROM user WHERE id = '$id'";
 
-        $select = mysql_query($query2, $conexao);
+        $select = mysqli_query($query2, $conexao);
 
-        if(mysql_num_rows($select) > 0){
+        if(mysqli_num_rows($select) > 0){
             //Dados do usuário p/ sessão
             $sessao = [];
-            while($row = mysql_fetch_assoc($select)){
+            while($row = mysqli_fetch_assoc($select)){
                 $sessao['Email'] = $row['email'];
                 $sessao['CPF'] = $row['cpf'];
                 $sessao['Admin'] = $row['admin'];

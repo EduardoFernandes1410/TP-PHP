@@ -118,9 +118,19 @@
 				</div>
 
 				<div class="row">
+					<p class="titulo">Local</p>
+					
+					<!-- Minha Casa -->
+					<div class="input-field col s12 m3">
+						<p>
+							<input type="checkbox" class="filled-in" id="casa" ng-model="params.Casa">
+							<label for="casa">Minha casa</label>
+						</p>
+					</div>
+					
 					<!--Local-->
-					<div class="input-field col s12">
-						<textarea id="local" class="materialize-textarea" name="local" ng-model="params.Local"></textarea>
+					<div class="input-field col s12 m9">
+						<input id="local" type="text" name="local" ng-model="params.Local"></input>
 						<label for="local">Local do Evento</label>
 					</div>
 				</div>

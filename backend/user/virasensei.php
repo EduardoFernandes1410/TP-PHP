@@ -2,7 +2,9 @@
     require '../utils/basics.php';
 
     session_start();
-    $obj = json_decode($_POST['cadastroUsuario']);
+    
+    $obj = json_decode(file_get_contents("php://input"));
+    
     $cpf = $obj->Cpf;
     $contato = $obj->Fone;
     $rua = $obj->Rua;
@@ -21,7 +23,7 @@
             die("Conexao nao pode ser feita");
         }
 
-        $db_selected = mysql_select_db('heroku_98860801524147b', $conexao);
+        $db_selected = mysqli_select_db($conexao, 'heroku_98860801524147b');
         if(!$db_selected){
             die("Database não pode ser usada");
         }
@@ -29,7 +31,7 @@
 
         $query = "UPDATE user SET cpf=\"$cpf\", admin=1, contato=\"$contato\", rua=\"$rua\", numero=\"$numero\", cidade=\"$cidade\", complemento=\"$complemento\" WHERE id=\"$id\"";
 
-        $insert = mysql_query($query, $conexao);    
+        $insert = mysqli_query($conexao, $query);    
 
         if($insert){
             $_SESSION['CPF'] = $cpf;

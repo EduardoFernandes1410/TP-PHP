@@ -15,11 +15,11 @@
 
     $query = "SELECT * FROM aula";
 
-    $insert = mysql_query($query, $conexao);
+    $insert = mysqli_query($conexao, $query);
 
     if($insert){
         $aula = [];
-        while($row = mysql_fetch_assoc($insert)){
+        while($row = mysqli_fetch_assoc($insert)){
             array_push($aula,$row);
         }
         var_dump($aula);

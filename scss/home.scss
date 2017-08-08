@@ -192,7 +192,7 @@ nav {
 
 /*****CARDS*****/
 .card-content {
-	overflow: hidden;
+	overflow: hidden !important;
 	font-size: 16px;
 	
 	span {
@@ -217,8 +217,12 @@ nav {
 	margin-top: -48px !important;
 }
 
-.card-action a {
-	color: #ff6e40 !important;
+.card-action {
+	overflow: hidden;
+
+	.card-action a {
+		color: #ff6e40 !important;
+	}
 }
 
 /*****CRIAR AULA*****/

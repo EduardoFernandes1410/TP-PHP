@@ -104,7 +104,7 @@ nav #virar-sensei {
 
 /*****CARDS*****/
 .card-content {
-  overflow: hidden;
+  overflow: hidden !important;
   font-size: 16px; }
   .card-content span {
     font-weight: 500; }
@@ -120,8 +120,10 @@ nav #virar-sensei {
 #class-form {
   margin-top: -48px !important; }
 
-.card-action a {
-  color: #ff6e40 !important; }
+.card-action {
+  overflow: hidden; }
+  .card-action .card-action a {
+    color: #ff6e40 !important; }
 
 /*****CRIAR AULA*****/
 .titulo {

@@ -20,14 +20,14 @@
 		.when("/aulas", 
 			{
 				templateUrl: "../html/aulas.html",
-				controller: "ExibirAulaController"
+				controller: "ExibirAulaController",
+				controllerAs: "Aula"
 			}
 		)
 		.when("/create-class",
 			{
 				templateUrl: "../html/create-class.html",
-				controller: "CriarAulaController",
-				controllerAs: "Aula"
+				controller: "CriarAulaController"
 			}
 		)
 		.otherwise(

@@ -1,4 +1,19 @@
 #descricao-aula {
   padding-bottom: 1em; }
 
+.sensei-aula {
+  color: lightgreen; }
+
+.sensei-aula:hover {
+  color: yellow; }
+
+.sensei-aula:active {
+  color: red; }
+
+.card-action {
+  overflow: hidden; }
+
+.card-content {
+  padding-bottom: 8px !important; }
+
 /*# sourceMappingURL=profile.css.map */

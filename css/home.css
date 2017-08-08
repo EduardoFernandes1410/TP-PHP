@@ -108,6 +108,8 @@ nav #virar-sensei {
   font-size: 16px; }
   .card-content span {
     font-weight: 500; }
+  .card-content .nome-sensei {
+    text-decoration: underline; }
 
 #card-confirmados {
   position: fixed;
@@ -122,8 +124,9 @@ nav #virar-sensei {
 
 .card-action {
   overflow: hidden; }
-  .card-action .card-action a {
-    color: #ff6e40 !important; }
+  .card-action a {
+    color: #ff6e40 !important;
+    margin-right: 0px !important; }
 
 /*****CRIAR AULA*****/
 .titulo {

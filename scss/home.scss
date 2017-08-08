@@ -198,6 +198,10 @@ nav {
 	span {
 		font-weight: 500;
 	}
+
+	.nome-sensei {
+		text-decoration: underline;
+	}
 }
 
 #card-confirmados {
@@ -220,8 +224,9 @@ nav {
 .card-action {
 	overflow: hidden;
 
-	.card-action a {
+	a {
 		color: #ff6e40 !important;
+		margin-right: 0px !important;
 	}
 }
 

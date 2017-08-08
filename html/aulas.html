@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="col s12 m4 l3" ng-repeat="aulas in Aula.aulas">
+		<div class="card indigo lighten-1">
+			<div class="card-content white-text">
+				<span class="card-title">{{aulas.nome}}</span>
+				
+				<p><b>Sensei: </b><a class="sensei-aula">Taffarel</a></p>
+				<p><b>Preço: </b>{{aulas.preco}}</p>
+				<p><b>Vagas disponíveis: </b>42/69</p>
+				<p class="tags-aula"><b>Tags:</b> Música</p>
+			</div>
+			
+			<div class="card-action">
+				<a class="inscricao-aula right" href="#">Inscrever-se</a>
+			</div>
+		</div>
+	</div>
+</div>

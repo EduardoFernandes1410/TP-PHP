@@ -55,10 +55,12 @@ nav form {
     color: white; }
   nav form ::-ms-input-placeholder {
     color: white; }
-nav #virar-sensei {
-  height: 50px; }
-  nav #virar-sensei .icon {
-    top: 5px; }
+nav .disabled {
+  background-color: #64b5f6;
+  color: #eceff1;
+  cursor: default; }
+  nav .disabled:hover {
+    background-color: #64b5f6 !important; }
 @media screen and (max-width: 992px) {
   nav .nav-container {
     margin-left: 0px !important;

@@ -56,11 +56,7 @@
                             <div class="col l3 hide-on-med-and-down">
                                 <ul id="nav-user" class="right">
                                     <li>
-                                        <a ng-disabled="usuario.Admin" id="virar-sensei" href="#modal1" class="light-blue darken-3 waves-effect waves-light btn-large" onclick="return false;">
-                                            <!-- Graduation Cap icon by Icons8 -->
-                                            <!-- <img class="icon icons8-Graduation-Cap" width="24" height="24" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABZ0lEQVRIS9WUUVEDQRBEuxWAA0ABOCA4wAFBAUFBEgUEBQkOkBAcEAfBAShoqq/mqLDZu92jSBXM5+3e9GzPmyEOHDxwfvwdAUkXAB7ixfckX2teX3yBpFMAUwDjJOEKwJzktk+oU0DSMYA7ALNCpT5/JPmeu5cVkOSfnNwiNeHkC5Lz9PI3AUm2wXbYlp+E7ZqRfGp/bgQkjaKBbuRvhAEwCOtdgQWA81J2kjVguOApyaucRfb/pCTUcf4WUCx97mL6mjwBcFQp9BFNboiTpF6BuGSCLOKm94XJMUFfmBYFJJmGsZsUg+bKbhIVk2JitgHJkuRZ1QvaCgA8Bw1OYsIMgmPiVRHiXh/XrSVDBXw/O0S5YWx7WmNR06QkbNttfDMle8M4RMCDUpyJpIANyb1B7cLUBK0HiGwAjHILr7RN3eTLAqYvbvKgbbqbMBD0EvTzW9tcsW1cGeW+Aop7pXKSO6/9f4FPmY+bGS4ZgZ0AAAAASUVORK5CYII="> -->
-                                            Virar Sensei
-                                        </a>
+                                        <a ng-class="{disabled: usuario.Admin}" id="virar-sensei" ng-href="{{!usuario.Admin ? '#modal1' : '#'}}" onclick="return false;">Virar Sensei</a>
                                     </li>
                                 </ul>
                             </div>
@@ -142,7 +138,7 @@
         <!-- Corpo da Pagina -->
         <div class="container">
             <!-- FAB -->
-            <div class="fixed-action-btn" ng-if>
+            <div class="fixed-action-btn" ng-if="usuario.Admin">
                 <a class="btn-floating btn-large deep-orange accent-2" href="#!/create-class">
                     <i class="large material-icons">add</i>
                 </a>                

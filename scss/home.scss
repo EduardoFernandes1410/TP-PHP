@@ -115,14 +115,17 @@ nav {
 		}
 	}
 	
-	//Botao VIRAR SENSEI
-	#virar-sensei {
-		.icon {
-			top: 5px;
+	//Btn Virar Sensei
+	.disabled {
+		background-color: #64b5f6;
+		color: #eceff1;
+		cursor: default;
+
+		&:hover {
+			background-color: #64b5f6 !important;
 		}
-		height: 50px;
 	}
-	
+
 	//Tweaks do mobile
 	@media screen and (max-width: 992px) {
 		//Nav-Container

@@ -39,7 +39,6 @@
             $row['nomeSensei'] = $nome;
 
             //Pega as tags da aula
-
             $id_aula = $row['id'];
             $tagNames = [];
             $query3 = "SELECT * FROM aula_tags WHERE id_aula='$id_aula'";
@@ -67,7 +66,10 @@
 
             array_push($aula, $row);
         }
-        echo json_encode($aula);
+
+        $aula = json_encode($aula);
+
+        echo $aula;
     } else {
         echo false;    
     }

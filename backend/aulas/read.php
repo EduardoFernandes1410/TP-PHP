@@ -28,7 +28,7 @@
             if($search){
                 if(mysqli_num_rows($search) > 0){
                     //Id é unico, logo só uma row é mudada
-                    $nome = mysqli_fetch_assoc($search)['nome'];
+                    $nome = mysqli_fetch_assoc($search)['nomeSensei'];
                 } else {
                     $nome = "????";
                 }

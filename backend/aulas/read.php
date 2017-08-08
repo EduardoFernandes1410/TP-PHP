@@ -20,7 +20,22 @@
     if($insert){
         $aula = [];
         while($row = mysqli_fetch_assoc($insert)){
-            array_push($aula,$row);
+            $id = $row['sensei'];
+            $nome = "";
+            $query2 = "SELECT * FROM user WHERE id='$id'";
+
+            $search = mysqli_query($conexao, $query2);
+            if($search){
+                if(mysqli_num_rows($search) > 0){
+                    //Id é unico, logo só uma row é mudada
+                    $nome = mysqli_fetch_assoc($search)['nome'];
+                } else {
+                    $nome = "????";
+                }
+            }
+            $row['nome'] = $nome;
+
+            array_push($aula, $row);
         }
         var_dump($aula);
     } else {

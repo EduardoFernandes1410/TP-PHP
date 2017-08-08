@@ -22,3 +22,34 @@ $cor16: blue-grey;
 #descricao-aula{
 	padding-bottom: 1em;
 }
+
+.tags-aula{
+	//padding-bottom: 1em;
+}
+
+.sensei-aula{
+	//margin-left: 40%; 
+}
+
+.sensei-aula{
+	color: lightgreen;
+}
+.sensei-aula:hover{
+	color: yellow;
+}
+.sensei-aula:active{
+	color: red;
+}
+
+.inscricao-aula{
+	//margin-left: 60%;
+	//float: right;
+}
+
+.card-action{
+	overflow: hidden;
+}
+
+.card-content{
+	padding-bottom: 8px !important;
+}

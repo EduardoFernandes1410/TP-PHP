@@ -5,12 +5,12 @@
 	//Middleware
 	app.run(['$rootScope', '$location', function($rootScope, $location,) {
 		$rootScope.$on('$routeChangeStart', function(event, next, current) {
-			//Se for pra MAIN-PAGE
-			if(!next.templateUrl) {
-				$location.path('/');
-			} else if(next.templateUrl == "../html/create-class.html") {
-				$location.path('/create-class');
-			}
+			// Se for pra HOME
+			// if(!next.templateUrl) {
+			// 	$location.path('/');
+			// } else if(next.templateUrl == "../html/create-class.html") {
+			// 	$location.path('/create-class');
+			// }
 		});
 	}]);
 
@@ -71,6 +71,14 @@
 	app.controller('RouteController', function($scope, $location) {
 		$scope.$location = $location;
 	});
+	
+	//Login Controller
+	app.controller('LoginController', ['HTTPService', '$rootScope', function(httpService, $rootScope) {
+		//Pega a info do cara logado via GET
+		httpService.get("../backend/utils/sessao.php", function(answer) {
+			$rootScope.usuario = answer;
+		});
+	}]);
 
 	//VirarSensei Controller
 	app.controller('VirarSenseiController', ['HTTPService', '$scope', function(httpService, $scope) {
@@ -101,7 +109,7 @@
 	}]);
 
 	//Criar Eventos Controller
-	app.controller("CriarAulaController", ['HTTPService', 'CriarAulaService', '$timeout', '$scope', '$route', '$location', function(httpService, criarAulaService, $timeout, $scope, $route, $location) {
+	app.controller("CriarAulaController", ['HTTPService', 'CriarAulaService', '$timeout', '$scope', '$route', '$location', '$rootScope', function(httpService, criarAulaService, $timeout, $scope, $route, $location, $rootScope) {
 		$timeout(function() {
 			//Inicia elementos do Materialize
 			$(document).ready(function() {				
@@ -135,11 +143,22 @@
 					ampmclickable: true, // make AM PM clickable
 					aftershow: function(){} //Function for after opening timepicker  
 				});
+				
+				//Minha casa
+				$("#casa").change(function() {
+					if(this.checked) {
+						$("#local").attr("disabled", true);
+					} else {
+						$("#local").attr("disabled", false);			
+					}
+				});
 			});
 		});
 		
 		//Funcao de Criar Aula
 		$scope.criarAula = function(params) {
+			var usuario = $rootScope.usuario;
+			
 			//Pega as tags marcadas
 			var tags = $("input[name='tags[]']:checked").toArray();
 			var tagsArray = [];
@@ -151,13 +170,22 @@
 			dataCompleta += 'T' + params.Horario + ":00";
 			dataCompleta = new Date(dataCompleta).toUTCString().replace(" GMT", "");
 			
+			//Pega o local
+			var local;
+			
+			if($("#casa").is(":checked")) {
+				local = usuario.Rua + ", " + usuario.Numero + ", " + usuario.Complemento + " - " + usuario.Cidade;
+			} else {
+				local = params.Local;
+			}
+			
 			//Monta objeto de POST
 			var dataPost = {
 				nome: params.Nome,
-				sensei: 'Eduardo',
+				sensei: $rootScope.usuario.ID,
 				preco: params.Preco,
 				tags: tagsArray,
-				local: params.Local,
+				local: local,
 				data: dataCompleta,
 				capacidade: params.Capacidade
 			};

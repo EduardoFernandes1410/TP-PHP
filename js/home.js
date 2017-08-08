@@ -5,6 +5,7 @@ $(document).ready(function(){
 		edge: 'left'
 	});
 
+	/**********VIRAR SENSEI**********/
 	$('.modal').modal();
 
 	// Comandos do JQuery Mask Plugin: http://igorescobar.github.io/jQuery-Mask-Plugin/

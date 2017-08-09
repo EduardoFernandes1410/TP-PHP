@@ -53,19 +53,19 @@
                         if($search3){
                             //cada tag tem só um nome e id é unique
                             if(mysqli_num_rows($search3) > 0){
-                                array_push($tagNames, mysqli_fetch_assoc($search3)['nome']);
+                                array_push($tagNames, json_encode(mysqli_fetch_assoc($search3)['nome'], JSON_FORCE_OBJECT));
                             }
                         }
                     }
                 }
             }
 
-            $row['tags'] = json_encode($tagNames);
+            $row['tags'] = json_encode($tagNames, JSON_FORCE_OBJECT);
 
             array_push($aula, $row);
         }
 
-        $aula = json_encode($aula);
+        $aula = json_encode($aula, JSON_FORCE_OBJECT);
 
         echo $aula;
     } else {

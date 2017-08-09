@@ -111,7 +111,38 @@ nav .disabled {
   .card-content span {
     font-weight: 500; }
   .card-content .nome-sensei {
-    text-decoration: underline; }
+    color: rgba(0, 0, 0, 0.75);
+    font-size: 14px !important; }
+    .card-content .nome-sensei:hover {
+      text-decoration: underline; }
+  .card-content #tags {
+    margin-top: 10px;
+    margin-bottom: 10px; }
+  .card-content .chip {
+    height: 24px !important;
+    font-size: 9.75px !important;
+    line-height: 24px !important; }
+  .card-content .preco {
+    color: #00c853 !important;
+    font-size: 18px !important;
+    font-weight: 300 !important; }
+  .card-content .vagas {
+    color: #ff1744 !important;
+    font-weight: 300 !important; }
+  .card-content .avaliacao-wrapper {
+    padding: 0px !important; }
+    .card-content .avaliacao-wrapper #nota {
+      margin-bottom: 0px !important; }
+    .card-content .avaliacao-wrapper label {
+      left: 0 !important; }
+  .card-content .enviar-nota {
+    margin-top: 30px !important;
+    padding-right: 0px !important; }
+    .card-content .enviar-nota a {
+      color: #ff6e40; }
+
+.divisor {
+  height: 62px !important; }
 
 #card-confirmados {
   position: fixed;

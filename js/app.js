@@ -215,13 +215,46 @@
 	}]);
 
 	//Exibir Aula Controller
-	app.controller('ExibirAulaController', ['HTTPService', function(httpService) {
+	app.controller('ExibirAulaController', ['HTTPService', '$scope', function(httpService, $scope) {
 		var aulas;
-
+		
 		httpService.get("../backend/aulas/read.php", function(answer) {
-			if(answer != false) {
-				this.aulas = answer;				
+			if(answer) {
+				answer = answer.reverse();
+				this.aulas = answer;
 			}
 		}.bind(this));
+		
+		$scope.inscreverNaAula = function(id, aula) {
+			var data = {
+				user: id,
+				aula: aula
+			};
+			
+			httpService.post("../backend/aulas/inscricao.php", data, function(answer) {
+				if(answer != 0) {
+					Materialize.toast("Inscricao realizada com sucesso!", 3000);
+				} else {
+					Materialize.toast("Falha ao realizar a inscrição!", 3000);
+				}
+			});
+		}
+		
+		$scope.avaliarAula = function(nota, aula, user, sensei) {
+			var data = {
+				sensei: sensei,
+				gafanhoto: user,
+				aula: aula,
+				nota: nota
+			};
+			
+			httpService.post("../backend/aulas/avaliar.php", data, function(answer) {
+				if(answer != 0) {
+					Materialize.toast("Avaliação realizada com sucesso!", 3000);
+				} else {
+					Materialize.toast("Falha ao avaliar a aula!", 3000);
+				}
+			});
+		}
 	}]);
 })();

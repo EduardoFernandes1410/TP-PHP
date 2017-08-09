@@ -2,7 +2,7 @@
     require '../utils/basics.php';
 
     session_start();
-
+    
     $conexao = conecta();
     if(!$conexao){
         die("Conexao nao pode ser feita");
@@ -24,7 +24,6 @@
         while($row = mysqli_fetch_assoc($insert)){
 
             //Pega o nome do sensei da aula
-
             $id = $row['sensei'];
             $nome = "";
             $query2 = "SELECT * FROM user WHERE id='$id'";
@@ -55,14 +54,14 @@
                         if($search3){
                             //cada tag tem só um nome e id é unique
                             if(mysqli_num_rows($search3) > 0){
-                                array_push($tagNames, json_encode(mysqli_fetch_assoc($search3)['nome'], JSON_UNESCAPED_UNICODE));
+                                array_push($tagNames, mysqli_fetch_assoc($search3)['nome']);
                             }
                         }
                     }
                 }
             }
-
-            $row['tags'] = json_encode($tagNames, JSON_UNESCAPED_UNICODE);
+            
+            $row['tags'] = $tagNames;
 
             array_push($aula, $row);
         }

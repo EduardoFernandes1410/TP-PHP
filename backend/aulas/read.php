@@ -60,7 +60,7 @@
                 }
             }
 
-            $row['tags'] = $tagNames;
+            $row['tags'] = json_encode($tagNames);
 
             array_push($aula, $row);
         }

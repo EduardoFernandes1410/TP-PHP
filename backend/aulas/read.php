@@ -36,7 +36,7 @@
             }
             $row['nomeSensei'] = $nome;
 
-            //Pega as tags da aula
+            /*//Pega as tags da aula
             $id_aula = $row['id'];
             $tagNames = [];
             $query3 = "SELECT * FROM aula_tags WHERE id_aula='$id_aula'";
@@ -60,7 +60,11 @@
                 }
             }
 
+<<<<<<< HEAD
             $row['tags'] = json_encode($tagNames, JSON_FORCE_OBJECT);
+=======
+            $row['tags'] = $tagNames;*/
+>>>>>>> 2811d8b39f96a55294eed420f13e7ba20f91689d
 
             array_push($aula, $row);
         }

@@ -6,6 +6,8 @@
     $conexao = conecta();
     if(!$conexao){
         die("Conexao nao pode ser feita");
+    } else {
+        $conexao->set_charset("utf8");
     }
 
     $db_selected = mysqli_select_db($conexao, 'heroku_98860801524147b');
@@ -36,7 +38,7 @@
             }
             $row['nomeSensei'] = $nome;
 
-            /*//Pega as tags da aula
+            //Pega as tags da aula
             $id_aula = $row['id'];
             $tagNames = [];
             $query3 = "SELECT * FROM aula_tags WHERE id_aula='$id_aula'";
@@ -53,23 +55,19 @@
                         if($search3){
                             //cada tag tem só um nome e id é unique
                             if(mysqli_num_rows($search3) > 0){
-                                array_push($tagNames, json_encode(mysqli_fetch_assoc($search3)['nome'], JSON_FORCE_OBJECT));
+                                array_push($tagNames, json_encode(mysqli_fetch_assoc($search3)['nome'], JSON_UNESCAPED_UNICODE));
                             }
                         }
                     }
                 }
             }
 
-<<<<<<< HEAD
-            $row['tags'] = json_encode($tagNames, JSON_FORCE_OBJECT);
-=======
-            $row['tags'] = $tagNames;*/
->>>>>>> 2811d8b39f96a55294eed420f13e7ba20f91689d
+            $row['tags'] = json_encode($tagNames, JSON_UNESCAPED_UNICODE);
 
             array_push($aula, $row);
         }
 
-        $aula = json_encode($aula, JSON_FORCE_OBJECT);
+        $aula = json_encode($aula, JSON_UNESCAPED_UNICODE);
 
         echo $aula;
     } else {

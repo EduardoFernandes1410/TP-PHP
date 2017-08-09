@@ -2,18 +2,6 @@
     require '../utils/basics.php';
 
     session_start();
-    
-    $conexao = conecta();
-    if(!$conexao){
-        die("Conexao nao pode ser feita");
-    } else {
-        $conexao->set_charset("utf8");
-    }
-
-    $db_selected = mysqli_select_db($conexao, 'heroku_98860801524147b');
-    if(!$db_selected){
-        die("Database não pode ser usada");
-    }
 
     $query = "SELECT * FROM aula";
 

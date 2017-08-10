@@ -78,6 +78,9 @@ nav .disabled {
   nav form .material-icons {
     margin-top: -2px; } }
 
+#sidebar {
+  background-color: teal; }
+
 /*****Side Navbar*****/
 .side-nav a {
   color: #000;

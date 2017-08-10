@@ -164,6 +164,10 @@ nav {
 	}
 }
 
+#sidebar{
+	background-color: teal;
+}
+
 /*****Side Navbar*****/
 .side-nav {
 	@include menu();

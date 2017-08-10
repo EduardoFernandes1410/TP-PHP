@@ -19,9 +19,9 @@
     $query = "SELECT * FROM aula_user WHERE id_user = '$id'";
 
     $select = mysqli_query($conexao, $query);
-
     if($select){
         $resposta = [];
+        array_push($resposta, mysqli_num_rows($select));
         while($row = mysqli_fetch_assoc($select)){
             array_push($resposta, $row['id_aula']);
         }

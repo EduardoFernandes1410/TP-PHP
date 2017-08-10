@@ -31,6 +31,7 @@
         } else {
             echo "0";
         }
-    }    
+    } 
+    
     desconecta($conexao);
 ?>

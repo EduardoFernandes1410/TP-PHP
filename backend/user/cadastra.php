@@ -36,6 +36,7 @@
 
         if(mysqli_num_rows($select) > 0){
             //Dados do usuário p/ sessão
+            
             $sessao = [];
             while($row = mysqli_fetch_assoc($select)){
                 $sessao['Email'] = $row['email'];

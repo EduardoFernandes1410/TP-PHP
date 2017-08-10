@@ -22,6 +22,7 @@
         $select = mysqli_query($conexao, $query1);
 
         if(mysqli_num_rows($select) > 0){
+            
             //Capacidade da aula
             $capacidade = 1;
             while($row = mysqli_fetch_assoc($select)){

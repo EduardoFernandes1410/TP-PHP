@@ -12,6 +12,7 @@
         while($row = mysqli_fetch_assoc($insert)){
 
             //Pega o nome do sensei da aula
+
             $id = $row['sensei'];
             $nome = "";
             $query2 = "SELECT * FROM user WHERE id='$id'";
@@ -26,6 +27,7 @@
             $row['nomeSensei'] = $nome;
 
             //Pega as tags da aula
+            
             $id_aula = $row['id'];
             $tagNames = [];
             $query3 = "SELECT * FROM aula_tags WHERE id_aula='$id_aula'";

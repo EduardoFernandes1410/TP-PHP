@@ -27,5 +27,6 @@
     } else {
         echo false;
     }
+    
     desconecta($conexao);
 ?>

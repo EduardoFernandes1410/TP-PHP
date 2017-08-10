@@ -28,7 +28,6 @@
             die("Database não pode ser usada");
         }
 
-
         $query = "UPDATE user SET cpf=\"$cpf\", admin=1, contato=\"$contato\", rua=\"$rua\", numero=\"$numero\", cidade=\"$cidade\", complemento=\"$complemento\" WHERE id=\"$id\"";
 
         $insert = mysqli_query($conexao, $query);    

@@ -22,7 +22,7 @@
 
     if($select){
         $resposta = [];
-        while($row = mysqli_fetch_assoc($insert)){
+        while($row = mysqli_fetch_assoc($select)){
             array_push($resposta, $row['id_aula']);
         }
         echo json_encode($resposta);

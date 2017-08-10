@@ -1,9 +1,9 @@
 <?php
     require '../utils/basics.php';
 
-    $obj = json_decode(file_get_contents("php://input"));
+    session_start();
 
-    $id = $obj->id;
+    $id = $_SESSION['ID'];
 
     $conexao = conecta();
 

@@ -5,11 +5,16 @@
 
     $query = "SELECT * FROM aula";
 
-    $conexao = $_COOKIE['conexao'];
-    if(!$conexao){
+	$conexao = conecta();
+
+	if(!$conexao){
 		die("Conexao nao pode ser feita");
 	}
 
+	$db_selected = mysqli_select_db($conexao, 'heroku_98860801524147b');
+	if(!$db_selected){
+		die("Database não pode ser usada");
+	}
     $insert = mysqli_query($conexao, $query);
 
     if($insert){

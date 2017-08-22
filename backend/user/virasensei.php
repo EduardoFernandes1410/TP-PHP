@@ -18,10 +18,16 @@
     if($isadmin == 1)
         echo "2";
     else{
-        $conexao = $_COOKIE['conexao'];
+        $conexao = conecta();
+
         if(!$conexao){
-		    die("Conexao nao pode ser feita");
-	    }
+            die("Conexao nao pode ser feita");
+        }
+
+        $db_selected = mysqli_select_db($conexao, 'heroku_98860801524147b');
+        if(!$db_selected){
+            die("Database não pode ser usada");
+        }
 
         $query = "UPDATE user SET cpf=\"$cpf\", admin=1, contato=\"$contato\", rua=\"$rua\", numero=\"$numero\", cidade=\"$cidade\", complemento=\"$complemento\" WHERE id=\"$id\"";
 

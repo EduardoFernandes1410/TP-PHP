@@ -3,14 +3,18 @@
 
 //**********Routes**********//
 	//Middleware
-	app.run(['$rootScope', '$location', function($rootScope, $location,) {
+	app.run(['HTTPService', '$rootScope', '$location', '$window', function(httpService, $rootScope, $location, $window) {
 		$rootScope.$on('$routeChangeStart', function(event, next, current) {
-			// Se for pra HOME
-			// if(!next.templateUrl) {
-			// 	$location.path('/');
-			// } else if(next.templateUrl == "../html/create-class.html") {
-			// 	$location.path('/create-class');
-			// }
+			// Se tentar acessar sem estar logado
+			httpService.get("../backend/utils/sessao.php", function(answer) {
+				if(answer.length == 0) {
+					//Redireciona para pagina de login
+					if(next.templateUrl != "http://localhost:8080") {
+						event.preventDefault();
+						$window.location.replace('http://localhost:8080');
+					}
+				}
+			});
 		});
 	}]);
 
@@ -32,7 +36,7 @@
 		)
 		.otherwise(
 			{
-				redirectTo: "/"
+				redirectTo: "/aulas"
 			}
 		);
 	});
@@ -115,7 +119,7 @@
 		}
 	}]);
 
-	//Criar Eventos Controller
+	//Criar Aulas Controller
 	app.controller("CriarAulaController", ['HTTPService', 'CriarAulaService', '$timeout', '$scope', '$route', '$location', '$rootScope', function(httpService, criarAulaService, $timeout, $scope, $route, $location, $rootScope) {
 		$timeout(function() {
 			//Inicia elementos do Materialize
@@ -232,10 +236,12 @@
 			};
 			
 			httpService.post("../backend/aulas/inscricao.php", data, function(answer) {
-				if(answer != 0) {
+				if(answer == 1) {
 					Materialize.toast("Inscricao realizada com sucesso!", 3000);
-				} else {
+				} else if(answer == 0) {
 					Materialize.toast("Falha ao realizar a inscrição!", 3000);
+				} else if(answer == 2) {
+					Materialize.toast("Você já esta cadastrado nessa aula!", 3000);					
 				}
 			});
 		}

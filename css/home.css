@@ -1,7 +1,7 @@
 /*****Mixins*****/
 /*****Body*****/
 body {
-  background-color: #fafafa; }
+  background-color: #f5f5f5; }
 
 ::-webkit-scrollbar {
   display: none; }
@@ -12,14 +12,17 @@ body {
 
 @media only screen and (min-width: 993px) {
   .container {
-    width: 90%; } }
+    width: 96% !important;
+    max-width: none !important; } }
 /*****Nav Bar*****/
 nav .row {
   margin-bottom: 0px; }
 nav #logo {
   font-weight: 200; }
 nav #logo-wrapper {
-  height: 48.3px; }
+  height: 48.3px;
+  max-width: 240px;
+  min-width: 240px; }
 nav #hamburguer {
   padding-left: 10px;
   margin-right: 0px; }
@@ -31,7 +34,7 @@ nav form {
   nav form #search {
     height: 48px !important;
     border-bottom-color: #42a5f5 !important;
-    font-size: 18px;
+    font-size: 16px;
     padding-top: 1px !important; }
   nav form #search:focus {
     border-radius: 2px !important;
@@ -78,9 +81,6 @@ nav .disabled {
   nav form .material-icons {
     margin-top: -2px; } }
 
-#sidebar {
-  background-color: teal; }
-
 /*****Side Navbar*****/
 .side-nav a {
   color: #000;
@@ -103,9 +103,48 @@ nav .disabled {
   .side-nav #cabecote .userImage {
     width: 40px; }
 
+#sidebar {
+  margin-top: 12px;
+  padding-left: 0px !important;
+  max-width: 250px !important; }
+  #sidebar li {
+    line-height: 40px; }
+    #sidebar li a {
+      font-size: 13px;
+      line-height: 40px;
+      height: 40px;
+      padding: 0 30px;
+      color: rgba(0, 0, 0, 0.72);
+      font-weight: 500;
+      display: block; }
+      #sidebar li a:hover {
+        background-color: rgba(0, 0, 0, 0.05); }
+      #sidebar li a i.material-icons {
+        float: left;
+        height: 40px;
+        line-height: 40px;
+        margin: 0 24px 0 0;
+        width: 24px;
+        color: rgba(0, 0, 0, 0.54); }
+  #sidebar li.divider {
+    margin: 8px 0 8px 0; }
+
+#sidenav a#logo-mini {
+  font-size: 32px;
+  font-weight: 200;
+  margin-top: 5px;
+  margin-bottom: 15px; }
+
 /*****CORPO*****/
 #corpo {
   margin-top: 73px !important; }
+
+#loader-wrapper {
+  text-align: center; }
+  #loader-wrapper #loader {
+    margin-top: 30px; }
+    #loader-wrapper #loader .spinner-layer {
+      border-color: #ff6e40; }
 
 /*****CARDS*****/
 .card-content {
@@ -119,8 +158,8 @@ nav .disabled {
     .card-content .nome-sensei:hover {
       text-decoration: underline; }
   .card-content #tags {
-    margin-top: 10px;
-    margin-bottom: 10px; }
+    margin-top: 15px;
+    margin-bottom: 15px; }
   .card-content .chip {
     height: 24px !important;
     font-size: 9.75px !important;
@@ -132,6 +171,8 @@ nav .disabled {
   .card-content .vagas {
     color: #ff1744 !important;
     font-weight: 300 !important; }
+  .card-content .local {
+    margin-top: 50px !important; }
   .card-content .avaliacao-wrapper {
     padding: 0px !important; }
     .card-content .avaliacao-wrapper #nota {

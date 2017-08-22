@@ -15,3 +15,21 @@ $(document).ready(function(){
 
 	$('.phone_with_ddd').mask('+00 (00) 00000-0000');
 });
+
+function logout() {
+	firebase.auth().signOut().then(function() {
+		//Tira do SESSION
+		$.ajax({
+			url: window.location.href = window.location.href.split("/")[0] + "/backend/user/logout.php",
+			method: 'GET',
+			data: null,
+			success: function(asnwer) {
+				console.log("SUCESSO");
+				window.location.href = window.location.href.split("/")[0] + "/html/login.html";
+			}
+		});
+		
+	}, function(error) {
+		//Deu ruim
+	});
+}

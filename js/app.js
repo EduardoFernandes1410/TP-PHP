@@ -273,6 +273,7 @@
 
 		//Verifica se o cara ja se inscreveu na aula
 		$scope.estaConfirmado = function(evento) {
+			console.log($rootScope.aulasConfirmadas);
 			if(!$rootScope.aulasConfirmadas) {
 				return false;
 			} else {

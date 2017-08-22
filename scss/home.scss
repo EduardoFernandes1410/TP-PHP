@@ -23,7 +23,7 @@
 
 /*****Body*****/
 body {
-	background-color: #fafafa;
+	background-color: #f5f5f5;
 }
 
 //Esconde a scroll bar
@@ -38,7 +38,8 @@ body {
 
 @media only screen and (min-width: 993px) {
 	.container {
-		width: 90%;
+		width: 96% !important;
+		max-width: none !important;
 	}	
 }
 
@@ -55,6 +56,8 @@ nav {
 
 	#logo-wrapper {
 		height: 48.3px;
+		max-width: 240px;
+		min-width: 240px;
 	}
 
 	//Icone Hamburguer
@@ -75,7 +78,7 @@ nav {
 		#search {
 			height: 48px !important;
 			border-bottom-color: #42a5f5 !important;
-			font-size: 18px;
+			font-size: 16px;
 			padding-top: 1px !important;
 		}
 
@@ -164,10 +167,6 @@ nav {
 	}
 }
 
-#sidebar{
-	background-color: teal;
-}
-
 /*****Side Navbar*****/
 .side-nav {
 	@include menu();
@@ -189,13 +188,75 @@ nav {
 			width: 40px;
 		}		
 	}
+}
 
+#sidebar {
+	margin-top: 12px;
+	padding-left: 0px !important;
+	max-width: 250px !important;
+	
+	li {
+		line-height: 40px;
+		
+		a {
+			font-size: 13px;
+			line-height: 40px;
+			height: 40px;
+			padding: 0 30px;
+		    color: rgba(0,0,0,0.72);
+	        font-weight: 500;
+	        display: block;
+	        
+	        &:hover {
+	        	background-color: rgba(0,0,0,0.05);
+	        }
+	        
+	        &:click {
+	        	
+	        }
+	        
+	        i.material-icons {
+	        	float: left;
+				height: 40px;
+				line-height: 40px;
+				margin: 0 24px 0 0;
+				width: 24px;
+				color: rgba(0,0,0,0.54);
+	        }
+		}
+	}
+	
+	li.divider {
+		margin: 8px 0 8px 0;
+	}
+}
+
+#sidenav {
+	a#logo-mini {
+		font-size: 32px;
+		font-weight: 200;
+		margin-top: 5px;
+		margin-bottom: 15px;
+	}
 }
 
 /*****CORPO*****/
 #corpo {
 	margin-top: 48+25px !important;
 }
+
+#loader-wrapper {
+	text-align: center;
+	
+	#loader {
+		margin-top: 30px;
+		
+		.spinner-layer {
+			border-color: #ff6e40;
+		}
+	}	
+}
+
 
 /*****CARDS*****/
 .card-content {
@@ -217,8 +278,8 @@ nav {
 	
 	//TAGS
 	#tags {
-		margin-top: 10px;
-		margin-bottom: 10px;
+		margin-top: 15px;
+		margin-bottom: 15px;
 	}
 	.chip {
 		height: 24px !important;
@@ -236,6 +297,10 @@ nav {
 	.vagas {
 		color: #ff1744 !important;
 		font-weight: 300 !important;
+	}
+	
+	.local {
+		margin-top: 50px !important;
 	}
 	
 	//Avaliacao
@@ -259,7 +324,6 @@ nav {
 			color: #ff6e40;			
 		}
 	}
-	
 }
 
 //Divider

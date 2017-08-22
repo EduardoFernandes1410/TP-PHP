@@ -49,7 +49,7 @@ function initApp() {
 				url: "../backend/user/cadastra.php",
 				method: 'POST', // or GET
 				success: function(msg) {
-					window.location.href = window.location.href.split("/")[0] + "/html/home.html";
+					window.location.href = window.location.href.split("/")[0] + "/html/home.html#!";
 				}
 			});
 		}

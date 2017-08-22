@@ -10,56 +10,51 @@
 
     $conexao = $_COOKIE['conexao'];
     if(!$conexao){
-		die("Conexao nao pode ser feita");
-	}
-   
-   $query0 = "SELECT * FROM aula_user WHERE id_user = '$user' and id_aula = '$aula";
+        die("Conexao nao pode ser feita");
+    }
 
-    $select0 = mysqli_query($conexao, $query0);
+    $db_selected = mysqli_select_db($conexao, 'heroku_98860801524147b');
+    if(!$db_selected){
+        die("Database não pode ser usada");
+    }
+    $query1 = "SELECT * FROM aula WHERE id = '$aula'";
+    $select = mysqli_query($conexao, $query1);
 
-    if(mysqli_num_rows($select0) > 0){
-        echo "Você ja ta cadastrado nessa aula";
-    } else {     
-        $query1 = "SELECT * FROM aula WHERE id = '$aula'";
-
-        $select = mysqli_query($conexao, $query1);
-
-        if(mysqli_num_rows($select) > 0){
+    if(mysqli_num_rows($select) > 0){
+        
+        //Capacidade da aula
+        $capacidade = 1;
+        while($row = mysqli_fetch_assoc($select)){
+            $capacidade = $row['capacidade'];
+        }
+        if($capacidade == 0){
+            echo "0";
+        } else {
+            //Coloca o meliante na aula
+            $capacidade = $capacidade - 1;
             
-            //Capacidade da aula
-            $capacidade = 1;
-            while($row = mysqli_fetch_assoc($select)){
-                $capacidade = $row['capacidade'];
-            }
-            if($capacidade == 0){
+            $query = "INSERT INTO aula_user (id_user, id_aula) VALUES ('$user', '$aula')";
+
+            $insert = mysqli_query($conexao, $query);
+
+            if(!$insert){
                 echo "0";
             } else {
-                //Coloca o meliante na aula
-                $capacidade = $capacidade - 1;
-                
-                $query = "INSERT INTO aula_user (id_user, id_aula) VALUES ('$user', '$aula')";
+                //Atualiza a capacidade da aula
 
-                $insert = mysqli_query($conexao, $query);
+                $query2 = "UPDATE aula SET capacidade=$capacidade WHERE id='$aula'";
 
-                if(!$insert){
-                    echo "0";
+                $insert2 = mysqli_query($conexao, $query2);
+
+                if($insert2){
+                    echo "1";
                 } else {
-                    //Atualiza a capacidade da aula
-
-                    $query2 = "UPDATE aula SET capacidade=$capacidade WHERE id='$aula'";
-
-                    $insert2 = mysqli_query($conexao, $query2);
-
-                    if($insert2){
-                        echo "1";
-                    } else {
-                        echo "0";
-                    }
+                    echo "0";
                 }
             }
-        } else {
-            echo "0";
-        }               
+        }
+    } else {
+        echo "0";
     }
     
     desconecta($conexao);

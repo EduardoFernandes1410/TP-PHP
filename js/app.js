@@ -219,13 +219,21 @@
 	}]);
 
 	//Exibir Aula Controller
-	app.controller('ExibirAulaController', ['HTTPService', '$scope', function(httpService, $scope) {
+	app.controller('ExibirAulaController', ['HTTPService', '$scope', '$rootScope', function(httpService, $scope, $rootScope) {
 		var aulas;
 		
+		//Pega as aulas
 		httpService.get("../backend/aulas/read.php", function(answer) {
 			if(answer) {
 				answer = answer.reverse();
 				this.aulas = answer;
+			}
+		}.bind(this));
+
+		//Pega as inscricoes em aulas do cara
+		httpService.get("../backend/user/aulas.php", function(answer) {
+			if(answer) {
+				$rootScope.aulasConfirmadas = answer;
 			}
 		}.bind(this));
 		
@@ -261,6 +269,17 @@
 					Materialize.toast("Falha ao avaliar a aula!", 3000);
 				}
 			});
+		}
+
+		//Verifica se o cara ja se inscreveu na aula
+		$scope.estaConfirmado = function(evento) {
+			if(!$rootScope.aulasConfirmadas) {
+				return false;
+			} else {
+				return $rootScope.aulasConfirmadas.some(function(element) {
+					return element.ID == evento.ID;
+				});				
+			}
 		}
 	}]);
 })();

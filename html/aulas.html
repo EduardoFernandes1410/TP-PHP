@@ -42,7 +42,8 @@
 			</div>
 			
 			<div class="card-action">
-				<a class="right" href="#" onclick="return false;" ng-click="inscreverNaAula(usuario.ID, aulas.id)">Inscrever-se</a>
+				<a ng-show="!estaConfirmado(aulas.id)" class="right" href="#" onclick="return false;" ng-click="inscreverNaAula(usuario.ID, aulas.id)">Inscrever-se</a>
+				<a ng-show="estaConfirmado(aulas.id)" class="right" href="#" onclick="return false;" ng-click="">Cancelar inscrição</a>
 			</div>
 		</div>
 	</div>

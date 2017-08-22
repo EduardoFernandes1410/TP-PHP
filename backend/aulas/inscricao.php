@@ -8,8 +8,7 @@
     $user = $obj->user;
     $aula = $obj->aula;
 
-    $conexao = conecta();
-
+    $conexao = $_COOKIE['conexao'];
     if(!$conexao){
         die("Conexao nao pode ser feita");
     }

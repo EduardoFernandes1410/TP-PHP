@@ -5,15 +5,9 @@
 
     $id = $_SESSION['ID'];
 
-    $conexao = conecta();
-
+    $conexao = $_COOKIE['conexao'];
     if(!$conexao){
         die("Conexao nao pode ser feita");
-    }
-
-    $db_selected = mysqli_select_db($conexao, 'heroku_98860801524147b');
-    if(!$db_selected){
-        die("Database não pode ser usada");
     }
 
     $query = "SELECT * FROM aula_user WHERE id_user = '$id'";

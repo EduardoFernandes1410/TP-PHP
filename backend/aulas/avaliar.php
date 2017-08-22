@@ -10,16 +10,10 @@
     $aula = $obj->aula;
     $nota = $obj->nota;
 
-    $conexao = conecta();
-    
+    $conexao = $_COOKIE['conexao'];
     if(!$conexao){
-        die("Conexao nao pode ser feita");
-    }
-
-    $db_selected = mysqli_select_db($conexao, 'heroku_98860801524147b');
-    if(!$db_selected){
-        die("Database não pode ser usada");
-    }
+		die("Conexao nao pode ser feita");
+	}
 
     $query1 = "SELECT * FROM notas WHERE id_aula = '$aula' and id_gafanhoto='$gafanhoto'";
 

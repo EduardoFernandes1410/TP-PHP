@@ -7,7 +7,7 @@
 		$rootScope.$on('$routeChangeStart', function(event, next, current) {
 			// Se tentar acessar sem estar logado
 			httpService.get("../backend/utils/sessao.php", function(answer) {
-				if(answer.length == 0) {
+				if(!answer) {
 					//Redireciona para pagina de login
 					if(next.templateUrl != "http://localhost:8080") {
 						event.preventDefault();

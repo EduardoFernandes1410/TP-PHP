@@ -191,7 +191,7 @@ nav {
 }
 
 #sidebar {
-	margin-top: 12px;
+	margin-top: 14px;
 	padding-left: 0px !important;
 	max-width: 250px !important;
 	
@@ -288,6 +288,11 @@ nav {
 	}
 	
 	//INFO
+	.info {
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	
 	.preco {
 		color: #00c853 !important;
 		font-size: 18px !important;
@@ -300,7 +305,8 @@ nav {
 	}
 	
 	.local {
-		margin-top: 50px !important;
+		font-weight: 300;
+		color: #2979ff !important;
 	}
 	
 	//Avaliacao
@@ -352,8 +358,9 @@ nav {
 	overflow: hidden;
 
 	a {
-		color: #ff6e40 !important;
+		color: #ffab00 !important;
 		margin-right: 0px !important;
+		cursor: pointer;
 	}
 }
 

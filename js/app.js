@@ -227,6 +227,8 @@
 			if(answer) {
 				answer = answer.reverse();
 				this.aulas = answer;
+				
+				this.aulas.forEach(elem => elem.tags = elem.strTags.split(","));
 			}
 		}.bind(this));
 
@@ -273,13 +275,10 @@
 
 		//Verifica se o cara ja se inscreveu na aula
 		$scope.estaConfirmado = function(evento) {
-			console.log($rootScope.aulasConfirmadas);
 			if(!$rootScope.aulasConfirmadas) {
 				return false;
 			} else {
-				return $rootScope.aulasConfirmadas.some(function(element) {
-					return element.ID == evento.ID;
-				});				
+				return $rootScope.aulasConfirmadas.some(elem => elem == evento);
 			}
 		}
 	}]);

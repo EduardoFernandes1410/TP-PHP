@@ -34,6 +34,13 @@
 				controller: "CriarAulaController"
 			}
 		)
+		.when("/sensei",
+			{				
+				templateUrl: "../html/sensei.html",
+				controller: "SenseiController",
+				controllerAs: "Sensei"
+			}
+		)
 		.otherwise(
 			{
 				redirectTo: "/aulas"
@@ -228,7 +235,16 @@
 				answer = answer.reverse();
 				this.aulas = answer;
 				
+				//Mexe nas tags
 				this.aulas.forEach(elem => elem.tags = elem.strTags.split(","));
+				//Mexe na data
+				this.aulas.forEach(function(elem) {
+					var data = new Date(elem.data);
+					elem.dataHora = (data.getHours() >= 10 ? data.getHours() : "0" + data.getHours()) + ":" + (data.getMinutes() >= 10 ? data.getMinutes() : "0" + data.getMinutes());
+					elem.dataDia = data.getDate() >= 10 ? data.getDate() : "0" + data.getDate();
+					elem.dataDia += "/" + ((data.getMonth() + 1) >= 10 ? (data.getMonth() + 1) : "0" + (data.getMonth() + 1));
+					elem.dataDia += "/" + data.getFullYear();
+				});
 			}
 		}.bind(this));
 
@@ -256,11 +272,10 @@
 			});
 		}
 		
-		$scope.avaliarAula = function(nota, aula, user, sensei) {
+		$scope.avaliarAula = function(nota, user, sensei) {
 			var data = {
 				sensei: sensei,
 				gafanhoto: user,
-				aula: aula,
 				nota: nota
 			};
 			
@@ -281,5 +296,19 @@
 				return $rootScope.aulasConfirmadas.some(elem => elem == evento);
 			}
 		}
+	}]);
+	
+	//Sensei Controller
+	app.controller('SenseiController', ['HTTPService', '$location', function(httpService, $location) {
+		var sensei;
+		var data = {
+			id: $location.search().id
+		}
+		
+		//Pega a info do sensei POST
+		httpService.post("../backend/sensei/read.php", data, function(answer) {
+			this.sensei = answer[0];
+			console.log(this.sensei);
+		}.bind(this));
 	}]);
 })();

@@ -1,0 +1,32 @@
+<div class="row route-tela">
+	<!-- Loader -->
+	<div class="loader-wrapper">
+		<div class="preloader-wrapper big active loader" ng-if="!Sensei.sensei">
+			<div class="spinner-layer spinner-blue-only">
+				<div class="circle-clipper left">
+					<div class="circle"></div>
+				</div><div class="gap-patch">
+					<div class="circle"></div>
+				</div><div class="circle-clipper right">
+					<div class="circle"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="sensei-info" ng-if="Sensei.sensei">
+		<!-- INFO -->
+		<img ng-attr-src="{{Sensei.sensei.foto}}" class="circle" id="sensei-img">
+		
+		<div class="sensei-info-wrapper">
+			<h4 id="sensei-nome">{{Sensei.sensei.nome}}</h4>
+			<p id="sensei-seguidores">450 seguidores</p>
+			
+		</div>
+		
+		<div class="sensei-info-wrapper" id="sensei-wrapper-2">
+			<a class="waves-effect waves-light btn  deep-orange accent-2"><i class="material-icons right">person_add</i>seguir</a>
+			<p id="sensei-nota"><i class="material-icons">star</i><span>4.7</span>/5.0</p>
+		</div>
+	</div>
+</div>

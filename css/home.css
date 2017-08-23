@@ -108,11 +108,11 @@ nav .disabled {
   padding-left: 0px !important;
   max-width: 250px !important; }
   #sidebar li {
-    line-height: 40px; }
+    line-height: 50px; }
     #sidebar li a {
-      font-size: 13px;
-      line-height: 40px;
-      height: 40px;
+      font-size: 14px;
+      line-height: 50px;
+      height: 50px;
       padding: 0 30px;
       color: rgba(0, 0, 0, 0.72);
       font-weight: 500;
@@ -121,8 +121,8 @@ nav .disabled {
         background-color: rgba(0, 0, 0, 0.05); }
       #sidebar li a i.material-icons {
         float: left;
-        height: 40px;
-        line-height: 40px;
+        height: 50px;
+        line-height: 50px;
         margin: 0 24px 0 0;
         width: 24px;
         color: rgba(0, 0, 0, 0.54); }
@@ -139,11 +139,11 @@ nav .disabled {
 #corpo {
   margin-top: 73px !important; }
 
-#loader-wrapper {
+.loader-wrapper {
   text-align: center; }
-  #loader-wrapper #loader {
+  .loader-wrapper .loader {
     margin-top: 30px; }
-    #loader-wrapper #loader .spinner-layer {
+    .loader-wrapper .loader .spinner-layer {
       border-color: #ff6e40; }
 
 /*****CARDS*****/
@@ -170,6 +170,9 @@ nav .disabled {
   .card-content .preco {
     color: #00c853 !important;
     font-size: 18px !important;
+    font-weight: 300 !important; }
+  .card-content .data {
+    color: #ffab00 !important;
     font-weight: 300 !important; }
   .card-content .vagas {
     color: #ff1744 !important;
@@ -219,5 +222,36 @@ nav .disabled {
 
 #tags p {
   display: inline-block; }
+
+/*****SENSEI*****/
+#sensei-img {
+  float: left;
+  width: 100px;
+  margin-left: 10px;
+  border: 2px solid black; }
+
+.sensei-info-wrapper {
+  margin-left: 30px;
+  height: 100px;
+  display: inline-block; }
+  .sensei-info-wrapper h4 {
+    margin: 10px 0 0 0 !important;
+    display: inline-block; }
+  .sensei-info-wrapper p {
+    font-size: 16px !important;
+    font-weight: 500; }
+
+#sensei-wrapper-2 {
+  float: right; }
+  #sensei-wrapper-2 a {
+    margin-top: 10px; }
+  #sensei-wrapper-2 p i.material-icons {
+    float: left;
+    line-height: 28px;
+    margin: 0 16px 0 0;
+    width: 20px;
+    color: #ffab00; }
+  #sensei-wrapper-2 span {
+    font-size: 20px !important; }
 
 /*# sourceMappingURL=home.css.map */

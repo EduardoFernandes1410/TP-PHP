@@ -1,7 +1,7 @@
 <div class="row route-tela">
 	<!-- Loader -->
-	<div id="loader-wrapper">
-		<div class="preloader-wrapper big active" id="loader" ng-if="!Aula.aulas">
+	<div class="loader-wrapper">
+		<div class="preloader-wrapper big active loader" ng-if="!Aula.aulas">
 			<div class="spinner-layer spinner-blue-only">
 				<div class="circle-clipper left">
 					<div class="circle"></div>
@@ -18,27 +18,16 @@
 		<div class="card medium">
 			<div class="card-content">
 				<span class="card-title">{{aulas.aulaNome}}</span>
-				<a class="nome-sensei" href="#">{{aulas.nome}}</a>
+				<a class="nome-sensei" ng-href="{{'home.html#!/sensei?id=' + aulas.id}}">{{aulas.nome}}</a>
 				
 				<div id="tags">
 					<div class="chip" ng-repeat="tags in aulas.tags">{{tags}}</div>
 				</div>
 				
 				<p class="preco info">R${{aulas.preco}}</p>
+				<p class="data info">{{aulas.dataDia}} - {{aulas.dataHora}}</p>
 				<p class="local info">Local: {{aulas.local}}</p>
 				<p class="vagas info">{{aulas.capacidade}} vagas restantes</p>
-				
-				<!-- Avaliacao -->
-				<!-- <div>
-					<div class="input-field col s10 avaliacao-wrapper">
-						<input id="nota" class="validate" type="number" min="1" max="5" name="nota" ng-model="params.Nota">
-						<label for="nota">Nota</label>
-					</div>
-					
-					<div class="col s2 enviar-nota">
-						<a href="#" ng-click="avaliarAula(params.Nota, aulas.id, usuario.ID, aulas.sensei)" onclick="return false;"><i class="material-icons right">send</i></a>
-					</div>
-				</div> -->
 			</div>
 			
 			<div class="card-action">

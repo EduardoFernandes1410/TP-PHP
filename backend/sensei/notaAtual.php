@@ -6,6 +6,7 @@
     $obj = json_decode(file_get_contents("php://input"));
 
     $id = $obj->id;
+    $idGafanhoto = $_SESSION['ID'];
 
 	$conexao = conecta();
 
@@ -18,7 +19,7 @@
 		die("Database não pode ser usada");
 	}
 
-    $query = "SELECT *, AVG(notas.nota) FROM user INNER JOIN notas ON user.id = notas.id_sensei WHERE user.id = '$id'";
+    $query = "SELECT notas.nota FROM user INNER JOIN notas ON user.id = notas.id_sensei WHERE notas.id_sensei = '$id' and notas.id_gafanhoto = '$idGafanhoto'";
 
     $select = mysqli_query($conexao, $query);
     if($select){

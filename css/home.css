@@ -104,7 +104,7 @@ nav .disabled {
     width: 40px; }
 
 #sidebar {
-  margin-top: 12px;
+  margin-top: 14px;
   padding-left: 0px !important;
   max-width: 250px !important; }
   #sidebar li {
@@ -164,6 +164,9 @@ nav .disabled {
     height: 24px !important;
     font-size: 9.75px !important;
     line-height: 24px !important; }
+  .card-content .info {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important; }
   .card-content .preco {
     color: #00c853 !important;
     font-size: 18px !important;
@@ -172,7 +175,8 @@ nav .disabled {
     color: #ff1744 !important;
     font-weight: 300 !important; }
   .card-content .local {
-    margin-top: 50px !important; }
+    font-weight: 300;
+    color: #2979ff !important; }
   .card-content .avaliacao-wrapper {
     padding: 0px !important; }
     .card-content .avaliacao-wrapper #nota {
@@ -202,8 +206,9 @@ nav .disabled {
 .card-action {
   overflow: hidden; }
   .card-action a {
-    color: #ff6e40 !important;
-    margin-right: 0px !important; }
+    color: #ffab00 !important;
+    margin-right: 0px !important;
+    cursor: pointer; }
 
 /*****CRIAR AULA*****/
 .titulo {

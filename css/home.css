@@ -107,33 +107,50 @@ nav .disabled {
   margin-top: 14px;
   padding-left: 0px !important;
   max-width: 250px !important; }
-  #sidebar li {
-    line-height: 50px; }
-    #sidebar li a {
-      font-size: 14px;
-      line-height: 50px;
+
+#sidebar li, #sidenav li {
+  line-height: 50px; }
+  #sidebar li a, #sidenav li a {
+    font-size: 14px;
+    line-height: 50px;
+    height: 50px;
+    padding: 0 30px;
+    color: rgba(0, 0, 0, 0.72);
+    font-weight: 500;
+    display: block;
+    cursor: pointer; }
+    #sidebar li a:hover, #sidenav li a:hover {
+      background-color: rgba(0, 0, 0, 0.05) !important; }
+    #sidebar li a i.material-icons, #sidenav li a i.material-icons {
+      float: left;
       height: 50px;
-      padding: 0 30px;
-      color: rgba(0, 0, 0, 0.72);
-      font-weight: 500;
-      display: block; }
-      #sidebar li a:hover {
-        background-color: rgba(0, 0, 0, 0.05); }
-      #sidebar li a i.material-icons {
-        float: left;
-        height: 50px;
-        line-height: 50px;
-        margin: 0 24px 0 0;
-        width: 24px;
-        color: rgba(0, 0, 0, 0.54); }
-  #sidebar li.divider {
-    margin: 8px 0 8px 0; }
+      line-height: 50px;
+      margin: 0 24px 0 0;
+      width: 24px;
+      color: rgba(0, 0, 0, 0.54); }
+#sidebar li.divider, #sidenav li.divider {
+  margin: 8px 0 8px 0 !important; }
 
 #sidenav a#logo-mini {
   font-size: 32px;
   font-weight: 200;
   margin-top: 5px;
-  margin-bottom: 15px; }
+  margin-bottom: 5px; }
+
+#tags-collapsible {
+  border: 0px !important;
+  box-shadow: 0 0 0 0 !important;
+  margin: 0 0 0 0 !important; }
+  #tags-collapsible #tags-dropdown a {
+    background-color: transparent;
+    border-bottom: 0px; }
+
+#tags-wrapper {
+  padding: 0 30px 0 30px !important;
+  border: 0px !important; }
+  #tags-wrapper ul li a {
+    line-height: 40px;
+    height: 40px; }
 
 /*****CORPO*****/
 #corpo {
@@ -237,6 +254,8 @@ nav .disabled {
   .sensei-info-wrapper h4 {
     margin: 10px 0 0 0 !important;
     display: inline-block; }
+  .sensei-info-wrapper a {
+    margin-right: 12px; }
   .sensei-info-wrapper p {
     font-size: 16px !important;
     font-weight: 500; }
@@ -253,5 +272,8 @@ nav .disabled {
     color: #ffab00; }
   #sensei-wrapper-2 span {
     font-size: 20px !important; }
+
+#sensei-aulas-row {
+  margin-top: 20px; }
 
 /*# sourceMappingURL=home.css.map */

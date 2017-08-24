@@ -4,9 +4,9 @@
     session_start();
 
     $obj = json_decode(file_get_contents("php://input"));
-    $userId = $obj->user;
+    $userId = $obj->id;
 
-    $query = "SELECT *, GROUP_CONCAT(tags.nome) AS strTags, aula.id AS aulaId, aula.nome AS aulaNome, user.nome AS userNome FROM aula INNER JOIN aula_tags ON aula.id = aula_tags.id_aula INNER JOIN tags ON aula_tags.id_tag = tags.id INNER JOIN user ON user.id = aula.sensei GROUP BY aula.id WHERE user.id = '$userId'";
+    $query = "SELECT *, GROUP_CONCAT(tags.nome) AS strTags, aula.id AS aulaId, aula.nome AS aulaNome, user.nome AS userNome FROM aula INNER JOIN aula_tags ON aula.id = aula_tags.id_aula INNER JOIN tags ON aula_tags.id_tag = tags.id INNER JOIN user ON user.id = aula.sensei WHERE user.id = '$userId' GROUP BY aula.id ";
 
 	$conexao = conecta();
 

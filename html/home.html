@@ -81,12 +81,42 @@
         
         <!-- Side Nav -->
         <ul class="side-nav" id="sidenav">
-            <li><a href="#" id="logo-mini">teach.me</a></li>
+            <li><a href="home.html#!/" id="logo-mini">teach.me</a></li>
+            <li class="divider"></li>
             <li><a ng-class="{disabled: usuario.Admin}" id="virar-sensei" ng-href="{{!usuario.Admin ? '#modal1' : '#'}}" onclick="return false;">Virar Sensei</a></li>
-            <li><a href="sass.html" class="waves-effect waves-blue"><i class="material-icons">home</i>Início</a></li>
-            <li><a href="badges.html" class="waves-effect waves-blue"><i class="material-icons">people</i>Senseis seguindo</a></li>
-            <li><a href="collapsible.html" class="waves-effect waves-blue"><i class="material-icons">class</i>Minhas aulas</a></li>
-                    
+            <li class="divider"></li>
+            <li><a href="home.html#!/aulas" class="waves-effect waves-blue"><i class="material-icons">home</i>Início</a></li>
+            <li><a href="home.html#!/aulas" class="waves-effect waves-blue"><i class="material-icons">people</i>Senseis seguindo</a></li>
+            <li><a href="home.html#!/aulas" class="waves-effect waves-blue"><i class="material-icons">class</i>Minhas aulas</a></li>
+            <li class="divider"></li>
+            
+            <!-- Tags -->
+            <li class="no-padding">
+                <ul id="tags-collapsible" class="collapsible collapsible-accordion">
+                    <li id="tags-dropdown">
+                        <a class="collapsible-header"><i class="material-icons left">label</i>Tags<i class="material-icons right">arrow_drop_down</i></a>
+                        <div id="tags-wrapper" class="collapsible-body">
+                            <ul>
+                                <li><a href="home.html#!/aulas?id=0">Artes Plásticas</a></li>
+                                <li><a href="home.html#!/aulas?id=1">Biologia</a></li>
+                                <li><a href="home.html#!/aulas?id=2">Ciências Sociais</a></li>
+                                <li><a href="home.html#!/aulas?id=3">Computação</a></li>
+                                <li><a href="home.html#!/aulas?id=4">Dança</a></li>
+                                <li><a href="home.html#!/aulas?id=5">Esportes</a></li>
+                                <li><a href="home.html#!/aulas?id=6">Finanças</a></li>
+                                <li><a href="home.html#!/aulas?id=7">Física</a></li>
+                                <li><a href="home.html#!/aulas?id=8">Geografia</a></li>
+                                <li><a href="home.html#!/aulas?id=9">História</a></li>
+                                <li><a href="home.html#!/aulas?id=10">Matemática</a></li>
+                                <li><a href="home.html#!/aulas?id=11">Música</a></li>
+                                <li><a href="home.html#!/aulas?id=12">Português</a></li>
+                                <li><a href="home.html#!/aulas?id=13">Química</a></li>
+                                <li><a href="home.html#!/aulas?id=14">Redação</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
             <li class="divider"></li>
             
             <li><a href="#" onclick="logout();" class="waves-effect waves-blue"><i class="material-icons">close</i>Sair</a></li>
@@ -165,11 +195,40 @@
         <div class="row">
             <!-- SideBar -->
             <div id="sidebar" class="col l3 hide-on-med-and-down">
-                <ul class="" id="sidebar">
+                <ul id="sidebar">
+                    <!-- Primeiras Opcoes -->
                     <li><a href="home.html#!/aulas" class="waves-effect waves-blue"><i class="material-icons">home</i>Início</a></li>
-                    <li><a href="badges.html" class="waves-effect waves-blue"><i class="material-icons">people</i>Senseis seguindo</a></li>
-                    <li><a href="collapsible.html" class="waves-effect waves-blue"><i class="material-icons">class</i>Minhas aulas</a></li>
+                    <li><a href="home.html#!/aulas" class="waves-effect waves-blue"><i class="material-icons">people</i>Senseis seguindo</a></li>
+                    <li><a href="home.html#!/aulas" class="waves-effect waves-blue"><i class="material-icons">class</i>Minhas aulas</a></li>
+                    <li class="divider"></li>
                     
+                    <!-- Tags -->
+                    <li class="no-padding">
+                        <ul id="tags-collapsible" class="collapsible collapsible-accordion">
+                            <li id="tags-dropdown">
+                                <a class="collapsible-header"><i class="material-icons left">label</i>Tags<i class="material-icons right">arrow_drop_down</i></a>
+                                <div id="tags-wrapper" class="collapsible-body">
+                                    <ul>
+                                        <li><a href="home.html#!/aulas?id=0">Artes Plásticas</a></li>
+                                        <li><a href="home.html#!/aulas?id=1">Biologia</a></li>
+                                        <li><a href="home.html#!/aulas?id=2">Ciências Sociais</a></li>
+                                        <li><a href="home.html#!/aulas?id=3">Computação</a></li>
+                                        <li><a href="home.html#!/aulas?id=4">Dança</a></li>
+                                        <li><a href="home.html#!/aulas?id=5">Esportes</a></li>
+                                        <li><a href="home.html#!/aulas?id=6">Finanças</a></li>
+                                        <li><a href="home.html#!/aulas?id=7">Física</a></li>
+                                        <li><a href="home.html#!/aulas?id=8">Geografia</a></li>
+                                        <li><a href="home.html#!/aulas?id=9">História</a></li>
+                                        <li><a href="home.html#!/aulas?id=10">Matemática</a></li>
+                                        <li><a href="home.html#!/aulas?id=11">Música</a></li>
+                                        <li><a href="home.html#!/aulas?id=12">Português</a></li>
+                                        <li><a href="home.html#!/aulas?id=13">Química</a></li>
+                                        <li><a href="home.html#!/aulas?id=14">Redação</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="divider"></li>
                     
                     <li><a href="../html/login.html" onclick="logout();" class="waves-effect waves-blue"><i class="material-icons">close</i>Sair</a></li>
@@ -177,7 +236,7 @@
             </div>
             
             <!-- Route View -->
-            <div class="col l9" id="corpo">
+            <div class="col m12 l9" id="corpo">
                 <div ng-view></div>
             </div>
         </div>

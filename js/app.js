@@ -226,11 +226,15 @@
 	}]);
 
 	//Exibir Aula Controller
-	app.controller('ExibirAulaController', ['HTTPService', '$scope', '$rootScope', function(httpService, $scope, $rootScope) {
+	app.controller('ExibirAulaController', ['HTTPService', '$scope', '$rootScope', '$location', function(httpService, $scope, $rootScope, $location) {
 		var aulas;
+		var data = {
+			tag: $location.search().id
+		}
+		var endereco = ($location.search().id) ? "../backend/aulas/readTags.php" : "../backend/aulas/read.php"
 		
 		//Pega as aulas
-		httpService.get("../backend/aulas/read.php", function(answer) {
+		httpService.post(endereco, data, function(answer) {
 			if(answer) {
 				answer = answer.reverse();
 				this.aulas = answer;
@@ -249,11 +253,15 @@
 		}.bind(this));
 
 		//Pega as inscricoes em aulas do cara
-		httpService.get("../backend/user/aulas.php", function(answer) {
-			if(answer) {
-				$rootScope.aulasConfirmadas = answer;
-			}
-		}.bind(this));
+		$scope.getAulasConfirmadas = function() {
+			httpService.get("../backend/user/aulas.php", function(answer) {
+				if(answer) {
+					$rootScope.aulasConfirmadas = answer;
+				}
+			}.bind(this));
+		}
+		//Chama a funcao		
+		$scope.getAulasConfirmadas();
 		
 		$scope.inscreverNaAula = function(id, aula) {
 			var data = {
@@ -264,6 +272,8 @@
 			httpService.post("../backend/aulas/inscricao.php", data, function(answer) {
 				if(answer == 1) {
 					Materialize.toast("Inscricao realizada com sucesso!", 3000);
+					//Atualiza
+					$scope.getAulasConfirmadas();
 				} else if(answer == 0) {
 					Materialize.toast("Falha ao realizar a inscrição!", 3000);
 				} else if(answer == 2) {
@@ -301,6 +311,7 @@
 	//Sensei Controller
 	app.controller('SenseiController', ['HTTPService', '$location', function(httpService, $location) {
 		var sensei;
+		var aulas;
 		var data = {
 			id: $location.search().id
 		}
@@ -308,7 +319,23 @@
 		//Pega a info do sensei POST
 		httpService.post("../backend/sensei/read.php", data, function(answer) {
 			this.sensei = answer[0];
-			console.log(this.sensei);
+		}.bind(this));
+		
+		//Pega as aulas do sensei POST
+		httpService.post("../backend/sensei/aulas.php", data, function(answer) {
+			answer = answer.reverse();
+			this.aulas = answer;
+			
+			//Mexe nas tags
+			this.aulas.forEach(elem => elem.tags = elem.strTags.split(","));
+			//Mexe na data
+			this.aulas.forEach(function(elem) {
+				var data = new Date(elem.data);
+				elem.dataHora = (data.getHours() >= 10 ? data.getHours() : "0" + data.getHours()) + ":" + (data.getMinutes() >= 10 ? data.getMinutes() : "0" + data.getMinutes());
+				elem.dataDia = data.getDate() >= 10 ? data.getDate() : "0" + data.getDate();
+				elem.dataDia += "/" + ((data.getMonth() + 1) >= 10 ? (data.getMonth() + 1) : "0" + (data.getMonth() + 1));
+				elem.dataDia += "/" + data.getFullYear();
+			});
 		}.bind(this));
 	}]);
 })();

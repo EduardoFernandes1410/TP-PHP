@@ -194,7 +194,9 @@ nav {
 	margin-top: 14px;
 	padding-left: 0px !important;
 	max-width: 250px !important;
-	
+}
+
+#sidebar, #sidenav {
 	li {
 		line-height: 50px;
 		
@@ -206,13 +208,10 @@ nav {
 		    color: rgba(0,0,0,0.72);
 	        font-weight: 500;
 	        display: block;
+	        cursor: pointer;
 	        
 	        &:hover {
-	        	background-color: rgba(0,0,0,0.05);
-	        }
-	        
-	        &:click {
-	        	
+	        	background-color: rgba(0,0,0,0.05) !important;
 	        }
 	        
 	        i.material-icons {
@@ -227,7 +226,7 @@ nav {
 	}
 	
 	li.divider {
-		margin: 8px 0 8px 0;
+		margin: 8px 0 8px 0 !important;
 	}
 }
 
@@ -236,7 +235,34 @@ nav {
 		font-size: 32px;
 		font-weight: 200;
 		margin-top: 5px;
-		margin-bottom: 15px;
+		margin-bottom: 5px;
+	}
+}
+
+#tags-collapsible {
+	border: 0px !important;
+	box-shadow: 0 0 0 0 !important;
+	margin: 0 0 0 0 !important;
+	
+	#tags-dropdown {
+		a {
+			background-color: transparent;
+			border-bottom: 0px;
+		}
+	}
+}
+
+#tags-wrapper {
+	padding: 0 30px 0 30px !important;
+	border: 0px !important;
+	
+	ul {
+		li {
+			a {
+				line-height: 40px;
+				height: 40px;
+			}
+		}
 	}
 }
 
@@ -391,8 +417,6 @@ nav {
 }
 
 .sensei-info-wrapper {
-    // border-style: solid;
-    // border-width: 5px 5px 5px 5px;
     margin-left: 30px;
     height: 100px;
 	display: inline-block;
@@ -400,6 +424,10 @@ nav {
 	h4 {
 		margin: 10px 0 0 0 !important;
 		display: inline-block;
+	}
+	
+	a {
+		margin-right: 12px;
 	}
 	
 	p {
@@ -428,4 +456,8 @@ nav {
 	span {
 		font-size: 20px !important;
 	}
+}
+
+#sensei-aulas-row {
+	margin-top: 20px;
 }

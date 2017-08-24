@@ -2,7 +2,9 @@ $(document).ready(function(){
 	$('.collapsible').collapsible();
 
 	$(".button-collapse").sideNav({
-		edge: 'left'
+		edge: 'left',
+		closeOnClick: true,
+		draggable: false,
 	});
 
 	/**********VIRAR SENSEI**********/

@@ -1,6 +1,9 @@
 <div class="row route-tela">
 	<!-- Loader -->
 	<div class="loader-wrapper">
+		<!-- Mensagem de Vazio -->
+		<h4 ng-if="Aula.aulas && Aula.aulas.length == 0">Não há nada aqui :/</h4>
+		
 		<div class="preloader-wrapper big active loader" ng-if="!Aula.aulas">
 			<div class="spinner-layer spinner-blue-only">
 				<div class="circle-clipper left">
@@ -13,7 +16,8 @@
 			</div>
 		</div>
 	</div>
-
+	
+	<!-- Cards -->
 	<div class="col s12 m6 l4" ng-repeat="aulas in Aula.aulas">
 		<div class="card medium">
 			<div class="card-content">
@@ -31,7 +35,7 @@
 			</div>
 			
 			<div class="card-action">
-				<a ng-show="!estaConfirmado(aulas.aulaId)" class="right" href="#" onclick="return false;" ng-click="inscreverNaAula(usuario.ID, aulas.id)">Inscrever-se</a>
+				<a ng-show="!estaConfirmado(aulas.aulaId)" class="right" href="#" onclick="return false;" ng-click="inscreverNaAula(usuario.ID, aulas.aulaId)">Inscrever-se</a>
 				<a ng-show="estaConfirmado(aulas.aulaId)" class="right" href="#" onclick="return false;" ng-click="">Cancelar inscrição</a>
 			</div>
 		</div>

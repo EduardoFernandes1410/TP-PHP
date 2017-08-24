@@ -41,7 +41,6 @@
                 echo "0";
             } else {
                 //Atualiza a capacidade da aula
-
                 $query2 = "UPDATE aula SET capacidade=$capacidade WHERE id='$aula'";
 
                 $insert2 = mysqli_query($conexao, $query2);

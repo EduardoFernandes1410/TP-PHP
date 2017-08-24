@@ -14,8 +14,8 @@
 		</div>
 	</div>
 	
+	<!-- INFO -->
 	<div id="sensei-info" ng-if="Sensei.sensei">
-		<!-- INFO -->
 		<img ng-attr-src="{{Sensei.sensei.foto}}" class="circle" id="sensei-img">
 		
 		<div class="sensei-info-wrapper">
@@ -27,6 +27,32 @@
 		<div class="sensei-info-wrapper" id="sensei-wrapper-2">
 			<a class="waves-effect waves-light btn  deep-orange accent-2"><i class="material-icons right">person_add</i>seguir</a>
 			<p id="sensei-nota"><i class="material-icons">star</i><span>4.7</span>/5.0</p>
+		</div>
+	</div>
+	
+	<!-- Aulas -->
+	<div id="sensei-aulas-row" class="row">
+		<div class="col s12 m6 l4" ng-repeat="aulas in Sensei.aulas">
+			<div class="card medium">
+				<div class="card-content">
+					<span class="card-title">{{aulas.aulaNome}}</span>
+					<a class="nome-sensei" ng-href="{{'home.html#!/sensei?id=' + aulas.id}}">{{aulas.nome}}</a>
+					
+					<div id="tags">
+						<div class="chip" ng-repeat="tags in aulas.tags">{{tags}}</div>
+					</div>
+					
+					<p class="preco info">R${{aulas.preco}}</p>
+					<p class="data info">{{aulas.dataDia}} - {{aulas.dataHora}}</p>
+					<p class="local info">Local: {{aulas.local}}</p>
+					<p class="vagas info">{{aulas.capacidade}} vagas restantes</p>
+				</div>
+				
+				<div class="card-action">
+					<a ng-show="!estaConfirmado(aulas.aulaId)" class="right" href="#" onclick="return false;" ng-click="inscreverNaAula(usuario.ID, aulas.aulaId)">Inscrever-se</a>
+					<a ng-show="estaConfirmado(aulas.aulaId)" class="right" href="#" onclick="return false;" ng-click="">Cancelar inscrição</a>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

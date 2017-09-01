@@ -34,6 +34,12 @@
 				controller: "CriarAulaController"
 			}
 		)
+		.when("minhas-aulas",
+			{
+				templateUrl: "../html/aulas.html",
+				controller: "CriarAulaController"
+			}
+		)
 		.when("/sensei",
 			{				
 				templateUrl: "../html/sensei.html",
@@ -77,12 +83,37 @@
 		return httpService;
 	});
 
-	//Criar Aula Service
-	app.factory('CriarAulaService', function($http) {
-		var criarAulaService = {};
+	//Pegar Aulas Service
+	app.factory('PegarAulasService', ['HTTPService', function(httpService) {
+		var pegarAulasService = {};
+		
+		pegarAulasService.getAulas = function(endereco, data, callback) {
+			var aulas;
+			
+			//Pega as aulas
+			httpService.post(endereco, data, function(answer) {
+				if(answer) {
+					answer = answer.reverse();
+					aulas = answer;
+					
+					//Mexe nas tags
+					aulas.forEach(elem => elem.tags = elem.strTags.split(","));
+					//Mexe na data
+					aulas.forEach(function(elem) {
+						var data = new Date(elem.data);
+						elem.dataHora = (data.getHours() >= 10 ? data.getHours() : "0" + data.getHours()) + ":" + (data.getMinutes() >= 10 ? data.getMinutes() : "0" + data.getMinutes());
+						elem.dataDia = data.getDate() >= 10 ? data.getDate() : "0" + data.getDate();
+						elem.dataDia += "/" + ((data.getMonth() + 1) >= 10 ? (data.getMonth() + 1) : "0" + (data.getMonth() + 1));
+						elem.dataDia += "/" + data.getFullYear();
+					});
+					
+					callback(aulas);
+				}
+			});
+		}
 
-		return criarAulaService;
-	});
+		return pegarAulasService;
+	}]);
 
 //**********Controladores*********//
 	//Route Controller
@@ -127,7 +158,7 @@
 	}]);
 
 	//Criar Aulas Controller
-	app.controller("CriarAulaController", ['HTTPService', 'CriarAulaService', '$timeout', '$scope', '$route', '$location', '$rootScope', function(httpService, criarAulaService, $timeout, $scope, $route, $location, $rootScope) {
+	app.controller("CriarAulaController", ['HTTPService', '$timeout', '$scope', '$route', '$location', '$rootScope', function(httpService, $timeout, $scope, $route, $location, $rootScope) {
 		$timeout(function() {
 			//Inicia elementos do Materialize
 			$(document).ready(function() {				
@@ -226,30 +257,16 @@
 	}]);
 
 	//Exibir Aula Controller
-	app.controller('ExibirAulaController', ['HTTPService', '$scope', '$rootScope', '$location', function(httpService, $scope, $rootScope, $location) {
+	app.controller('ExibirAulaController', ['HTTPService', 'PegarAulasService', '$scope', '$rootScope', '$location', function(httpService, pegarAulasService, $scope, $rootScope, $location) {
 		var aulas;
 		var data = {
 			tag: $location.search().id
 		}
-		var endereco = ($location.search().id) ? "../backend/aulas/readTags.php" : "../backend/aulas/read.php"
+		var endereco = ($location.search().id) ? "../backend/aulas/readTags.php" : "../backend/aulas/read.php";
 		
 		//Pega as aulas
-		httpService.post(endereco, data, function(answer) {
-			if(answer) {
-				answer = answer.reverse();
-				this.aulas = answer;
-				
-				//Mexe nas tags
-				this.aulas.forEach(elem => elem.tags = elem.strTags.split(","));
-				//Mexe na data
-				this.aulas.forEach(function(elem) {
-					var data = new Date(elem.data);
-					elem.dataHora = (data.getHours() >= 10 ? data.getHours() : "0" + data.getHours()) + ":" + (data.getMinutes() >= 10 ? data.getMinutes() : "0" + data.getMinutes());
-					elem.dataDia = data.getDate() >= 10 ? data.getDate() : "0" + data.getDate();
-					elem.dataDia += "/" + ((data.getMonth() + 1) >= 10 ? (data.getMonth() + 1) : "0" + (data.getMonth() + 1));
-					elem.dataDia += "/" + data.getFullYear();
-				});
-			}
+		pegarAulasService.getAulas(endereco, data, function(answer) {
+			this.aulas = answer;
 		}.bind(this));
 
 		//Pega as inscricoes em aulas do cara
@@ -278,6 +295,24 @@
 					Materialize.toast("Falha ao realizar a inscrição!", 3000);
 				} else if(answer == 2) {
 					Materialize.toast("Você já esta cadastrado nessa aula!", 3000);					
+				}
+			});
+		}
+		
+		$scope.desinscreverNaAula = function(id, aula) {
+			var data = {
+				user: id,
+				aula: aula
+			};
+			
+			httpService.post("../backend/aulas/desinscrever.php", data, function(answer) {
+				console.log(answer);
+				if(answer) {
+					Materialize.toast("Inscricao cancelada com sucesso!", 3000);
+					//Atualiza
+					$scope.getAulasConfirmadas();
+				} else {
+					Materialize.toast("Falha ao cancelar a inscrição!", 3000);
 				}
 			});
 		}

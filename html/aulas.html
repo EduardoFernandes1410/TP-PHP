@@ -36,7 +36,7 @@
 			
 			<div class="card-action">
 				<a ng-show="!estaConfirmado(aulas.aulaId)" class="right" href="#" onclick="return false;" ng-click="inscreverNaAula(usuario.ID, aulas.aulaId)">Inscrever-se</a>
-				<a ng-show="estaConfirmado(aulas.aulaId)" class="right" href="#" onclick="return false;" ng-click="">Cancelar inscrição</a>
+				<a ng-show="estaConfirmado(aulas.aulaId)" class="right" href="#" onclick="return false;" ng-click="desinscreverNaAula(usuario.ID, aulas.aulaId)">Cancelar inscrição</a>
 			</div>
 		</div>
 	</div>

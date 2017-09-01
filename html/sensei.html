@@ -32,6 +32,21 @@
 	
 	<!-- Aulas -->
 	<div id="sensei-aulas-row" class="row">
+		<!-- Loader de Aulas -->
+		<div class="loader-wrapper">
+			<div class="preloader-wrapper small active loader" ng-if="!Sensei.aulas">
+				<div class="spinner-layer spinner-blue-only">
+					<div class="circle-clipper left">
+						<div class="circle"></div>
+					</div><div class="gap-patch">
+						<div class="circle"></div>
+					</div><div class="circle-clipper right">
+						<div class="circle"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
 		<div class="col s12 m6 l4" ng-repeat="aulas in Sensei.aulas">
 			<div class="card medium">
 				<div class="card-content">

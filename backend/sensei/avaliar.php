@@ -7,7 +7,6 @@
 
     $sensei = $obj->sensei;
     $gafanhoto = $obj->gafanhoto;
-    $aula = $obj->aula;
     $nota = $obj->nota;
 
 	$conexao = conecta();
@@ -21,7 +20,7 @@
 		die("Database não pode ser usada");
 	}
 
-    $query1 = "SELECT * FROM notas WHERE id_aula = '$aula' and id_gafanhoto='$gafanhoto'";
+    $query1 = "SELECT * FROM notas WHERE id_sensei = '$sensei' and id_gafanhoto='$gafanhoto'";
 
     $select = mysqli_query($conexao, $query1);
 
@@ -31,7 +30,7 @@
     }
     else {
         //Dar nota p/ essa aula
-        $query = "INSERT INTO notas (id_gafanhoto, id_aula, id_sensei, nota) VALUES ('$gafanhoto', '$aula', '$sensei', '$nota')";
+        $query = "INSERT INTO notas (id_gafanhoto, id_sensei, nota) VALUES ('$gafanhoto', '$sensei', '$nota')";
 
         $insert = mysqli_query($conexao, $query);
 

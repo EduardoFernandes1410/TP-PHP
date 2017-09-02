@@ -89,7 +89,6 @@
 				if(answer) {
 					answer = answer.reverse();
 					this.aulas = answer;
-					console.log(this.aulas);
 					
 					//Mexe nas tags
 					this.aulas.forEach(elem => elem.tags = elem.strTags.split(","));
@@ -259,7 +258,6 @@
 		}
 		var endereco = ($location.search().id) ? "../backend/aulas/readTags.php" : "../backend/aulas/read.php";
 		endereco = ($location.search().minhas) ? "../backend/user/aulas.php" : endereco;
-		console.log(endereco);
 		
 		//Pega as aulas
 		pegarAulasService.getAulas(endereco, data, function(answer) {
@@ -303,29 +301,12 @@
 			};
 			
 			httpService.post("../backend/aulas/desinscrever.php", data, function(answer) {
-				console.log(answer);
 				if(answer) {
 					Materialize.toast("Inscricao cancelada com sucesso!", 3000);
 					//Atualiza
 					$scope.getAulasConfirmadas();
 				} else {
 					Materialize.toast("Falha ao cancelar a inscrição!", 3000);
-				}
-			});
-		}
-		
-		$scope.avaliarAula = function(nota, user, sensei) {
-			var data = {
-				sensei: sensei,
-				gafanhoto: user,
-				nota: nota
-			};
-			
-			httpService.post("../backend/aulas/avaliar.php", data, function(answer) {
-				if(answer != 0) {
-					Materialize.toast("Avaliação realizada com sucesso!", 3000);
-				} else {
-					Materialize.toast("Falha ao avaliar a aula!", 3000);
 				}
 			});
 		}
@@ -341,7 +322,7 @@
 	}]);
 	
 	//Sensei Controller
-	app.controller('SenseiController', ['HTTPService', 'PegarAulasService', '$location', '$scope', function(httpService, pegarAulasService, $location, $scope) {
+	app.controller('SenseiController', ['HTTPService', 'PegarAulasService', '$location', '$scope', '$rootScope', function(httpService, pegarAulasService, $location, $scope, $rootScope) {
 		var sensei;
 		var aulas;
 		var data = {
@@ -376,6 +357,26 @@
 					Materialize.toast("Erro ao processar!", 3000);
 				}
 			});
+		}
+		
+		//Pega os senseis que o cara segue
+		$scope.getSenseisSeguindo = function() {
+			httpService.get("../backend/user/toSeguindo.php", function(answer) {
+				if(answer) {
+					$rootScope.senseisSeguindo = answer;
+				}
+			}.bind(this));
+		}
+		//Chama a funcao		
+		$scope.getSenseisSeguindo();
+		
+		//Verifica se o cara ta seguindo o sensei
+		$scope.estaSeguindo = function(sensei) {
+			if(!$rootScope.senseisSeguindo) {
+				return false;
+			} else {
+				return $rootScope.senseisSeguindo.some(elem => elem.id == sensei);
+			}
 		}
 	}]);
 })();

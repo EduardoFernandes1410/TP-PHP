@@ -270,19 +270,47 @@
 
 	//Exibir Aula Controller
 	app.controller('ExibirAulaController', ['HTTPService', 'PegarAulasService', '$scope', '$rootScope', '$location', function(httpService, pegarAulasService, $scope, $rootScope, $location) {
-		var aulas;
+		$rootScope.Aulas = null;
 		var data = {
 			tag: $location.search().id
 		}
 		var endereco = ($location.search().id) ? "../backend/aulas/readTags.php" : "../backend/aulas/read.php";
 		endereco = ($location.search().minhas) ? "../backend/user/aulas.php" : endereco;
 		
+		//Funcao de pesquisa
+		$scope.pesquisaAula = function(params) {
+			var dados = {
+				search: params.Busca
+			};
+			
+			//Redireciona para /aulas
+			$location.search('id', null);
+			$location.search('search', params.Busca);
+			$location.path('/aulas');
+			
+			//Faz aparecer rodinha do load
+			$rootScope.Aulas = null;
+			
+			//Pega as aulas com palavras chave
+			pegarAulasService.getAulas("../backend/aulas/read.php", dados, function(answer) {
+				$rootScope.Aulas = answer;
+			}.bind(this));
+		}
+		
 		//Pega as aulas
-		pegarAulasService.getAulas(endereco, data, function(answer) {
-			this.aulas = answer;
-		}.bind(this));
+		if(!$location.search().search) {
+			pegarAulasService.getAulas(endereco, data, function(answer) {
+				$rootScope.Aulas = answer;
+			}.bind(this));
+		} else {
+			var params = {
+				Busca: $location.search().search
+			};
+			
+			$scope.pesquisaAula(params);
+		}
 
-		//Chama a funcao		
+		//Chama a funcao de get as aulas confirmadas
 		$rootScope.getAulasConfirmadas();
 		
 		$scope.inscreverNaAula = function(id, aula) {

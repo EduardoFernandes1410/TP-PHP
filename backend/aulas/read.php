@@ -9,7 +9,7 @@
     if($search == NULL)
         $search = "";
 
-    $query = "SELECT *, GROUP_CONCAT(tags.nome) AS strTags, aula.id AS aulaId, aula.nome AS aulaNome, user.nome AS userNome FROM aula INNER JOIN aula_tags ON aula.id = aula_tags.id_aula INNER JOIN tags ON aula_tags.id_tag = tags.id INNER JOIN user ON user.id = aula.sensei WHERE aula.nome LIKE '%$search%' GROUP BY aula.id";
+    $query = "SELECT *, GROUP_CONCAT(tags.nome) AS strTags, aula.id AS aulaId, aula.nome AS aulaNome, user.nome AS userNome FROM aula INNER JOIN aula_tags ON aula.id = aula_tags.id_aula INNER JOIN tags ON aula_tags.id_tag = tags.id INNER JOIN user ON user.id = aula.sensei WHERE aula.nome LIKE '%$search%' OR user.nome LIKE '%$search%' GROUP BY aula.id";
 	$conexao = conecta();
 
 	if(!$conexao){

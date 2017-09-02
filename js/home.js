@@ -26,7 +26,7 @@ function logout() {
 			method: 'GET',
 			data: null,
 			success: function(asnwer) {
-				console.log("SUCESSO");
+				// console.log("SUCESSO");
 				window.location.href = window.location.href.split("/")[0] + "/html/login.html";
 			}
 		});

@@ -54,7 +54,7 @@ function initApp() {
 			});
 		}
 		else {					
-			console.log("Nao tem user");
+			// console.log("Nao tem user");
 		}					
 	});
 

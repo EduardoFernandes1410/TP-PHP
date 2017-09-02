@@ -53,10 +53,10 @@
                                 <a id="hamburguer" href="#" data-activates="sidenav" class="button-collapse"><i class="material-icons">menu</i></a>
 
                                 <!--Search Bar-->
-                                <div class="col s10 m11 l6">
+                                <div class="col s10 m11 l6" ng-controller="ExibirAulaController">
                                     <form>
                                         <div id="inputWrapper" class="input-field light-blue lighten-1">
-                                            <input disabled id="search" type="search" placeholder="Pesquisar" required>
+                                            <input id="search" ng-model="buscaInput.Busca" ng-keydown="$event.keyCode === 13 && pesquisaAula(buscaInput)" type="search" placeholder="Pesquisar">
                                             <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                                             <i class="material-icons">close</i>
                                         </div>
@@ -238,7 +238,7 @@
             </div>
             
             <!-- Route View -->
-            <div class="col m12 l9" id="corpo">
+            <div class="col s12 m12 l9" id="corpo">
                 <div ng-view></div>
             </div>
         </div>

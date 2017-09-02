@@ -443,7 +443,25 @@ nav {
 		margin-top: 10px;
 	}
 	
-	p {
+	//Avaliacao
+	#avaliacao {
+		margin-bottom: 0px !important;
+		
+		i.material-icons {
+			span {
+				font-size: 24px !important;
+				cursor: pointer;
+			}
+			
+			margin-right: 0px !important;
+			color: #b0bec5;
+		}
+	}
+	
+	//Nota
+	#sensei-nota {
+		margin-top: 0px !important;
+		
 		i.material-icons {
 			float: left;
 			line-height: 28px;
@@ -459,5 +477,5 @@ nav {
 }
 
 #sensei-aulas-row {
-	margin-top: 20px;
+	margin-top: 30px;
 }

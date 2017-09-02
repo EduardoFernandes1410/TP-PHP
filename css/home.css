@@ -264,16 +264,26 @@ nav .disabled {
   float: right; }
   #sensei-wrapper-2 a {
     margin-top: 10px; }
-  #sensei-wrapper-2 p i.material-icons {
-    float: left;
-    line-height: 28px;
-    margin: 0 16px 0 0;
-    width: 20px;
-    color: #ffab00; }
+  #sensei-wrapper-2 #avaliacao {
+    margin-bottom: 0px !important; }
+    #sensei-wrapper-2 #avaliacao i.material-icons {
+      margin-right: 0px !important;
+      color: #b0bec5; }
+      #sensei-wrapper-2 #avaliacao i.material-icons span {
+        font-size: 24px !important;
+        cursor: pointer; }
+  #sensei-wrapper-2 #sensei-nota {
+    margin-top: 0px !important; }
+    #sensei-wrapper-2 #sensei-nota i.material-icons {
+      float: left;
+      line-height: 28px;
+      margin: 0 16px 0 0;
+      width: 20px;
+      color: #ffab00; }
   #sensei-wrapper-2 span {
     font-size: 20px !important; }
 
 #sensei-aulas-row {
-  margin-top: 20px; }
+  margin-top: 30px; }
 
 /*# sourceMappingURL=home.css.map */

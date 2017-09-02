@@ -121,6 +121,24 @@
 		httpService.get("../backend/utils/sessao.php", function(answer) {
 			$rootScope.usuario = answer;
 		});
+		
+		//Pega as inscricoes em aulas do cara
+		$rootScope.getAulasConfirmadas = function() {
+			httpService.get("../backend/user/aulas.php", function(answer) {
+				if(answer) {
+					$rootScope.aulasConfirmadas = answer;
+				}
+			}.bind(this));
+		}
+
+		//Verifica se o cara ja se inscreveu na aula
+		$rootScope.estaConfirmado = function(evento) {
+			if(!$rootScope.aulasConfirmadas) {
+				return false;
+			} else {
+				return $rootScope.aulasConfirmadas.some(elem => elem.id_aula == evento);
+			}
+		}
 	}]);
 
 	//VirarSensei Controller
@@ -264,16 +282,8 @@
 			this.aulas = answer;
 		}.bind(this));
 
-		//Pega as inscricoes em aulas do cara
-		$scope.getAulasConfirmadas = function() {
-			httpService.get("../backend/user/aulas.php", function(answer) {
-				if(answer) {
-					$rootScope.aulasConfirmadas = answer;
-				}
-			}.bind(this));
-		}
 		//Chama a funcao		
-		$scope.getAulasConfirmadas();
+		$rootScope.getAulasConfirmadas();
 		
 		$scope.inscreverNaAula = function(id, aula) {
 			var data = {
@@ -310,51 +320,109 @@
 				}
 			});
 		}
-
-		//Verifica se o cara ja se inscreveu na aula
-		$scope.estaConfirmado = function(evento) {
-			if(!$rootScope.aulasConfirmadas) {
-				return false;
-			} else {
-				return $rootScope.aulasConfirmadas.some(elem => elem.id_aula == evento);
-			}
-		}
 	}]);
 	
 	//Sensei Controller
-	app.controller('SenseiController', ['HTTPService', 'PegarAulasService', '$location', '$scope', '$rootScope', function(httpService, pegarAulasService, $location, $scope, $rootScope) {
-		var sensei;
+	app.controller('SenseiController', ['HTTPService', 'PegarAulasService', '$location', '$scope', '$rootScope', '$timeout', function(httpService, pegarAulasService, $location, $scope, $rootScope, $timeout) {
+		$scope.sensei;
 		var aulas;
 		var data = {
 			id: $location.search().id
-		}
+		};
+		$scope.nota = 0;
 		
 		//Pega a info do sensei POST
-		httpService.post("../backend/sensei/read.php", data, function(answer) {
-			this.sensei = answer[0];
-			
-			if(!this.sensei.media_notas){
-				this.sensei.media_notas = "5.0";
-			}
+		$scope.pegaInfoSensei = function() {
+			httpService.post("../backend/sensei/read.php", data, function(answer) {
+				$scope.sensei = answer[0];
 				
-		}.bind(this));
+				//Caso o sensei ainda nao tenha sido avaliado
+				if(!$scope.sensei.media_notas){
+					$scope.sensei.media_notas = "5.0";
+				}
+				
+				//Avaliacao
+				$(document).ready(function() {
+					for(var i = 1; i <=5; i++) {
+						$("#" + i).hover(function() {
+							for(var j = parseInt($(this).attr('id')); j > 0; j--) {
+								$("#" + j).css('color', '#ffab00');
+							}
+							
+							for(var j = parseInt($(this).attr('id')) + 1; j <= 5; j++) {
+								$("#" + j).css('color', '#b0bec5');
+							}
+						}, function() {
+							for(var j = $scope.nota; j > 0; j--) {
+								$("#" + j).css('color', '#ffab00');
+							}
+							
+							for(var j = $scope.nota + 1; j <= 5; j++) {
+								$("#" + j).css('color', '#b0bec5');
+							}
+						});
+					}
+				});
+			}.bind(this));
+		}
+		//Chama
+		$scope.pegaInfoSensei();
 		
 		//Pega as aulas do sensei POST
 		pegarAulasService.getAulas("../backend/sensei/aulas.php", data, function(answer) {
 			this.aulas = answer;
 		}.bind(this));
 		
+		//Chama a funcao de aulas confirmadas		
+		$rootScope.getAulasConfirmadas();
+		
+		//Pega a nota que o cara deu ao sensei
+		$scope.pegaNotaSensei = function() {
+			httpService.post("../backend/sensei/notaAtual.php", data, function(answer) {
+				answer ? $scope.nota = parseInt(answer[0].nota) : $scope.nota = 0;
+				
+				for(var j = $scope.nota; j > 0; j--) {
+					$("#" + j).css('color', '#ffab00');
+				}
+			}.bind(this));
+		}
+		//Chama
+		$scope.pegaNotaSensei();
+		
 		//Seguir sensei
 		$scope.seguirSensei = function(sensei_id) {
 			var dados = {
 				sensei: sensei_id
-			}
+			};
 			
 			httpService.post("../backend/sensei/seguir.php", dados, function(answer) {
 				if(answer != 0) {
 					Materialize.toast("Você agora segue esse sensei!", 3000);
+					//Atualiza
+					$scope.getSenseisSeguindo();
+					$scope.pegaInfoSensei();
 				} else {
 					Materialize.toast("Erro ao processar!", 3000);
+				}
+			});
+		}
+		
+		//Avaliar sensei
+		$scope.avaliarSensei = function(sensei_id, user_id, nota) {
+			var dados = {
+				sensei: sensei_id,
+				gafanhoto: user_id,
+				nota: nota
+			};
+			
+			httpService.post("../backend/sensei/avaliar.php", dados, function(answer) {
+				if(answer != 0) {
+					Materialize.toast("Avaliação registrada!", 3000);
+					//Atualiza
+					$scope.pegaNotaSensei();
+					$scope.pegaInfoSensei();
+				} else {
+					Materialize.toast("Erro ao processar a avaliação!", 3000);
 				}
 			});
 		}

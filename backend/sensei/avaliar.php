@@ -20,26 +20,20 @@
 		die("Database não pode ser usada");
 	}
 
-    $query1 = "SELECT * FROM notas WHERE id_sensei = '$sensei' and id_gafanhoto='$gafanhoto'";
-
+    //Zera a nota dada
+    $query1 = "DELETE FROM notas WHERE id_sensei = '$sensei' and id_gafanhoto='$gafanhoto'";
     $select = mysqli_query($conexao, $query1);
+    
+    //Dar nota nova
+    $query = "INSERT INTO notas (id_gafanhoto, id_sensei, nota) VALUES ('$gafanhoto', '$sensei', '$nota')";
 
-    if(mysqli_num_rows($select) > 0){
-        //A pessoa já deu nota p/ a aula, logo não pode dar nota mais
+    $insert = mysqli_query($conexao, $query);
+
+    if($insert){
+        echo "1";
+    } else {
         echo "0";
     }
-    else {
-        //Dar nota p/ essa aula
-        $query = "INSERT INTO notas (id_gafanhoto, id_sensei, nota) VALUES ('$gafanhoto', '$sensei', '$nota')";
-
-        $insert = mysqli_query($conexao, $query);
-
-        if($insert){
-            echo "1";
-        } else {
-            echo "0";
-        }
-    } 
     
     desconecta($conexao);
 ?>

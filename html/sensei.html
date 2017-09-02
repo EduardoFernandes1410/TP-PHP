@@ -1,7 +1,7 @@
 <div class="row route-tela">
 	<!-- Loader -->
 	<div class="loader-wrapper">
-		<div class="preloader-wrapper big active loader" ng-if="!Sensei.sensei">
+		<div class="preloader-wrapper big active loader" ng-if="!sensei">
 			<div class="spinner-layer spinner-blue-only">
 				<div class="circle-clipper left">
 					<div class="circle"></div>
@@ -15,18 +15,27 @@
 	</div>
 	
 	<!-- INFO -->
-	<div id="sensei-info" ng-if="Sensei.sensei">
-		<img ng-attr-src="{{Sensei.sensei.foto}}" class="circle" id="sensei-img">
+	<div id="sensei-info" ng-if="sensei">
+		<img ng-attr-src="{{sensei.foto}}" class="circle" id="sensei-img">
 		
 		<div class="sensei-info-wrapper">
-			<h4 id="sensei-nome">{{Sensei.sensei.nome}}</h4>
-			<p id="sensei-seguidores">450 seguidores</p>
+			<h4 id="sensei-nome">{{sensei.nome}}</h4>
+			<p id="sensei-seguidores">{{sensei.seguidores}} seguidor(es)</p>
 			
 		</div>
 		
 		<div class="sensei-info-wrapper" id="sensei-wrapper-2">
-			<a ng-disabled="estaSeguindo(Sensei.sensei.id)" ng-click="seguirSensei(Sensei.sensei.id)" class="waves-effect waves-light btn  deep-orange accent-2"><i class="material-icons right">person_add</i>seguir</a>
-			<p id="sensei-nota"><i class="material-icons">star</i><span>{{Sensei.sensei.media_notas | number:1}}</span>/5.0</p>
+			<a ng-disabled="estaSeguindo(sensei.id)" ng-click="seguirSensei(sensei.id)" class="waves-effect waves-light btn  deep-orange accent-2"><i class="material-icons right">person_add</i>seguir</a>
+			<p id="avaliacao">
+				<i class="material-icons">
+					<span class="estrela" id="1" ng-click="avaliarSensei(sensei.id, usuario.ID, 1)">star</span>
+					<span class="estrela" id="2" ng-click="avaliarSensei(sensei.id, usuario.ID, 2)">star</span>
+					<span class="estrela" id="3" ng-click="avaliarSensei(sensei.id, usuario.ID, 3)">star</span>
+					<span class="estrela" id="4" ng-click="avaliarSensei(sensei.id, usuario.ID, 4)">star</span>
+					<span class="estrela" id="5" ng-click="avaliarSensei(sensei.id, usuario.ID, 5)">star</span>
+				</i>
+			</p>
+			<p id="sensei-nota"><i class="material-icons">star</i><span>{{sensei.media_notas | number:1}}</span>/5.0</p>
 		</div>
 	</div>
 	
@@ -65,7 +74,7 @@
 				
 				<div class="card-action">
 					<a ng-show="!estaConfirmado(aulas.aulaId)" class="right" href="#" onclick="return false;" ng-click="inscreverNaAula(usuario.ID, aulas.aulaId)">Inscrever-se</a>
-					<a ng-show="estaConfirmado(aulas.aulaId)" class="right" href="#" onclick="return false;" ng-click="">Cancelar inscrição</a>
+					<a ng-show="estaConfirmado(aulas.aulaId)" class="right" href="#" onclick="return false;" ng-click="desinscreverNaAula(usuario.ID, aulas.aulaId)">Cancelar inscrição</a>
 				</div>
 			</div>
 		</div>

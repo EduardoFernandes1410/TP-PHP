@@ -19,7 +19,7 @@
 		die("Database não pode ser usada");
 	}
 
-    $query = "SELECT notas.nota FROM user INNER JOIN notas ON user.id = notas.id_sensei WHERE notas.id_sensei = '$id' and notas.id_gafanhoto = '$idGafanhoto'";
+    $query = "SELECT nota FROM notas WHERE id_sensei = '$id' AND id_gafanhoto = '$idGafanhoto'";
 
     $select = mysqli_query($conexao, $query);
     if($select){

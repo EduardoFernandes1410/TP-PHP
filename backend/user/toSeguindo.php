@@ -18,7 +18,7 @@
 		die("Database não pode ser usada");
 	}
 
-    $query = "SELECT user.* FROM user_sensei INNER JOIN user ON user.id = user_sensei.id_user WHERE user_sensei.id_user = '$id'";
+    $query = "SELECT user.* FROM user_sensei INNER JOIN user ON user.id = user_sensei.id_sensei WHERE user_sensei.id_user = '$id'";
 
     $select = mysqli_query($conexao, $query);
     if($select){

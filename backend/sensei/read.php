@@ -18,7 +18,7 @@
 		die("Database não pode ser usada");
 	}
 
-    $query = "SELECT *, AVG(notas.nota) FROM user INNER JOIN notas ON user.id = notas.id_sensei WHERE user.id = '$id'";
+    $query = "SELECT *, AVG(notas.nota) as media_notas FROM user INNER JOIN notas ON user.id = notas.id_sensei WHERE user.id = '$id'";
 
     $select = mysqli_query($conexao, $query);
     if($select){

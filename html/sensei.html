@@ -26,7 +26,7 @@
 		
 		<div class="sensei-info-wrapper" id="sensei-wrapper-2">
 			<a ng-click="seguirSensei(Sensei.sensei.id)" class="waves-effect waves-light btn  deep-orange accent-2"><i class="material-icons right">person_add</i>seguir</a>
-			<p id="sensei-nota"><i class="material-icons">star</i><span>4.7</span>/5.0</p>
+			<p id="sensei-nota"><i class="material-icons">star</i><span>{{Sensei.sensei.media_notas | number:1}}</span>/5.0</p>
 		</div>
 	</div>
 	

@@ -16,13 +16,13 @@
 		die("Database não pode ser usada");
 	}
 
-    $query = "SELECT * FROM aula_user INNER JOIN aula ON aula_user.id_aula = aula.id WHERE id_user = '$id'";
+    $query = "SELECT *, GROUP_CONCAT(tags.nome) AS strTags, aula.id AS aulaId, aula.nome AS aulaNome, user.nome AS userNome FROM aula_user INNER JOIN aula ON aula.id = aula_user.id_aula INNER JOIN aula_tags ON aula.id = aula_tags.id_aula INNER JOIN tags ON aula_tags.id_tag = tags.id INNER JOIN user ON user.id = aula.sensei WHERE user.id='$id' GROUP BY aula.id";
 
     $select = mysqli_query($conexao, $query);
     if($select){
         $resposta = [];
         while($row = mysqli_fetch_assoc($select)){
-            array_push($resposta, $row['id_aula']);
+            array_push($resposta, $row);
         }
         echo json_encode($resposta);
     } else {

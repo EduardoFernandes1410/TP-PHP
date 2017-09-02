@@ -34,12 +34,6 @@
 				controller: "CriarAulaController"
 			}
 		)
-		.when("minhas-aulas",
-			{
-				templateUrl: "../html/aulas.html",
-				controller: "CriarAulaController"
-			}
-		)
 		.when("/sensei",
 			{				
 				templateUrl: "../html/sensei.html",
@@ -263,6 +257,8 @@
 			tag: $location.search().id
 		}
 		var endereco = ($location.search().id) ? "../backend/aulas/readTags.php" : "../backend/aulas/read.php";
+		endereco = ($location.search().minhas) ? "../backend/user/aulas.php" : endereco;
+		console.log(endereco);
 		
 		//Pega as aulas
 		pegarAulasService.getAulas(endereco, data, function(answer) {
@@ -344,7 +340,7 @@
 	}]);
 	
 	//Sensei Controller
-	app.controller('SenseiController', ['HTTPService', '$location', function(httpService, $location) {
+	app.controller('SenseiController', ['HTTPService', 'PegarAulasService', '$location', '$scope', function(httpService, pegarAulasService, $location, $scope) {
 		var sensei;
 		var aulas;
 		var data = {
@@ -357,20 +353,23 @@
 		}.bind(this));
 		
 		//Pega as aulas do sensei POST
-		httpService.post("../backend/sensei/aulas.php", data, function(answer) {
-			answer = answer.reverse();
+		pegarAulasService.getAulas("../backend/sensei/aulas.php", data, function(answer) {
 			this.aulas = answer;
-			
-			//Mexe nas tags
-			this.aulas.forEach(elem => elem.tags = elem.strTags.split(","));
-			//Mexe na data
-			this.aulas.forEach(function(elem) {
-				var data = new Date(elem.data);
-				elem.dataHora = (data.getHours() >= 10 ? data.getHours() : "0" + data.getHours()) + ":" + (data.getMinutes() >= 10 ? data.getMinutes() : "0" + data.getMinutes());
-				elem.dataDia = data.getDate() >= 10 ? data.getDate() : "0" + data.getDate();
-				elem.dataDia += "/" + ((data.getMonth() + 1) >= 10 ? (data.getMonth() + 1) : "0" + (data.getMonth() + 1));
-				elem.dataDia += "/" + data.getFullYear();
-			});
 		}.bind(this));
+		
+		//Seguir sensei
+		$scope.seguirSensei = function(sensei_id) {
+			var dados = {
+				sensei: sensei_id
+			}
+			
+			httpService.post("../backend/sensei/seguir.php", dados, function(answer) {
+				if(answer != 0) {
+					Materialize.toast("Você agora segue esse sensei!", 3000);
+				} else {
+					Materialize.toast("Erro ao processar!", 3000);
+				}
+			});
+		}
 	}]);
 })();

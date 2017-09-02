@@ -350,6 +350,7 @@
 		//Pega a info do sensei POST
 		httpService.post("../backend/sensei/read.php", data, function(answer) {
 			this.sensei = answer[0];
+			console.log(this.sensei);
 		}.bind(this));
 		
 		//Pega as aulas do sensei POST

@@ -29,10 +29,7 @@
         }
         if($capacidade == 0){
             echo "0";
-        } else {
-            //Coloca o meliante na aula
-            $capacidade = $capacidade - 1;
-            
+        } else {            
             $query = "INSERT INTO aula_user (id_user, id_aula) VALUES ('$user', '$aula')";
 
             $insert = mysqli_query($conexao, $query);
@@ -41,7 +38,7 @@
                 echo "0";
             } else {
                 //Atualiza a capacidade da aula
-                $query2 = "UPDATE aula SET capacidade=$capacidade WHERE id='$aula'";
+                $query2 = "UPDATE aula SET capacidade = capacidade - 1 WHERE id='$aula'";
 
                 $insert2 = mysqli_query($conexao, $query2);
 

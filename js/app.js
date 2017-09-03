@@ -7,7 +7,7 @@
 		$rootScope.$on('$routeChangeStart', function(event, next, current) {
 			// Se tentar acessar sem estar logado
 			httpService.get("../backend/utils/sessao.php", function(answer) {
-				if(!answer) {
+				if(!answer["ID"]) {
 					//Redireciona para pagina de login
 					if(next.templateUrl != "http://localhost:8080") {
 						event.preventDefault();
@@ -138,7 +138,18 @@
 			} else {
 				return $rootScope.aulasConfirmadas.some(elem => elem.id_aula == evento);
 			}
+		}		
+		
+		//Pega os senseis que o cara segue
+		$rootScope.getSenseisSeguindo = function() {
+			httpService.get("../backend/user/toSeguindo.php", function(answer) {
+				if(answer) {
+					$rootScope.senseisSeguindo = answer;
+				}
+			}.bind(this));
 		}
+		//Chama a funcao		
+		$rootScope.getSenseisSeguindo();
 	}]);
 
 	//VirarSensei Controller
@@ -276,6 +287,7 @@
 		}
 		var endereco = ($location.search().id) ? "../backend/aulas/readTags.php" : "../backend/aulas/read.php";
 		endereco = ($location.search().minhas) ? "../backend/user/aulas.php" : endereco;
+		endereco = ($location.search().seguindo) ? "../backend/user/aulasSeguindo.php" : endereco;
 		
 		//Funcao de pesquisa
 		$scope.pesquisaAula = function(params) {
@@ -301,6 +313,12 @@
 		if(!$location.search().search) {
 			pegarAulasService.getAulas(endereco, data, function(answer) {
 				$rootScope.Aulas = answer;
+				
+				//Inicia elementos do Materialize
+				$(document).ready(function() {
+					//Modal
+					$('.modal').modal();
+				});
 			}.bind(this));
 		} else {
 			var params = {
@@ -313,6 +331,18 @@
 		//Chama a funcao de get as aulas confirmadas
 		$rootScope.getAulasConfirmadas();
 		
+		$scope.getInscritos = function(aula) {
+			var data = {
+				aula: aula
+			};
+			
+			httpService.post("../backend/aulas/inscritos.php", data, function(answer) {
+				if(answer) {
+					$rootScope.Aulas.find(aula => aula.aulaId == data.aula).inscritos = answer;
+				}
+			}.bind(this));
+		}
+		
 		$scope.inscreverNaAula = function(id, aula) {
 			var data = {
 				user: id,
@@ -324,12 +354,13 @@
 					Materialize.toast("Inscricao realizada com sucesso!", 3000);
 					//Atualiza
 					$scope.getAulasConfirmadas();
+					$rootScope.Aulas.find(aula => aula.aulaId == data.aula).capacidade--;
 				} else if(answer == 0) {
 					Materialize.toast("Falha ao realizar a inscrição!", 3000);
 				} else if(answer == 2) {
 					Materialize.toast("Você já esta cadastrado nessa aula!", 3000);					
 				}
-			});
+			}.bind(this));
 		}
 		
 		$scope.desinscreverNaAula = function(id, aula) {
@@ -343,10 +374,11 @@
 					Materialize.toast("Inscricao cancelada com sucesso!", 3000);
 					//Atualiza
 					$scope.getAulasConfirmadas();
+					$rootScope.Aulas.find(aula => aula.aulaId == data.aula).capacidade++;
 				} else {
 					Materialize.toast("Falha ao cancelar a inscrição!", 3000);
 				}
-			});
+			}.bind(this));
 		}
 	}]);
 	
@@ -358,7 +390,7 @@
 			id: $location.search().id
 		};
 		$scope.nota = 0;
-		
+				
 		//Pega a info do sensei POST
 		$scope.pegaInfoSensei = function() {
 			httpService.post("../backend/sensei/read.php", data, function(answer) {
@@ -396,6 +428,22 @@
 		//Chama
 		$scope.pegaInfoSensei();
 		
+		//Pega a nota que o cara deu ao sensei
+		$scope.pegaNotaSensei = function() {
+			httpService.post("../backend/sensei/notaAtual.php", data, function(answer) {
+				answer[0] ? $scope.nota = parseInt(answer[0].nota) : $scope.nota = 0;
+				
+				//Mostra a nota em forma des estrelas
+				$(document).ready(function() {
+					for(var j = $scope.nota; j > 0; j--) {
+						$("#" + j).css('color', '#ffab00');
+					}
+				});
+			}.bind(this));
+		}
+		//Chama
+		$scope.pegaNotaSensei();
+		
 		//Pega as aulas do sensei POST
 		pegarAulasService.getAulas("../backend/sensei/aulas.php", data, function(answer) {
 			this.aulas = answer;
@@ -403,19 +451,6 @@
 		
 		//Chama a funcao de aulas confirmadas		
 		$rootScope.getAulasConfirmadas();
-		
-		//Pega a nota que o cara deu ao sensei
-		$scope.pegaNotaSensei = function() {
-			httpService.post("../backend/sensei/notaAtual.php", data, function(answer) {
-				answer ? $scope.nota = parseInt(answer[0].nota) : $scope.nota = 0;
-				
-				for(var j = $scope.nota; j > 0; j--) {
-					$("#" + j).css('color', '#ffab00');
-				}
-			}.bind(this));
-		}
-		//Chama
-		$scope.pegaNotaSensei();
 		
 		//Seguir sensei
 		$scope.seguirSensei = function(sensei_id) {
@@ -427,7 +462,25 @@
 				if(answer != 0) {
 					Materialize.toast("Você agora segue esse sensei!", 3000);
 					//Atualiza
-					$scope.getSenseisSeguindo();
+					$rootScope.getSenseisSeguindo();
+					$scope.pegaInfoSensei();
+				} else {
+					Materialize.toast("Erro ao processar!", 3000);
+				}
+			});
+		}
+		
+		//Seguir sensei
+		$scope.desseguirSensei = function(sensei_id) {
+			var dados = {
+				sensei: sensei_id
+			};
+			
+			httpService.post("../backend/sensei/desseguir.php", dados, function(answer) {
+				if(answer != 0) {
+					Materialize.toast("Você não segue mais esse sensei!", 3000);
+					//Atualiza
+					$rootScope.getSenseisSeguindo();
 					$scope.pegaInfoSensei();
 				} else {
 					Materialize.toast("Erro ao processar!", 3000);
@@ -454,17 +507,6 @@
 				}
 			});
 		}
-		
-		//Pega os senseis que o cara segue
-		$scope.getSenseisSeguindo = function() {
-			httpService.get("../backend/user/toSeguindo.php", function(answer) {
-				if(answer) {
-					$rootScope.senseisSeguindo = answer;
-				}
-			}.bind(this));
-		}
-		//Chama a funcao		
-		$scope.getSenseisSeguindo();
 		
 		//Verifica se o cara ta seguindo o sensei
 		$scope.estaSeguindo = function(sensei) {

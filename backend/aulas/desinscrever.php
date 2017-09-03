@@ -17,11 +17,11 @@
     if(!$db_selected){
         die("Database não pode ser usada");
     }
-    $query1 = "DELETE FROM aula_user WHERE id_aula = '$aula' and id_user = '$user'";
+    $query1 = "DELETE FROM aula_user WHERE id_aula = '$aula' AND id_user = '$user'";
     $select = mysqli_query($conexao, $query1);
 
     if($select){
-        $query2 = "UPDATE aula SET capacidade = capacidade + 1 WHERE id = '$aula";
+        $query2 = "UPDATE aula SET capacidade = capacidade + 1 WHERE id = '$aula'";
         $select2 = mysqli_query($conexao, $query2);
 
         if($select){

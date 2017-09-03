@@ -32,8 +32,52 @@
 				<p class="data info">{{aulas.dataDia}} - {{aulas.dataHora}}</p>
 				<p class="local info">Local: {{aulas.local}}</p>
 				<p class="vagas info">{{aulas.capacidade}} vagas restantes</p>
+				
+				<!-- Lista de Inscritos href -->
+				<a class="waves-effect waves-light modal-trigger lista-inscritos-href" ng-attr-href="{{'#lista-inscritos-' + aulas.aulaId}}" ng-click="getInscritos(aulas.aulaId)" onclick="return false;">Lista de inscritos</a>
+			</div>
+				
+			<!-- Lista de Inscritos Modal -->
+			<div ng-attr-id="{{'lista-inscritos-' + aulas.aulaId}}" class="modal modal-fixed-footer modal-inscritos">
+				<div class="modal-content">
+					<h5 class="modal-header">{{aulas.aulaNome}}</h5>
+					
+					<!-- Loader -->
+					<div class="loader-wrapper">
+						<!-- Mensagem de Vazio -->
+						<h5 ng-if="aulas.inscritos && aulas.inscritos.length == 0">Não há ninguém aqui :/</h5>
+						
+						<div class="preloader-wrapper medium active loader" ng-if="!aulas.inscritos">
+							<div class="spinner-layer spinner-blue-only">
+								<div class="circle-clipper left">
+									<div class="circle"></div>
+								</div><div class="gap-patch">
+									<div class="circle"></div>
+								</div><div class="circle-clipper right">
+									<div class="circle"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!--Tabela-->
+					<table class="bordered">
+						<!--Linha para cada usuario-->
+						<tbody>
+							<tr ng-repeat="pessoa in aulas.inscritos">
+								<td><img class="circle foto-user" ng-src="{{pessoa.foto}}"></td>
+								<td><p>{{pessoa.nome}}</p></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				<div class="modal-footer">
+					<button type="button" class="modal-action modal-close waves-effect waves-orange btn-flat">Fechar</button>
+				</div>
 			</div>
 			
+			<!-- Card Action -->
 			<div class="card-action">
 				<a ng-show="!estaConfirmado(aulas.aulaId)" class="right" href="#" onclick="return false;" ng-click="inscreverNaAula(usuario.ID, aulas.aulaId)">Inscrever-se</a>
 				<a ng-show="estaConfirmado(aulas.aulaId)" class="right" href="#" onclick="return false;" ng-click="desinscreverNaAula(usuario.ID, aulas.aulaId)">Cancelar inscrição</a>

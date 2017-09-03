@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html ng-app="main">
     <head>
-        <title>teach.me</title>
-        <link rel="icon" type="image/png" href="http://icons.veryicon.com/png/System/Windows%208/Business%20Graduation%20Cap.png" />
+        <title>Página Inicial - teach.me</title>
+        <link rel="icon" type="image/png" href="../rsc/logo/icone.png" />
         <meta charset="utf-8">
 
         <!--Importa firebase + login google-->
@@ -67,7 +67,7 @@
                                 <div class="col l3 hide-on-med-and-down">
                                     <ul id="nav-user" class="right">
                                         <li>
-                                            <a ng-class="{disabled: usuario.Admin}" id="virar-sensei" ng-href="{{!usuario.Admin ? '#modal1' : '#'}}" onclick="return false;">Virar Sensei</a>
+                                            <a ng-class="{disabled: usuario.Admin == '1'}" id="virar-sensei" ng-href="{{usuario.Admin == '0' ? '#modal1' : '#'}}" onclick="return false;">Virar Sensei</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -83,11 +83,11 @@
         <ul class="side-nav" id="sidenav">
             <li><a href="home.html#!/" id="logo-mini">teach.me</a></li>
             <li class="divider"></li>
-            <li><a ng-class="{disabled: usuario.Admin}" id="virar-sensei" ng-href="{{!usuario.Admin ? '#modal1' : '#'}}" onclick="return false;">Virar Sensei</a></li>
+            <li><a ng-class="{disabled: usuario.Admin == '1'}" id="virar-sensei" ng-href="{{usuario.Admin == '0' ? '#modal1' : '#'}}" onclick="return false;">Virar Sensei</a></li>
             <li class="divider"></li>
             <li><a href="home.html#!/aulas" class="waves-effect waves-blue"><i class="material-icons">home</i>Início</a></li>
                     <li><a ng-attr-href="{{'home.html#!/sensei?id=' + usuario.ID}}" class="waves-effect waves-blue"><i class="material-icons">person</i>Meu perfil</a></li>
-            <!-- <li><a href="home.html#!/aulas" class="waves-effect waves-blue"><i class="material-icons">people</i>Senseis seguindo</a></li> -->
+            <li><a href="home.html#!/aulas" class="waves-effect waves-blue"><i class="material-icons">people</i>Senseis seguindo</a></li>
             <li><a href="home.html#!/aulas?minhas=true" class="waves-effect waves-blue"><i class="material-icons">class</i>Minhas inscrições</a></li>
             <li class="divider"></li>
             
@@ -200,7 +200,7 @@
                     <!-- Primeiras Opcoes -->
                     <li><a href="home.html#!/aulas" class="waves-effect waves-blue"><i class="material-icons">home</i>Início</a></li>
                     <li><a ng-attr-href="{{'home.html#!/sensei?id=' + usuario.ID}}" class="waves-effect waves-blue"><i class="material-icons">person</i>Meu perfil</a></li>
-                    <!-- <li><a href="home.html#!/aulas" class="waves-effect waves-blue"><i class="material-icons">people</i>Senseis seguindo</a></li> -->
+                    <li><a href="home.html#!/aulas?seguindo=true" class="waves-effect waves-blue"><i class="material-icons">people</i>Senseis seguindo</a></li>
                     <li><a href="home.html#!/aulas?minhas=true" class="waves-effect waves-blue"><i class="material-icons">class</i>Minhas inscrições</a></li>
                     <li class="divider"></li>
                     
@@ -245,7 +245,7 @@
         
         <div class="container">
             <!-- FAB -->
-            <div class="fixed-action-btn" ng-if="usuario.Admin">
+            <div class="fixed-action-btn" ng-if="usuario.Admin == '1'">
                 <a class="btn-floating btn-large deep-orange accent-2" href="#!/create-class">
                     <i class="large material-icons">add</i>
                 </a>                

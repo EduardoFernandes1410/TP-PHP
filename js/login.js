@@ -39,17 +39,16 @@ function initApp() {
 				Foto: user.photoURL,
 				ID: user.uid
 			}
-
 			usuarioInfo = JSON.stringify(usuarioInfo);
 
 			/*Manda usuarioInfo para server*/
 			url = "../backend/user/cadastra.php";
 			$.ajax({
-				data: 'usuarioInfo=' + usuarioInfo,
+				data: usuarioInfo,
 				url: "../backend/user/cadastra.php",
-				method: 'POST', // or GET
+				method: 'POST',
 				success: function(msg) {
-					window.location.href = window.location.href.split("/")[0] + "/html/home.html#!";
+					window.location.href = window.location.href.split("/")[0] + "/html/home.html#!/aulas";
 				}
 			});
 		}

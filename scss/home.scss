@@ -340,26 +340,36 @@ nav {
 		color: #2979ff !important;
 	}
 	
-	//Avaliacao
-	.avaliacao-wrapper {
-		padding: 0px !important;
+	.lista-inscritos-href {
+		font-weight: 300;
+		margin-top: 20px;
+		color: black;
+		text-decoration: underline;
+	}
+}
+
+//Modal Inscritos
+.modal-inscritos {
+	.loader-wrapper {
+		margin-top: 30px;
+	}
+	
+	table {
+		margin-top: 30px;
 		
-		#nota {
-			margin-bottom: 0px !important;
+		td:first-child {
+			padding-bottom: 5px !important;
+			width: 100px;
 		}
 		
-		label {
-			left: 0 !important;
+		p {
+			font-size: 18px;
 		}
 	}
 	
-	.enviar-nota {
-		margin-top: 30px !important;
-		padding-right: 0px !important;
-		
-		a {
-			color: #ff6e40;			
-		}
+	.foto-user {
+		height: 51px;
+		width: 51px;
 	}
 }
 

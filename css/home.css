@@ -197,17 +197,24 @@ nav .disabled {
   .card-content .local {
     font-weight: 300;
     color: #2979ff !important; }
-  .card-content .avaliacao-wrapper {
-    padding: 0px !important; }
-    .card-content .avaliacao-wrapper #nota {
-      margin-bottom: 0px !important; }
-    .card-content .avaliacao-wrapper label {
-      left: 0 !important; }
-  .card-content .enviar-nota {
-    margin-top: 30px !important;
-    padding-right: 0px !important; }
-    .card-content .enviar-nota a {
-      color: #ff6e40; }
+  .card-content .lista-inscritos-href {
+    font-weight: 300;
+    margin-top: 20px;
+    color: black;
+    text-decoration: underline; }
+
+.modal-inscritos .loader-wrapper {
+  margin-top: 30px; }
+.modal-inscritos table {
+  margin-top: 30px; }
+  .modal-inscritos table td:first-child {
+    padding-bottom: 5px !important;
+    width: 100px; }
+  .modal-inscritos table p {
+    font-size: 18px; }
+.modal-inscritos .foto-user {
+  height: 51px;
+  width: 51px; }
 
 .divisor {
   height: 62px !important; }

@@ -6,7 +6,7 @@
     $obj = json_decode(file_get_contents("php://input"));
     $aula = $obj->aula;
 
-    $query = "SELECT GROUP_CONCAT(user.nome) AS strInscritos, GROUP_CONCAT(user.email) AS strEmail FROM aula INNER JOIN aula_user ON aula.id = aula_user.id_aula INNER JOIN user ON aula_user.id_user = user.id WHERE aula.id = '$aula' GROUP BY aula.id";
+    $query = "SELECT user.nome, user.foto FROM aula_user INNER JOIN user ON aula_user.id_user = user.id WHERE aula_user.id_aula = '$aula'";
 
 	$conexao = conecta();
 

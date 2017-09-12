@@ -1,6 +1,8 @@
 <?php
     require '../utils/basics.php';
 
+    date_default_timezone_set("UTC");
+
     session_start();
 
     $obj = json_decode(file_get_contents("php://input"));
@@ -25,7 +27,8 @@
     if($insert){
         $aula = [];
         while($row = mysqli_fetch_assoc($insert)){
-            array_push($aula, $row);
+            if(strtotime($row['data']) > strtotime("now"))
+                array_push($aula, $row);
         }
 
         $aula = json_encode($aula, JSON_UNESCAPED_UNICODE);

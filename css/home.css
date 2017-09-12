@@ -11,6 +11,9 @@ body {
   margin: auto !important; }
 
 @media only screen and (min-width: 993px) {
+  #corpo {
+    margin-left: 250px; }
+
   .container {
     width: 96% !important;
     max-width: none !important; } }
@@ -104,9 +107,14 @@ nav .disabled {
     width: 40px; }
 
 #sidebar {
-  margin-top: 14px;
+  position: fixed;
+  margin-top: 73px;
   padding-left: 0px !important;
-  max-width: 250px !important; }
+  max-width: 250px !important;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  top: 0;
+  bottom: 0; }
 
 #sidebar li, #sidenav li {
   line-height: 50px; }
@@ -168,7 +176,9 @@ nav .disabled {
   overflow: hidden !important;
   font-size: 16px; }
   .card-content span {
-    font-weight: 500; }
+    font-weight: 500 !important; }
+  .card-content .card-title {
+    font-weight: 500 !important; }
   .card-content .nome-sensei {
     color: rgba(0, 0, 0, 0.75);
     font-size: 14px !important; }
@@ -179,24 +189,24 @@ nav .disabled {
     margin-bottom: 15px; }
   .card-content .chip {
     height: 24px !important;
-    font-size: 9.75px !important;
+    font-size: 10.75px !important;
     line-height: 24px !important; }
   .card-content .info {
     margin-top: 5px !important;
     margin-bottom: 5px !important; }
   .card-content .preco {
-    color: #00c853 !important;
+    color: #14b356 !important;
     font-size: 18px !important;
     font-weight: 300 !important; }
   .card-content .data {
-    color: #ffab00 !important;
-    font-weight: 300 !important; }
-  .card-content .vagas {
-    color: #ff1744 !important;
+    color: #eca413 !important;
     font-weight: 300 !important; }
   .card-content .local {
-    font-weight: 300;
-    color: #2979ff !important; }
+    color: #3e7dea !important;
+    font-weight: 300; }
+  .card-content .vagas {
+    color: #e83055 !important;
+    font-weight: 300 !important; }
   .card-content .lista-inscritos-href {
     font-weight: 300;
     margin-top: 20px;
@@ -233,7 +243,6 @@ nav .disabled {
 .card-action {
   overflow: hidden; }
   .card-action a {
-    color: #ffab00 !important;
     margin-right: 0px !important;
     cursor: pointer; }
 

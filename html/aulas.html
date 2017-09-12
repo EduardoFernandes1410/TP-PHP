@@ -28,7 +28,7 @@
 					<div class="chip" ng-repeat="tags in aulas.tags">{{tags}}</div>
 				</div>
 				
-				<p class="preco info">R${{aulas.preco}}</p>
+				<p class="preco info">{{aulas.preco | currency:'R$'}}</p>
 				<p class="data info">{{aulas.dataDia}} - {{aulas.dataHora}}</p>
 				<p class="local info">Local: {{aulas.local}}</p>
 				<p class="vagas info">{{aulas.capacidade}} vagas restantes</p>
@@ -79,8 +79,8 @@
 			
 			<!-- Card Action -->
 			<div class="card-action">
-				<a ng-show="!estaConfirmado(aulas.aulaId)" class="right" href="#" onclick="return false;" ng-click="inscreverNaAula(usuario.ID, aulas.aulaId)">Inscrever-se</a>
-				<a ng-show="estaConfirmado(aulas.aulaId)" class="right" href="#" onclick="return false;" ng-click="desinscreverNaAula(usuario.ID, aulas.aulaId)">Cancelar inscrição</a>
+				<a ng-show="!estaConfirmado(aulas.aulaId)" class="right btn amber accent-4" href="#" onclick="return false;" ng-click="inscreverNaAula(usuario.ID, aulas.aulaId)">Inscrever-se</a>
+				<a ng-show="estaConfirmado(aulas.aulaId)" class="right btn amber accent-4" href="#" onclick="return false;" ng-click="desinscreverNaAula(usuario.ID, aulas.aulaId)">Cancelar inscrição</a>
 			</div>
 		</div>
 	</div>

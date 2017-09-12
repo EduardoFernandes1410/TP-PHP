@@ -1,6 +1,8 @@
 <?php
     require '../utils/basics.php';
 
+    date_default_timezone_set("UTC");            
+
     session_start();
 
     $id = $_SESSION['ID'];
@@ -28,7 +30,8 @@
     if($select){
         $resposta = [];
         while($row = mysqli_fetch_assoc($select)){
-            array_push($resposta, $row);
+            if(strtotime($row['data']) > strtotime("now"))                        
+                array_push($resposta, $row);
         }
         echo json_encode($resposta);
     } else {
